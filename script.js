@@ -143,12 +143,6 @@ function goHome() {
     document.getElementById("content").innerHTML = "";
 
 }
-
-    document.getElementById("categories").style.display = "grid";
-
-    document.getElementById("content").innerHTML = "";
-
-}
 function showProduct(productId) {
     window.scrollTo(0, 0);
     const product = products.find(
