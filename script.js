@@ -16,7 +16,7 @@ function showJewelry() {
 
         html += `
     <div class="card" onclick="showProduct('${product.id}')">
-
+    ${product.isNew ? '<div class="new-badge">🆕 NEW</div>' : ''}
         <img
             src="${product.image}"
             alt="${product.name}"
@@ -64,13 +64,13 @@ function getStatus(status) {
     switch(status) {
 
         case "available":
-            return "● В наявності";
+            return "В наявності";
 
         case "reserved":
-            return "● Заброньовано";
+            return "Заброньовано";
 
         case "sold":
-            return "🔴 Продано";
+            return "Продано";
 
         default:
             return status;
@@ -158,7 +158,10 @@ function showProduct(productId) {
             <p><strong>Ціна:</strong> ${product.price}</p>
             
             <p>${product.description}</p>
-            <p><strong>${getStatus(product.status)}</strong></p>
+            <p>
+    <span class="status status-${product.status}">
+        ${getStatus(product.status)}</span>
+</p>
             <br>
 
             <button onclick="reserveProduct('${product.name}')">
