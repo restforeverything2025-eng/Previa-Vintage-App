@@ -246,9 +246,11 @@ button:hover{
 }
 .category-icon{
 
-    font-size:50px;
+    font-size:48px;
 
-    margin-bottom:15px;
+    margin-bottom:12px;
+
+    line-height:1;
 
 }
 
@@ -256,7 +258,7 @@ button:hover{
 
     font-family:'Cormorant Garamond', serif;
 
-    font-size:28px;
+    font-size:24px;
 
     font-weight:500;
 
