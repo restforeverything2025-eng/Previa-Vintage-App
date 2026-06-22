@@ -45,23 +45,3 @@ let products = [
     isNew: true
   }
 ];
-async function loadProductsFromSheet() {
-
-    try {
-
-        const response = await fetch(
-            "https://docs.google.com/spreadsheets/d/e/2PACX-1vTK8TPWLpoWM3ff5Zk_0I4O-pkN3WvlI4tqZtI1ONkKQjNbDT00ZvM0g24T3OktGDIOR2OwEYyg0oym/pub?output=csv"
-        );
-
-        const csv = await response.text();
-
-        console.log(csv);
-
-    } catch(error) {
-
-        console.error(error);
-
-    }
-
-}
-// loadProductsFromSheet()
