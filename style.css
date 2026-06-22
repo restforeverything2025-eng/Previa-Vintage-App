@@ -30,7 +30,7 @@ h1{
 
     color:#444;
 
-    margin:20px 0 30px;
+    margin:10px 0 15px;
 
 }
 
@@ -126,7 +126,7 @@ button:hover{
 #search-container{
     display:flex;
     justify-content:center;
-    margin:20px 0 30px;
+    margin:10px 0 20px;
 }
 
 #searchInput{
