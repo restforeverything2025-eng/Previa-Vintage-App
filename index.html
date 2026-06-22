@@ -13,27 +13,8 @@
 
         <h1>PREVIA VINTAGE</h1>
 
-        <p class="subtitle">
-            Вінтажні годинники, аксесуари та предмети інтер'єру
-        </p>
-
-        <div class="categories" id="categories">
-
-            <div class="card"id="watches-count"onclick="showWatches()">⌚ Годинники</div>
-
-            <div class="card"id="jewelry-count"onclick="showJewelry()">💍 Прикраси</div>
-
-            <div class="card">🎩 Аксесуари</div>
-
-            <div class="card">🏺 Декор</div>
-
-            <div class="card">🔥 Sale</div>
-
-            <div class="card"id="new-count"onclick="showNewProducts()">🆕 Нові надходження</div>
-
+        <p class="subtitle">Вінтажні годинники, прикраси та аксесуари</p>
         </div>
-
-    </div>
     <div id="search-container">
     <input
         type="text"
@@ -42,6 +23,20 @@
         onkeyup="globalSearch()"
     >
 </div>    
+
+        <div class="categories" id="categories">
+
+            <div class="card"id="watches-count"onclick="showWatches()">⌚ Годинники</div>
+
+            <div class="card"id="jewelry-count"onclick="showJewelry()">💍 Прикраси</div>
+
+            <div class="card" onclick="showAccessories()">🎩 Аксесуари</div>
+
+            <div class="card" onclick="showSale()">🏷️ Sale</div>
+
+            <div class="card"id="new-count"onclick="showNewProducts()">🆕 Нові надходження</div>
+
+        </div>
 <div id="content"></div>
 <script src="data.js"></script>
 <script src="script.js"></script>

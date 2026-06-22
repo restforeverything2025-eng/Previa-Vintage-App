@@ -113,14 +113,32 @@ button:hover{
     border-radius:8px;
 }
 #search-container{
-    margin:20px;
+    display:flex;
+    justify-content:center;
+    margin:20px 0 30px;
 }
 
 #searchInput{
-    width:100%;
-    padding:12px;
+    width:75%;
+    max-width:450px;
+
+    padding:14px 18px;
+
     font-size:16px;
-    border:1px solid #ddd;
-    border-radius:10px;
+
+    border:none;
+    border-radius:30px;
+
     box-sizing:border-box;
+
+    box-shadow:0 3px 12px rgba(0,0,0,0.08);
+
+    transition:0.3s;
+}
+#searchInput:focus{
+    outline:none;
+
+    box-shadow:0 5px 18px rgba(0,0,0,0.15);
+
+    transform:scale(1.02);
 }
