@@ -26,10 +26,13 @@ h1{
 
 .categories{
     display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-    gap:20px;
+    grid-template-columns:repeat(2,1fr);
+    gap:15px;
 }
-
+.categories .card{
+    text-align:center;
+    padding:15px;
+}
 .card{
     background:white;
     border-radius:16px;
@@ -42,7 +45,9 @@ h1{
 
     transition:0.3s;
 }
-
+.card:hover{
+    transform:translateY(-3px);
+}
 .card:hover{
     transform:translateY(-5px);
 }
@@ -90,4 +95,32 @@ button:hover{
     object-fit: cover;
     border-radius: 10px;
     margin-bottom: 10px;
+}
+.products-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:15px;
+}
+
+.products-grid .card{
+    margin:0;
+}
+
+.catalog-image{
+    width:100%;
+    aspect-ratio:1/1;
+    object-fit:cover;
+    border-radius:8px;
+}
+#search-container{
+    margin:20px;
+}
+
+#searchInput{
+    width:100%;
+    padding:12px;
+    font-size:16px;
+    border:1px solid #ddd;
+    border-radius:10px;
+    box-sizing:border-box;
 }

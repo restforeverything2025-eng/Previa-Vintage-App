@@ -17,7 +17,7 @@
             Вінтажні годинники, аксесуари та предмети інтер'єру
         </p>
 
-        <div class="categories">
+        <div class="categories" id="categories">
 
             <div class="card"id="watches-count"onclick="showWatches()">⌚ Годинники</div>
 
@@ -34,6 +34,14 @@
         </div>
 
     </div>
+    <div id="search-container">
+    <input
+        type="text"
+        id="searchInput"
+        placeholder="🔍 Пошук товару..."
+        onkeyup="globalSearch()"
+    >
+</div>    
 <div id="content"></div>
 <script src="data.js"></script>
 <script src="script.js"></script>

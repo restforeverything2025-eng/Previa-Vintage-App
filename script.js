@@ -1,12 +1,16 @@
 function showJewelry() {
-
+    document.getElementById("search-container").style.display = "block";
+    document.getElementById("categories").style.display = "none";
     const content = document.getElementById("content");
 
     const jewelry = products.filter(
         product => product.category === "Прикраси"
     );
 
-    let html = "<h2>💍 Прикраси</h2>";
+    let html = `
+    <h2>💍 Прикраси</h2>
+    <div class="products-grid">
+`;
 
     jewelry.forEach(product => {
 
@@ -23,13 +27,19 @@ function showJewelry() {
 
         <p>${product.price}</p>
 
-        <p>${product.status}</p>
+        <p>${getStatus(product.status)}</p>
 
     </div>
 `;
 
     });
-
+    html += `</div>`;
+    html += `
+    <br>
+    <button onclick="goHome()">
+        🏠 На головну
+    </button>
+`;
     content.innerHTML = html;
 }
 function reserveProduct(productName) {
@@ -49,8 +59,27 @@ ${productName}
     window.open(telegramUrl, "_blank");
 
 }
-function showWatches() {
+function getStatus(status) {
 
+    switch(status) {
+
+        case "available":
+            return "● В наявності";
+
+        case "reserved":
+            return "● Заброньовано";
+
+        case "sold":
+            return "🔴 Продано";
+
+        default:
+            return status;
+    }
+
+}
+function showWatches() {
+    document.getElementById("search-container").style.display = "block";
+    document.getElementById("categories").style.display = "none";
     const content = document.getElementById("content");
 
     const watches = products.filter(
@@ -74,20 +103,37 @@ function showWatches() {
 
         <p>${product.price}</p>
 
-        <p>${product.status}</p>
+        <p>${getStatus(product.status)}</p>
 
     </div>
 `;
 
     });
-
+    html += `</div>`;
+    html += `
+    <br>
+    <button onclick="goHome()">
+        🏠 На головну
+    </button>
+`;
     content.innerHTML = html;
 }
 function goHome() {
+    function goHome() {
 
-    const content = document.getElementById("content");
+    document.getElementById("categories").style.display = "grid";
 
-    content.innerHTML = "";
+    document.getElementById("search-container").style.display = "none";
+
+    document.getElementById("searchInput").value = "";
+
+    document.getElementById("content").innerHTML = "";
+
+}
+
+    document.getElementById("categories").style.display = "grid";
+
+    document.getElementById("content").innerHTML = "";
 
 }
 function showProduct(productId) {
@@ -110,9 +156,9 @@ function showProduct(productId) {
     >
 
             <p><strong>Ціна:</strong> ${product.price}</p>
-            <p><strong>Статус:</strong> ${product.status}</p>
+            
             <p>${product.description}</p>
-
+            <p><strong>${getStatus(product.status)}</strong></p>
             <br>
 
             <button onclick="reserveProduct('${product.name}')">
@@ -140,14 +186,18 @@ function showProduct(productId) {
     `;
 }
 function showNewProducts() {
-
+    document.getElementById("search-container").style.display = "block";
+    document.getElementById("categories").style.display = "none";
     const content = document.getElementById("content");
 
     const newProducts = products.filter(
         product => product.isNew === true
     );
 
-    let html = "<h2>🆕 Нові надходження</h2>";
+    let html = `
+    <h2>🆕 Нові надходження</h2>
+    <div class="products-grid">
+`;
 
     newProducts.forEach(product => {
 
@@ -164,13 +214,19 @@ function showNewProducts() {
 
         <p>${product.price}</p>
 
-        <p>${product.status}</p>
+        <p>${getStatus(product.status)}</p>
 
     </div>
 `;
 
     });
-
+    html += `</div>`;
+    html += `
+    <br>
+    <button onclick="goHome()">
+        🏠 На головну
+    </button>
+`;
     content.innerHTML = html;
 }
 function updateCounters() {
@@ -197,3 +253,93 @@ function updateCounters() {
         `🆕 Нові надходження (${newCount})`;
 }
 updateCounters();
+function searchProducts() {
+
+    const search = document
+        .getElementById("searchInput")
+        .value
+        .toLowerCase();
+
+    const cards = document.querySelectorAll(".products-grid .card");
+
+    cards.forEach(card => {
+
+        const text = card.textContent.toLowerCase();
+
+        if(text.includes(search)) {
+
+            card.style.display = "block";
+
+        } else {
+
+            card.style.display = "none";
+
+        }
+
+    });
+
+}
+function globalSearch() {
+
+    const search = document
+        .getElementById("searchInput")
+        .value
+        .toLowerCase();
+
+    if(search.length < 2) {
+
+        return;
+
+    }
+
+    document.getElementById("categories").style.display = "none";
+
+    let results = products.filter(product =>
+
+        product.name.toLowerCase().includes(search) ||
+
+        product.description.toLowerCase().includes(search) ||
+
+        product.price.toLowerCase().includes(search)
+
+    );
+
+    let html = `
+        <h2>🔍 Результати пошуку</h2>
+        <div class="products-grid">
+    `;
+
+    results.forEach(product => {
+
+        html += `
+            <div class="card" onclick="showProduct('${product.id}')">
+
+                <img
+                    src="${product.image}"
+                    alt="${product.name}"
+                    class="catalog-image"
+                >
+
+                <h3>${product.name}</h3>
+
+                <p>${product.price}</p>
+
+                <p>${getStatus(product.status)}</p>
+
+            </div>
+        `;
+
+    });
+
+    html += `</div>`;
+
+    html += `
+        <br>
+        <button onclick="goHome()">
+            🏠 На головну
+        </button>
+    `;
+
+    document.getElementById("content").innerHTML = html;
+
+}

@@ -1,10 +1,10 @@
-const products = [
+let products = [
   {
     id: "PV-0001",
     name: "Підвіска з синім каменем",
     category: "Прикраси",
     price: "120 €",
-    status: "В наявності",
+    status: "available",
     description: `Синє кільце кулон стильна підвіска у формі об'ємного синього кола з яскравим блиском маленьким камінням на срібному ланцюжку.
 Яскрава, сучасна ефектна прикраса в подарунковій синій коробочці чудовий варіант для тих, хто любить незвичайні акценти`,
     image:"images/blue-stone.jpg",
@@ -16,7 +16,7 @@ const products = [
     name: "Кришталеве серце",
     category: "Прикраси",
     price: "140 €",
-    status: "В наявності",
+    status: "available",
     description: "Елегантне кришталеве серце Swarovski...",
     image: "images/crystal-heart.jpg",
     isNew: true
@@ -27,7 +27,7 @@ const products = [
     name: "Серце з шармами",
     category: "Прикраси",
     price: "110 €",
-    status: "В наявності",
+    status: "available",
     description: `Срібне серце з шармами - витончений кулон у вигляді великого відкритого серця, прикрашеного блискучим камінням, з підвісками у вигляді рожевого серця, ключа і ще одного серця на тонкій срібній ланцюжку.
 Романтична ніжна прикраса, яка ідеально передає настрій кохання та стане чудовим подарунком`,
     image: "images/charm-heart.jpg",
@@ -39,9 +39,30 @@ const products = [
     name: "Nina Ricci Paris",
     category: "Годинники",
     price: "250 €",
-    status: "В наявності",
+    status: "available",
     description: `Елегантний золотий годинник Nina Ricci Paris - прямокутний корпус з білим циферблатом римськими цифрами, на широкому золотому браслеті в комплекті зі змінними ремінцями (червоний крокодил, чорний)`,
     image: "images/nina-ricci.jpg",
     isNew: true
   }
 ];
+async function // loadProductsFromSheet(); {
+
+    try {
+
+        const response = await fetch(
+            "https://docs.google.com/spreadsheets/d/e/2PACX-1vTK8TPWLpoWM3ff5Zk_0I4O-pkN3WvlI4tqZtI1ONkKQjNbDT00ZvM0g24T3OktGDIOR2OwEYyg0oym/pub?output=csv"
+        );
+
+        const csv = await response.text();
+
+        console.log(csv);
+
+    } catch(error) {
+
+        console.error(error);
+
+    }
+
+}
+
+loadProductsFromSheet();
