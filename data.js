@@ -45,7 +45,7 @@ let products = [
     isNew: true
   }
 ];
-async function // loadProductsFromSheet(); {
+async function loadProductsFromSheet() {
 
     try {
 
@@ -64,5 +64,4 @@ async function // loadProductsFromSheet(); {
     }
 
 }
-
-loadProductsFromSheet();
+// loadProductsFromSheet()
