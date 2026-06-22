@@ -25,7 +25,7 @@ function showJewelry() {
 
         <h3>${product.name}</h3>
 
-        <p>${product.price}</p>
+        <p class="product-price">${product.price}</p>
 
         <p>${getStatus(product.status)}</p>
 
@@ -64,13 +64,25 @@ function getStatus(status) {
     switch(status) {
 
         case "available":
-            return "В наявності";
+            return `
+            <span class="status-badge status-available">
+                В наявності
+            </span>
+            `;
 
         case "reserved":
-            return "Заброньовано";
+            return `
+            <span class="status-badge status-reserved">
+                Заброньовано
+            </span>
+            `;
 
         case "sold":
-            return "Продано";
+            return `
+            <span class="status-badge status-sold">
+                Продано
+            </span>
+            `;
 
         default:
             return status;
@@ -101,7 +113,7 @@ function showWatches() {
 
         <h3>${product.name}</h3>
 
-        <p>${product.price}</p>
+        <p class="product-price">${product.price}</p>
 
         <p>${getStatus(product.status)}</p>
 
@@ -158,10 +170,7 @@ function showProduct(productId) {
             <p><strong>Ціна:</strong> ${product.price}</p>
             
             <p>${product.description}</p>
-            <p>
-    <span class="status status-${product.status}">
-        ${getStatus(product.status)}</span>
-</p>
+            <p>${getStatus(product.status)}</p>
             <br>
 
             <button onclick="reserveProduct('${product.name}')">
@@ -215,7 +224,7 @@ function showNewProducts() {
 
         <h3>${product.name}</h3>
 
-        <p>${product.price}</p>
+        <p class="product-price">${product.price}</p>
 
         <p>${getStatus(product.status)}</p>
 
@@ -234,28 +243,24 @@ function showNewProducts() {
 }
 function updateCounters() {
 
-    const watchesCount = products.filter(
-        p => p.category === "Годинники"
-    ).length;
+    document.getElementById("watches-count").innerHTML =
+    `
+    <div class="category-icon">⌚</div>
+    <div class="category-title">Годинники</div>
+    `;
 
-    const jewelryCount = products.filter(
-        p => p.category === "Прикраси"
-    ).length;
+    document.getElementById("jewelry-count").innerHTML =
+    `
+    <div class="category-icon">💍</div>
+    <div class="category-title">Прикраси</div>
+    `;
 
-    const newCount = products.filter(
-        p => p.isNew === true
-    ).length;
-
-    document.getElementById("watches-count").innerText =
-        `⌚ Годинники (${watchesCount})`;
-
-    document.getElementById("jewelry-count").innerText =
-        `💍 Прикраси (${jewelryCount})`;
-
-    document.getElementById("new-count").innerText =
-        `🆕 Нові надходження (${newCount})`;
+    document.getElementById("new-count").innerHTML =
+    `
+    <div class="category-icon">🆕</div>
+    <div class="category-title">Нові надходження</div>
+    `;
 }
-updateCounters();
 function searchProducts() {
 
     const search = document

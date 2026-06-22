@@ -122,12 +122,18 @@ button:hover{
     border-radius: 10px;
     margin: 10px 0;
 }
-.catalog-image {
-    width: 100%;
-    height: 250px;
-    object-fit: cover;
-    border-radius: 10px;
-    margin-bottom: 10px;
+.catalog-image{
+
+    width:100%;
+
+    height:220px;
+
+    object-fit:cover;
+
+    border-radius:14px;
+
+    margin-bottom:10px;
+
 }
 .products-grid{
     display:grid;
@@ -139,12 +145,6 @@ button:hover{
     margin:0;
 }
 
-.catalog-image{
-    width:100%;
-    aspect-ratio:1/1;
-    object-fit:cover;
-    border-radius:8px;
-}
 #search-container{
     display:flex;
     justify-content:center;
@@ -205,18 +205,27 @@ button:hover{
     margin-top:10px;
 }
 .status-available{
-    background:#e8f8ec;
-    color:#1f8f47;
+
+    background:#e7f6ea;
+
+    color:#1f7a35;
+
 }
 
 .status-reserved{
-    background:#fff4d6;
-    color:#b77900;
+
+    background:#fff3cd;
+
+    color:#9a6a00;
+
 }
 
 .status-sold{
-    background:#fde7e7;
-    color:#c53030;
+
+    background:#fde8e8;
+
+    color:#b42318;
+
 }
 .banner-image{
 
@@ -233,5 +242,57 @@ button:hover{
     object-fit:cover;
 
     box-shadow:0 6px 20px rgba(0,0,0,0.15);
+
+}
+.category-icon{
+
+    font-size:50px;
+
+    margin-bottom:15px;
+
+}
+
+.category-title{
+
+    font-family:'Cormorant Garamond', serif;
+
+    font-size:28px;
+
+    font-weight:500;
+
+}
+.product-price{
+
+    font-size:24px;
+
+    font-weight:700;
+
+    margin-top:10px;
+
+    color:#2f2a24;
+
+}
+.status-badge{
+
+    display:inline-block;
+
+    padding:6px 14px;
+
+    border-radius:20px;
+
+    font-size:14px;
+
+    font-weight:600;
+
+}
+.product-price{
+
+    font-size:26px;
+
+    font-weight:700;
+
+    margin:10px 0;
+
+    color:#2f2a24;
 
 }
