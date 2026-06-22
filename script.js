@@ -1,4 +1,5 @@
 function showJewelry() {
+    window.scrollTo(0, 0);
     document.getElementById("search-container").style.display = "block";
     document.getElementById("categories").style.display = "none";
     const content = document.getElementById("content");
@@ -132,7 +133,7 @@ function showWatches() {
 }
 function goHome() {
     function goHome() {
-
+    window.scrollTo(0, 0);
     document.getElementById("categories").style.display = "grid";
 
     document.getElementById("search-container").style.display = "none";
