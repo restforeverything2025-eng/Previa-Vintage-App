@@ -347,3 +347,4 @@ function globalSearch() {
     document.getElementById("content").innerHTML = html;
 
 }
+updateCounters();
