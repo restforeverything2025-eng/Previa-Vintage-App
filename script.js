@@ -91,6 +91,7 @@ function getStatus(status) {
 
 }
 function showWatches() {
+    window.scrollTo(0, 0);
     document.getElementById("search-container").style.display = "block";
     document.getElementById("categories").style.display = "none";
     const content = document.getElementById("content");
@@ -132,7 +133,6 @@ function showWatches() {
     content.innerHTML = html;
 }
 function goHome() {
-    function goHome() {
     window.scrollTo(0, 0);
     document.getElementById("categories").style.display = "grid";
 
@@ -150,7 +150,7 @@ function goHome() {
 
 }
 function showProduct(productId) {
-
+    window.scrollTo(0, 0);
     const product = products.find(
         p => p.id === productId
     );
@@ -199,6 +199,7 @@ function showProduct(productId) {
     `;
 }
 function showNewProducts() {
+    window.scrollTo(0, 0);
     document.getElementById("search-container").style.display = "block";
     document.getElementById("categories").style.display = "none";
     const content = document.getElementById("content");

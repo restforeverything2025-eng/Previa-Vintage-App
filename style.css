@@ -47,11 +47,14 @@ h1{
 
     padding:25px 15px;
 
-    min-height:120px;
+    min-height:130px;
 
     display:flex;
+
     flex-direction:column;
+
     justify-content:center;
+
     align-items:center;
 
 }
