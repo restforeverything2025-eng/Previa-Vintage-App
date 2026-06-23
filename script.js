@@ -45,53 +45,6 @@ function showJewelry() {
     
     content.innerHTML = html;
 }
-function reserveProduct(productName) {
-
-    const message =
-        `Доброго дня!
-
-Мене цікавить товар:
-
-${productName}
-
-Чи актуальний він?`;
-
-    const telegramUrl =
-        `https://t.me/Ad_astra_per_astera?text=${encodeURIComponent(message)}`;
-
-    window.open(telegramUrl, "_blank");
-
-}
-function getStatus(status) {
-
-    switch(status) {
-
-        case "available":
-            return `
-            <span class="status-badge status-available">
-                В наявності
-            </span>
-            `;
-
-        case "reserved":
-            return `
-            <span class="status-badge status-reserved">
-                Заброньовано
-            </span>
-            `;
-
-        case "sold":
-            return `
-            <span class="status-badge status-sold">
-                Продано
-            </span>
-            `;
-
-        default:
-            return status;
-    }
-
-}
 function showWatches() {
     window.scrollTo(0, 0);
     document.getElementById("search-container").style.display = "block";
@@ -140,6 +93,156 @@ function showWatches() {
     html += `</div>`;
 
     content.innerHTML = html;
+}
+function showAccessories() {
+
+    window.scrollTo(0, 0);
+
+    document.getElementById("search-container").style.display = "none";
+
+    document.getElementById("categories").style.display = "none";
+
+    document.getElementById("content").innerHTML = `
+
+        <div class="top-actions">
+
+            <button onclick="goHome()">
+                🏠 На головну
+            </button>
+
+        </div>
+
+        <div class="card">
+
+            <h2>🎩 Аксесуари</h2>
+
+            <p>Розділ наповнюється новими товарами.</p>
+
+        </div>
+
+    `;
+}
+function showSale() {
+
+    window.scrollTo(0, 0);
+
+    document.getElementById("search-container").style.display = "none";
+
+    document.getElementById("categories").style.display = "none";
+
+    document.getElementById("content").innerHTML = `
+
+        <div class="top-actions">
+
+            <button onclick="goHome()">
+                🏠 На головну
+            </button>
+
+        </div>
+
+        <div class="card">
+
+            <h2>🏷️ Sale</h2>
+
+            <p>Акційні пропозиції скоро з'являться.</p>
+
+        </div>
+
+    `;
+}
+function showNewProducts() {
+    window.scrollTo(0, 0);
+    document.getElementById("search-container").style.display = "block";
+    document.getElementById("categories").style.display = "none";
+    const content = document.getElementById("content");
+
+    const newProducts = products.filter(
+        product => product.isNew === true
+    );
+
+    let html = `
+    <div class="top-actions">
+
+        <button onclick="goHome()">
+            🏠 На головну
+        </button>
+
+    </div>
+    <h2>🆕 Нові надходження</h2>
+    <div class="products-grid">
+`;
+
+    newProducts.forEach(product => {
+
+        html += `
+    <div class="card" onclick="showProduct('${product.id}')">
+
+        <img
+            src="${product.image}"
+            alt="${product.name}"
+            class="catalog-image"
+        >
+
+        <h3>${product.name}</h3>
+
+        <p class="product-price">${product.price}</p>
+
+        <p>${getStatus(product.status)}</p>
+
+    </div>
+`;
+
+    });
+    html += `</div>`;
+    
+    content.innerHTML = html;
+}
+function reserveProduct(productName) {
+
+    const message =
+        `Доброго дня!
+
+Мене цікавить товар:
+
+${productName}
+
+Чи актуальний він?`;
+
+    const telegramUrl =
+        `https://t.me/Ad_astra_per_astera?text=${encodeURIComponent(message)}`;
+
+    window.open(telegramUrl, "_blank");
+
+}
+function getStatus(status) {
+
+    switch(status) {
+
+        case "available":
+            return `
+            <span class="status-badge status-available">
+                В наявності
+            </span>
+            `;
+
+        case "reserved":
+            return `
+            <span class="status-badge status-reserved">
+                Заброньовано
+            </span>
+            `;
+
+        case "sold":
+            return `
+            <span class="status-badge status-sold">
+                Продано
+            </span>
+            `;
+
+        default:
+            return status;
+    }
+
 }
 function goHome() {
     window.scrollTo(0, 0);
@@ -200,53 +303,6 @@ function showProduct(productId) {
         </div>
 
     `;
-}
-function showNewProducts() {
-    window.scrollTo(0, 0);
-    document.getElementById("search-container").style.display = "block";
-    document.getElementById("categories").style.display = "none";
-    const content = document.getElementById("content");
-
-    const newProducts = products.filter(
-        product => product.isNew === true
-    );
-
-    let html = `
-    <div class="top-actions">
-
-        <button onclick="goHome()">
-            🏠 На головну
-        </button>
-
-    </div>
-    <h2>🆕 Нові надходження</h2>
-    <div class="products-grid">
-`;
-
-    newProducts.forEach(product => {
-
-        html += `
-    <div class="card" onclick="showProduct('${product.id}')">
-
-        <img
-            src="${product.image}"
-            alt="${product.name}"
-            class="catalog-image"
-        >
-
-        <h3>${product.name}</h3>
-
-        <p class="product-price">${product.price}</p>
-
-        <p>${getStatus(product.status)}</p>
-
-    </div>
-`;
-
-    });
-    html += `</div>`;
-    
-    content.innerHTML = html;
 }
 function updateCounters() {
 
