@@ -252,11 +252,10 @@ function updateCounters() {
     `;
 
     document.getElementById("new-count").innerHTML =
-    `
-    <div class="category-icon">🆕</div>
-    <div class="category-title">Нові надходження</div>
-    `;
-}
+`
+<div class="category-icon">✨</div>
+<div class="category-title">Надходження</div>
+`;
 function searchProducts() {
 
     const search = document
