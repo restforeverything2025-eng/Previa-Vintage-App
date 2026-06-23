@@ -9,6 +9,13 @@ function showJewelry() {
     );
 
     let html = `
+    <div class="top-actions">
+
+    <button onclick="goHome()">
+        🏠 На головну
+    </button>
+
+</div>
     <h2>💍 Прикраси</h2>
     <div class="products-grid">
 `;
@@ -35,12 +42,7 @@ function showJewelry() {
 
     });
     html += `</div>`;
-    html += `
-    <br>
-    <button onclick="goHome()">
-        🏠 На головну
-    </button>
-`;
+    
     content.innerHTML = html;
 }
 function reserveProduct(productName) {
@@ -100,7 +102,19 @@ function showWatches() {
         product => product.category === "Годинники"
     );
 
-    let html = "<h2>⌚ Годинники</h2>";
+    let html = `
+    <div class="top-actions">
+
+        <button onclick="goHome()">
+            🏠 На головну
+        </button>
+
+    </div>
+
+    <h2>⌚ Годинники</h2>
+
+    <div class="products-grid">
+`;
 
     watches.forEach(product => {
 
@@ -124,12 +138,7 @@ function showWatches() {
 
     });
     html += `</div>`;
-    html += `
-    <br>
-    <button onclick="goHome()">
-        🏠 На головну
-    </button>
-`;
+
     content.innerHTML = html;
 }
 function goHome() {
@@ -203,6 +212,13 @@ function showNewProducts() {
     );
 
     let html = `
+    <div class="top-actions">
+
+        <button onclick="goHome()">
+            🏠 На головну
+        </button>
+
+    </div>
     <h2>🆕 Нові надходження</h2>
     <div class="products-grid">
 `;
@@ -229,12 +245,7 @@ function showNewProducts() {
 
     });
     html += `</div>`;
-    html += `
-    <br>
-    <button onclick="goHome()">
-        🏠 На головну
-    </button>
-`;
+    
     content.innerHTML = html;
 }
 function updateCounters() {
