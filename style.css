@@ -45,9 +45,9 @@ h1{
 
     text-align:center;
 
-    padding:30px 15px;
+    padding:20px 12px;
 
-    min-height:170px;
+    min-height:140px;
 
     display:flex;
 
@@ -249,7 +249,7 @@ button:hover{
 }
 .category-icon{
 
-    font-size:60px;
+    font-size:50px;
 
     margin-bottom:15px;
 
@@ -261,7 +261,7 @@ button:hover{
 
     font-family:'Cormorant Garamond', serif;
 
-    font-size:26px;
+    font-size:22px;
 
     font-weight:500;
 
