@@ -421,3 +421,18 @@ button:hover{
     transform:translateY(-2px);
 
 }
+.home-section-title{
+
+    text-align:center;
+
+    margin:25px 0 15px;
+
+    font-family:'Cormorant Garamond', serif;
+
+    font-size:30px;
+
+    font-weight:500;
+
+    color:#2f2a24;
+
+}
