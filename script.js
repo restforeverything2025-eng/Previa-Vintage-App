@@ -1,4 +1,8 @@
 function showJewelry() {
+
+    document.getElementById(
+    "home-new-products"
+).innerHTML = "";
     window.scrollTo(0, 0);
     document.getElementById("search-container").style.display = "block";
     document.getElementById("categories").style.display = "none";
@@ -45,6 +49,10 @@ function showJewelry() {
     content.innerHTML = html;
 }
 function showWatches() {
+
+    document.getElementById(
+    "home-new-products"
+).innerHTML = "";
     window.scrollTo(0, 0);
     document.getElementById("search-container").style.display = "block";
     document.getElementById("categories").style.display = "none";
@@ -94,6 +102,9 @@ function showWatches() {
 }
 function showAccessories() {
 
+    document.getElementById(
+    "home-new-products"
+).innerHTML = "";
     window.scrollTo(0, 0);
 
     document.getElementById("search-container").style.display = "none";
@@ -121,6 +132,9 @@ function showAccessories() {
 }
 function showSale() {
 
+    document.getElementById(
+    "home-new-products"
+).innerHTML = "";
     window.scrollTo(0, 0);
 
     document.getElementById("search-container").style.display = "none";
@@ -147,6 +161,10 @@ function showSale() {
     `;
 }
 function showNewProducts() {
+
+    document.getElementById(
+    "home-new-products"
+).innerHTML = "";
     window.scrollTo(0, 0);
     document.getElementById("search-container").style.display = "block";
     document.getElementById("categories").style.display = "none";
@@ -254,8 +272,13 @@ function goHome() {
     behavior: "smooth"
 });
 
+showHomeNewProducts();
 }
 function showProduct(productId) {
+
+    document.getElementById(
+    "home-new-products"
+).innerHTML = "";
     window.scrollTo(0, 0);
     const product = products.find(
         p => p.id === productId
@@ -353,6 +376,10 @@ function searchProducts() {
 }
 function globalSearch() {
 
+document.getElementById(
+    "home-new-products"
+).innerHTML = "";
+
     const search = document
         .getElementById("searchInput")
         .value
@@ -360,9 +387,11 @@ function globalSearch() {
 
     if(search.length < 2) {
 
-        return;
+    goHome();
 
-    }
+    return;
+
+}
 
     document.getElementById("categories").style.display = "none";
 
@@ -416,6 +445,55 @@ function globalSearch() {
 
 }
 updateCounters();
+showHomeNewProducts();
+function showHomeNewProducts() {
+
+    const container =
+        document.getElementById("home-new-products");
+
+    const latestProducts =
+        [...products].slice(-6).reverse();
+
+    let html = `
+        <h2 class="home-section-title">
+            ✨ Нові надходження
+        </h2>
+
+        <div class="products-grid">
+    `;
+
+    latestProducts.forEach(product => {
+
+        html += `
+            <div
+                class="card"
+                onclick="showProduct('${product.id}')"
+            >
+
+                <img
+                    src="${product.image}"
+                    alt="${product.name}"
+                    class="catalog-image"
+                >
+
+                <h3>${product.name}</h3>
+
+                <p class="product-price">
+                    ${product.price}
+                </p>
+
+            </div>
+        `;
+
+    });
+
+    html += `
+        </div>
+    `;
+
+    container.innerHTML = html;
+
+}
 function scrollToTop() {
 
     window.scrollTo({
