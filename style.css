@@ -45,9 +45,9 @@ h1{
 
     text-align:center;
 
-    padding:18px 12px;
+    padding:12px 8px;
 
-    min-height:125px;
+    min-height:50px;
 
     display:flex;
 
@@ -64,7 +64,7 @@ h1{
 
     background:white;
 
-    border-radius:10px;
+    border-radius:8px;
 
     padding:25px;
 
@@ -156,7 +156,7 @@ button:hover{
 
 #searchInput{
     width:75%;
-    max-width:450px;
+    max-width:250px;
 
     padding:14px 18px;
 
@@ -338,5 +338,52 @@ button:hover{
 #scrollTopBtn:hover{
 
     transform:translateY(-3px);
+
+}
+.home-btn{
+
+    min-width:90px;
+
+    height:52px;
+
+    border-radius:30px;
+
+    background:#2f2a24;
+
+    border:1px solid #c7aa6a;
+
+    color:#c7aa6a;
+
+    font-family:'Cormorant Garamond', serif;
+
+    font-size:18px;
+
+    font-weight:600;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    gap:6px;
+
+    padding:0 16px;
+
+    box-shadow:
+        0 3px 8px rgba(0,0,0,0.18);
+
+    transition:0.25s;
+
+}
+.home-btn:hover{
+
+    background:#3a342c;
+
+    color:#e6c98b;
+
+    border-color:#e6c98b;
+
+    transform:translateY(-2px);
 
 }

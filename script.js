@@ -10,10 +10,9 @@ function showJewelry() {
 
     let html = `
     <div class="top-actions">
-
-    <button onclick="goHome()">
-        🏠 На головну
-    </button>
+<button class="home-btn" onclick="goHome()">
+    ⌘ Home
+</button>
 
 </div>
     <h2>💍 Прикраси</h2>
@@ -57,10 +56,9 @@ function showWatches() {
 
     let html = `
     <div class="top-actions">
-
-        <button onclick="goHome()">
-            🏠 На головну
-        </button>
+<button class="home-btn" onclick="goHome()">
+    ⌘ Home
+</button>
 
     </div>
 
@@ -105,10 +103,9 @@ function showAccessories() {
     document.getElementById("content").innerHTML = `
 
         <div class="top-actions">
-
-            <button onclick="goHome()">
-                🏠 На головну
-            </button>
+<button class="home-btn" onclick="goHome()">
+    ⌘ Home
+</button>
 
         </div>
 
@@ -133,10 +130,9 @@ function showSale() {
     document.getElementById("content").innerHTML = `
 
         <div class="top-actions">
-
-            <button onclick="goHome()">
-                🏠 На головну
-            </button>
+<button class="home-btn" onclick="goHome()">
+    ⌘ Home
+</button>
 
         </div>
 
@@ -162,13 +158,12 @@ function showNewProducts() {
 
     let html = `
     <div class="top-actions">
-
-        <button onclick="goHome()">
-            🏠 На головну
-        </button>
+<button class="home-btn" onclick="goHome()">
+    ⌘ Home
+</button>
 
     </div>
-    <h2>🆕 Нові надходження</h2>
+    <h2>🆕 Надходження</h2>
     <div class="products-grid">
 `;
 
@@ -296,8 +291,8 @@ function showProduct(productId) {
     ← Назад
 </button>
 
-<button onclick="goHome()">
-    🏠 На головну
+<button class="home-btn" onclick="goHome()">
+    ⌘ Home
 </button>
 
         </div>
@@ -407,9 +402,9 @@ function globalSearch() {
 
     html += `
         <br>
-        <button onclick="goHome()">
-            🏠 На головну
-        </button>
+        <button class="home-btn" onclick="goHome()">
+    ⌘ Home
+</button>
     `;
 
     document.getElementById("content").innerHTML = html;
