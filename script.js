@@ -241,7 +241,7 @@ function getStatus(status) {
 }
 function goHome() {
     window.scrollTo(0, 0);
-    document.getElementById("categories").style.display = "grid";
+    document.getElementById("categories").style.display = "";
 
     document.getElementById("search-container").style.display = "none";
 
