@@ -249,6 +249,11 @@ function goHome() {
 
     document.getElementById("content").innerHTML = "";
 
+    document.getElementById("categories").scrollTo({
+    left: 0,
+    behavior: "smooth"
+});
+
 }
 function showProduct(productId) {
     window.scrollTo(0, 0);
