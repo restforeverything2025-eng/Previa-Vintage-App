@@ -304,19 +304,19 @@ function updateCounters() {
     document.getElementById("watches-count").innerHTML =
     `
     <div class="category-icon">⌚</div>
-    <div class="category-title">Годинники</div>
+    <div class="category-title">WATCH</div>
     `;
 
     document.getElementById("jewelry-count").innerHTML =
     `
     <div class="category-icon">💍</div>
-    <div class="category-title">Прикраси</div>
+    <div class="category-title">JEWEL</div>
     `;
 
     document.getElementById("new-count").innerHTML =
 `
 <div class="category-icon">✨</div>
-<div class="category-title">Надходження</div>
+<div class="category-title">NEW</div>
 `;
 }
 updateCounters();
