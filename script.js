@@ -230,39 +230,22 @@ ${productName}
     window.open(telegramUrl, "_blank");
 
 }
+function isNewProduct(product) {
+
+    const addedDate =
+        new Date(product.dateAdded);
+
+    const today =
+        new Date();
+
+    const diffDays =
+        (today - addedDate) /
+        (1000 * 60 * 60 * 24);
+
+    return diffDays <= 7;
+
+}
 function getStatus(status) {
-
-    function isNewProduct(product) {
-
-    const addedDate =
-        new Date(product.dateAdded);
-
-    const today =
-        new Date();
-
-    const diffDays =
-        (today - addedDate) /
-        (1000 * 60 * 60 * 24);
-
-    return diffDays <= 7;
-
-}
-
-    function isNewProduct(product) {
-
-    const addedDate =
-        new Date(product.dateAdded);
-
-    const today =
-        new Date();
-
-    const diffDays =
-        (today - addedDate) /
-        (1000 * 60 * 60 * 24);
-
-    return diffDays <= 7;
-
-}
 
     switch(status) {
 
@@ -296,7 +279,7 @@ function goHome() {
     window.scrollTo(0, 0);
     document.getElementById("categories").style.display = "";
 
-    document.getElementById("search-container").style.display = "none";
+    document.getElementById("search-container").style.display = "block";
 
     document.getElementById("searchInput").value = "";
 
@@ -540,7 +523,6 @@ function scrollToTop() {
     });
 
 }
-
 window.addEventListener("scroll", function() {
 
     const button = document.getElementById("scrollTopBtn");
