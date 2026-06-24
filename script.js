@@ -27,7 +27,10 @@ function showJewelry() {
 
         html += `
     <div class="card" onclick="showProduct('${product.id}')">
-    ${product.isNew ? '<div class="new-badge">🆕 NEW</div>' : ''}
+    ${isNewProduct(product)
+    ? '<div class="new-badge">🆕 NEW</div>'
+    : ''
+}
         <img
             src="${product.image}"
             alt="${product.name}"
@@ -171,8 +174,8 @@ function showNewProducts() {
     const content = document.getElementById("content");
 
     const newProducts = products.filter(
-        product => product.isNew === true
-    );
+    product => isNewProduct(product)
+);
 
     let html = `
     <div class="top-actions">
@@ -228,6 +231,38 @@ ${productName}
 
 }
 function getStatus(status) {
+
+    function isNewProduct(product) {
+
+    const addedDate =
+        new Date(product.dateAdded);
+
+    const today =
+        new Date();
+
+    const diffDays =
+        (today - addedDate) /
+        (1000 * 60 * 60 * 24);
+
+    return diffDays <= 7;
+
+}
+
+    function isNewProduct(product) {
+
+    const addedDate =
+        new Date(product.dateAdded);
+
+    const today =
+        new Date();
+
+    const diffDays =
+        (today - addedDate) /
+        (1000 * 60 * 60 * 24);
+
+    return diffDays <= 7;
+
+}
 
     switch(status) {
 
