@@ -18,6 +18,35 @@ function showJewelry() {
     ⌘ Home
 </button>
 
+<div class="subcategory-menu">
+
+    <div class="subcategory-btn"
+         onclick="filterJewelry('ALL')">
+        ALL
+    </div>
+
+    <div class="subcategory-btn"
+         onclick="filterJewelry('PENDANTS')">
+        PENDANTS
+    </div>
+
+    <div class="subcategory-btn"
+         onclick="filterJewelry('EARRINGS')">
+        EARRINGS
+    </div>
+
+    <div class="subcategory-btn"
+         onclick="filterJewelry('RINGS')">
+        RINGS
+    </div>
+
+    <div class="subcategory-btn"
+         onclick="filterJewelry('PEARLS')">
+        PEARLS
+    </div>
+
+</div>
+
 </div>
     <h2>JEWELRY</h2>
     <div class="products-grid">

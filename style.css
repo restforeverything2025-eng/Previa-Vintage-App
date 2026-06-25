@@ -543,3 +543,42 @@ img{
     -webkit-tap-highlight-color: transparent;
 
 }
+.subcategory-menu{
+
+    display:flex;
+
+    gap:12px;
+
+    overflow-x:auto;
+
+    padding:10px 0 20px;
+
+    margin-bottom:15px;
+
+}
+
+.subcategory-menu::-webkit-scrollbar{
+
+    display:none;
+
+}
+
+.subcategory-btn{
+
+    flex-shrink:0;
+
+    padding:10px 18px;
+
+    border-radius:18px;
+
+    background:#630000;
+
+    color:white;
+
+    cursor:pointer;
+
+    font-size:14px;
+
+    font-weight:600;
+
+}
