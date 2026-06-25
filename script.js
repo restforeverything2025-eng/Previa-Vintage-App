@@ -320,17 +320,21 @@ function showProduct(productId) {
         class="product-image"
     >
 
-    <div class="gallery-thumbnails">
+    ${product.images.length > 1 ? `
 
-        ${product.images.map(image => `
-            <img
-                src="${image}"
-                class="gallery-thumb"
-                onclick="changeMainImage('${image}')"
-            >
-        `).join("")}
+<div class="gallery-thumbnails">
 
-    </div>
+    ${product.images.map(image => `
+        <img
+            src="${image}"
+            class="gallery-thumb"
+            onclick="changeMainImage('${image}')"
+        >
+    `).join("")}
+
+</div>
+
+` : ""}
 
 </div>
 
