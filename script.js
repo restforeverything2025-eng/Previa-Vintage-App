@@ -379,20 +379,18 @@ function updateCounters() {
 
     document.getElementById("watches-count").innerHTML =
     `
-    <div class="category-icon">⌚</div>
-    <div class="category-title">WATCH</div>
+    <div class="category-title">WATCHES</div>
     `;
 
     document.getElementById("jewelry-count").innerHTML =
     `
-    <div class="category-icon">💍</div>
-    <div class="category-title">JEWEL</div>
+    <div class="category-title">JEWELRY</div>
     `;
 
     document.getElementById("new-count").innerHTML =
 `
-<div class="category-icon">✨</div>
-<div class="category-title">NEW</div>
+
+    <div class="category-title">NEW</div>
 `;
 }
 updateCounters();

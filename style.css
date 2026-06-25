@@ -6,9 +6,10 @@ body{
 }
 
 .container{
-    max-width:800px;
-    margin:auto;
-    padding:30px 20px;
+    width:100%;
+    padding:0;
+    margin:0;
+    max-width:none;
 }
 
 h1{
@@ -60,21 +61,21 @@ h1{
 
     position:relative;
 
-    min-width:105px;
+    min-width:130px;
 
-    width:105px;
+    width:130px;
 
-    height:105px;
+    height:120px;
 
     flex-shrink:0;
 
     border-radius:26px;
 
     background:linear-gradient(
-        145deg,
-        #75691e,
-        #5f5317
-    );
+    145deg,
+    #7a0000,
+    #630000
+);
 
     border:1px solid #b89c52;
 
@@ -289,17 +290,17 @@ button:hover{
 
     width:100%;
 
-    max-width:220px;
+    max-width:none;
 
     display:block;
 
-    margin:0 auto 15px;
+    margin:0;
 
-    border-radius:18px;
+    border-radius:0;
 
     object-fit:cover;
 
-    box-shadow:0 6px 20px rgba(0,0,0,0.15);
+    box-shadow:none;
 
 }
 .category-icon{
@@ -315,13 +316,13 @@ button:hover{
 
     font-family:'Cormorant Garamond', serif;
 
-    font-size:18px;
+    font-size:20px;
 
-    letter-spacing:1px;
+    font-weight:600;
+
+    letter-spacing:1.5px;
 
     color:#f5ebdd;
-
-    font-weight:500;
 
 }
 .product-price{
