@@ -405,8 +405,6 @@ document.getElementById(
 
     if(search.length < 2) {
 
-    goHome();
-
     return;
 
 }
