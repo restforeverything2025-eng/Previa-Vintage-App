@@ -311,11 +311,28 @@ function showProduct(productId) {
         <div class="card">
 
             <h2>${product.name}</h2>
-            <img
-    src="${product.images[0]}"
-    alt="${product.name}"
-    class="product-image"
+            <div class="product-gallery">
+
+    <img
+        id="main-product-image"
+        src="${product.images[0]}"
+        alt="${product.name}"
+        class="product-image"
     >
+
+    <div class="gallery-thumbnails">
+
+        ${product.images.map(image => `
+            <img
+                src="${image}"
+                class="gallery-thumb"
+                onclick="changeMainImage('${image}')"
+            >
+        `).join("")}
+
+    </div>
+
+</div>
 
             <p><strong>Ціна:</strong> ${product.price}</p>
             
@@ -346,6 +363,13 @@ function showProduct(productId) {
         </div>
 
     `;
+}
+function changeMainImage(imageSrc) {
+
+    document.getElementById(
+        "main-product-image"
+    ).src = imageSrc;
+
 }
 function updateCounters() {
 

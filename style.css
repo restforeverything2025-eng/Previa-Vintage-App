@@ -436,3 +436,48 @@ button:hover{
     color:#2f2a24;
 
 }
+.product-gallery{
+
+    text-align:center;
+
+}
+
+.gallery-thumbnails{
+
+    display:flex;
+
+    justify-content:center;
+
+    gap:10px;
+
+    margin-top:12px;
+
+    flex-wrap:wrap;
+
+}
+
+.gallery-thumb{
+
+    width:65px;
+
+    height:65px;
+
+    object-fit:cover;
+
+    border-radius:10px;
+
+    cursor:pointer;
+
+    border:2px solid transparent;
+
+    transition:0.3s;
+
+}
+
+.gallery-thumb:hover{
+
+    border-color:#c7a15a;
+
+    transform:scale(1.05);
+
+}
