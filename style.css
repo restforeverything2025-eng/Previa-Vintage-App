@@ -481,3 +481,17 @@ button:hover{
     transform:scale(1.05);
 
 }
+.gallery-thumb{
+
+    -webkit-tap-highlight-color: transparent;
+
+    user-select:none;
+
+    -webkit-user-select:none;
+
+}
+img{
+
+    -webkit-tap-highlight-color: transparent;
+
+}
