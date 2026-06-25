@@ -19,7 +19,7 @@ function showJewelry() {
 </button>
 
 </div>
-    <h2>💍 Прикраси</h2>
+    <h2>JEWELRY</h2>
     <div class="products-grid">
 `;
 
@@ -73,7 +73,7 @@ function showWatches() {
 
     </div>
 
-    <h2>⌚ Годинники</h2>
+    <h2>WATCHES</h2>
 
     <div class="products-grid">
 `;
@@ -125,7 +125,7 @@ function showAccessories() {
 
         <div class="card">
 
-            <h2>🎩 Аксесуари</h2>
+            <h2>VINTAGE</h2>
 
             <p>Розділ наповнюється новими товарами.</p>
 
@@ -155,7 +155,7 @@ function showSale() {
 
         <div class="card">
 
-            <h2>🏷️ Sale</h2>
+            <h2>SALE</h2>
 
             <p>Акційні пропозиції скоро з'являться.</p>
 
@@ -184,7 +184,7 @@ function showNewProducts() {
 </button>
 
     </div>
-    <h2>🆕 Надходження</h2>
+    <h2>NEW ARRIVALS</h2>
     <div class="products-grid">
 `;
 
