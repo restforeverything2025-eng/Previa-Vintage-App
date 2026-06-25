@@ -22,7 +22,9 @@ let products = [
     dateAdded: "2026-06-24",
     description: "Елегантне кришталеве серце Swarovski...",
     images: [
-        "images/crystal-heart.jpg"
+        "images/crystal-heart-1.jpg",
+        "images/crystal-heart-2.jpg",
+        "images/crystal-heart-3.jpg"
     ]
   },
 
@@ -36,7 +38,9 @@ let products = [
     description: `Срібне серце з шармами - витончений кулон у вигляді великого відкритого серця, прикрашеного блискучим камінням, з підвісками у вигляді рожевого серця, ключа і ще одного серця на тонкій срібній ланцюжку.
 Романтична ніжна прикраса, яка ідеально передає настрій кохання та стане чудовим подарунком`,
     images: [
-        "images/charm-heart.jpg"
+        "images/charm-heart-1.jpg",
+        "images/charm-heart-2.jpg",
+        "images/charm-heart-3.jpg"
     ]
   },
 
