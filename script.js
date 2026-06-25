@@ -403,7 +403,15 @@ document.getElementById(
         .value
         .toLowerCase();
 
-    if(search.length < 2) {
+    if(search.length === 0) {
+
+    goHome();
+
+    return;
+
+}
+
+if(search.length < 2) {
 
     return;
 
