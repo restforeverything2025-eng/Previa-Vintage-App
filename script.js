@@ -32,7 +32,7 @@ function showJewelry() {
     : ''
 }
         <img
-            src="${product.image}"
+            src="${product.images[0]}"
             alt="${product.name}"
             class="catalog-image"
         >
@@ -84,7 +84,7 @@ function showWatches() {
     <div class="card" onclick="showProduct('${product.id}')">
 
         <img
-            src="${product.image}"
+            src="${product.images[0]}"
             alt="${product.name}"
             class="catalog-image"
         >
@@ -194,7 +194,7 @@ function showNewProducts() {
     <div class="card" onclick="showProduct('${product.id}')">
 
         <img
-            src="${product.image}"
+            src="${product.images[0]}"
             alt="${product.name}"
             class="catalog-image"
         >
@@ -302,6 +302,8 @@ function showProduct(productId) {
         p => p.id === productId
     );
 
+    let currentImage = 0;
+
     const content = document.getElementById("content");
 
     content.innerHTML = `
@@ -310,7 +312,7 @@ function showProduct(productId) {
 
             <h2>${product.name}</h2>
             <img
-    src="${product.image}"
+    src="${product.images[0]}"
     alt="${product.name}"
     class="product-image"
     >
@@ -440,7 +442,7 @@ if(search.length < 2) {
             <div class="card" onclick="showProduct('${product.id}')">
 
                 <img
-                    src="${product.image}"
+                    src="${product.images[0]}"
                     alt="${product.name}"
                     class="catalog-image"
                 >
@@ -495,7 +497,7 @@ function showHomeNewProducts() {
             >
 
                 <img
-                    src="${product.image}"
+                    src="${product.images[0]}"
                     alt="${product.name}"
                     class="catalog-image"
                 >
