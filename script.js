@@ -30,7 +30,7 @@ function showJewelry(subcategory = "ALL") {
 
 <div class="subcategory-menu">
 
-    <div class="subcategory-btn ${subcategory === 'ALL' ? 'active' : ''}"
+    <div class="subcategory-btn all-btn ${subcategory === 'ALL' ? 'active' : ''}"
      onclick="showJewelry('ALL')">
     ALL
 </div>
@@ -126,10 +126,10 @@ function showWatches(brand = "ALL") {
 
 <div class="subcategory-menu">
 
-    <div class="subcategory-btn ${brand === 'ALL' ? 'active' : ''}"
-         onclick="showWatches('ALL')">
-        ALL
-    </div>
+    <div class="subcategory-btn all-btn ${brand === 'ALL' ? 'active' : ''}"
+     onclick="showWatches('ALL')">
+    ALL
+</div>
 
     <div class="subcategory-btn ${brand === 'OMEGA' ? 'active' : ''}"
          onclick="showWatches('OMEGA')">
