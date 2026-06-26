@@ -90,7 +90,7 @@ function showJewelry(subcategory = "ALL") {
     
     content.innerHTML = html;
 }
-function showWatches() {
+function showWatches(brand = "ALL") {
 
     document.getElementById(
     "home-new-products"
@@ -100,15 +100,68 @@ function showWatches() {
     document.getElementById("categories").style.display = "none";
     const content = document.getElementById("content");
 
-    const watches = products.filter(
-        product => product.category === "Годинники"
-    );
+    const watches = products.filter(product => {
+
+    if (product.category !== "Годинники") {
+
+        return false;
+
+    }
+
+    if (brand === "ALL") {
+
+        return true;
+
+    }
+
+    return product.brand === brand;
+
+});
 
     let html = `
     <div class="top-actions">
 <button class="home-btn" onclick="goHome()">
     ⌘ Home
 </button>
+
+<div class="subcategory-menu">
+
+    <div class="subcategory-btn ${brand === 'ALL' ? 'active' : ''}"
+         onclick="showWatches('ALL')">
+        ALL
+    </div>
+
+    <div class="subcategory-btn ${brand === 'OMEGA' ? 'active' : ''}"
+         onclick="showWatches('OMEGA')">
+        OMEGA
+    </div>
+
+    <div class="subcategory-btn ${brand === 'LONGINES' ? 'active' : ''}"
+         onclick="showWatches('LONGINES')">
+        LONGINES
+    </div>
+
+    <div class="subcategory-btn ${brand === 'NINA RICCI' ? 'active' : ''}"
+         onclick="showWatches('NINA RICCI')">
+        NINA RICCI
+    </div>
+    
+    <div class="subcategory-btn ${brand === 'SEIKO' ? 'active' : ''}"
+         onclick="showWatches('SEIKO')">
+        SEIKO
+    </div>
+
+    <div class="subcategory-btn ${brand === 'CITIZEN' ? 'active' : ''}"
+         onclick="showWatches('CITIZEN')">
+        CITIZEN
+    </div>
+
+    <div class="subcategory-btn ${brand === 'TISSOT' ? 'active' : ''}"
+         onclick="showWatches('TISSOT')">
+        TISSOT
+    </div>
+
+</div>
 
     </div>
 

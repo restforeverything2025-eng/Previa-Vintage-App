@@ -51,6 +51,7 @@ let products = [
     id: "PV-0004",
     name: "Nina Ricci Paris",
     category: "Годинники",
+    brand: "NINA RICCI",
     price: "250 €",
     status: "available",
     dateAdded: "2026-06-24",
