@@ -39,17 +39,19 @@ h2{
 
 .subtitle{
 
-    font-family:'Cormorant Garamond', serif;
-
-    font-size:28px;
-
-    font-weight:500;
-
     text-align:center;
 
-    color:#444;
+    font-family:'Cinzel', serif;
 
-    margin:10px 0 15px;
+    font-size:18px;
+
+    letter-spacing:1px;
+
+    color:#6d5b42;
+
+    margin-top:8px;
+
+    margin-bottom:20px;
 
 }
 
@@ -223,21 +225,23 @@ button:hover{
 }
 
 #search-container{
-    display:flex;
-    justify-content:center;
+
+    padding:0 20px;
+
     margin:10px 0 20px;
+
 }
 
 #searchInput{
-    width:75%;
-    max-width:250px;
+    width:100%;
+    max-width:none;
 
     padding:14px 18px;
 
     font-size:16px;
 
-    border:none;
-    border-radius:30px;
+    border:2px solid #c9a25b;
+    border-radius:16px;
 
     box-sizing:border-box;
 
@@ -306,19 +310,18 @@ button:hover{
 }
 .banner-image{
 
-    width:100%;
+    width:calc(100% - 64px);
 
-    max-width:none;
+    margin:24px 32px 12px;
+
+    border-radius:24px;
 
     display:block;
 
-    margin:0;
-
-    border-radius:0;
-
     object-fit:cover;
 
-    box-shadow:none;
+    box-shadow:
+        0 6px 18px rgba(0,0,0,.18);
 
 }
 .category-icon{
@@ -425,9 +428,9 @@ button:hover{
 
     border-radius:30px;
 
-    background:#2f2a24;
+    background:#181717;
 
-    border:1px solid #c7aa6a;
+    border:2px solid #c9a25b;
 
     color:#c7aa6a;
 
@@ -463,6 +466,8 @@ button:hover{
 
     transform:translateY(-2px);
 
+    box-shadow:0 6px 14px rgba(0,0,0,.20);
+    
 }
 .home-section-title{
 
@@ -598,5 +603,22 @@ img{
     box-shadow:
         0 4px 12px rgba(0,0,0,.2),
         inset 0 1px 1px rgba(255,255,255,.4);
+
+}
+
+.gold-divider{
+
+    width:400px;
+
+    height:2px;
+
+    margin:18px auto 22px;
+
+    background:linear-gradient(
+        to right,
+        transparent,
+        #d4af37,
+        transparent
+    );
 
 }
