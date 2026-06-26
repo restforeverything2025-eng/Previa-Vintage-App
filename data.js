@@ -60,5 +60,21 @@ let products = [
         "images/nina-ricci-2.jpg",
         "images/nina-ricci-3.jpg"
     ]
+  },
+
+{
+    id: "PV-0005",
+    name: "Сережки в зеленому кольорі",
+    category: "Прикраси",
+    subcategory: "EARRINGS",
+    price: "4 800 UAH",
+    status: "available",
+    dateAdded: "2026-06-24",
+    description: `Сережки в ніжно зеленому кольорі з матовою поверхнею, бренду Two Sisters`,
+    images: [
+        "images/Two-Sisters-1.jpg",
+        "images/Two-Sisters-2.jpg",
+        "images/Two-Sisters-3.jpg"
+    ]
   }
 ];

@@ -1,4 +1,4 @@
-function showJewelry() {
+function showJewelry(subcategory = "ALL") {
 
     document.getElementById(
     "home-new-products"
@@ -8,9 +8,19 @@ function showJewelry() {
     document.getElementById("categories").style.display = "none";
     const content = document.getElementById("content");
 
-    const jewelry = products.filter(
-        product => product.category === "Прикраси"
-    );
+    const jewelry = products.filter(product => {
+
+    if (product.category !== "Прикраси") {
+        return false;
+    }
+
+    if (subcategory === "ALL") {
+        return true;
+    }
+
+    return product.subcategory === subcategory;
+
+});
 
     let html = `
     <div class="top-actions">
@@ -21,27 +31,27 @@ function showJewelry() {
 <div class="subcategory-menu">
 
     <div class="subcategory-btn"
-         onclick="filterJewelry('ALL')">
+         onclick="showJewelry('ALL')">
         ALL
     </div>
 
     <div class="subcategory-btn"
-         onclick="filterJewelry('PENDANTS')">
+         onclick="showJewelry('PENDANTS')">
         PENDANTS
     </div>
 
     <div class="subcategory-btn"
-         onclick="filterJewelry('EARRINGS')">
+         onclick="showJewelry('EARRINGS')">
         EARRINGS
     </div>
 
     <div class="subcategory-btn"
-         onclick="filterJewelry('RINGS')">
+         onclick="showJewelry('RINGS')">
         RINGS
     </div>
 
     <div class="subcategory-btn"
-         onclick="filterJewelry('PEARLS')">
+         onclick="showJewelry('PEARLS')">
         PEARLS
     </div>
 
