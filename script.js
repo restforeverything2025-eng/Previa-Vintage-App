@@ -30,27 +30,27 @@ function showJewelry(subcategory = "ALL") {
 
 <div class="subcategory-menu">
 
-    <div class="subcategory-btn"
-         onclick="showJewelry('ALL')">
-        ALL
-    </div>
+    <div class="subcategory-btn ${subcategory === 'ALL' ? 'active' : ''}"
+     onclick="showJewelry('ALL')">
+    ALL
+</div>
 
-    <div class="subcategory-btn"
-         onclick="showJewelry('PENDANTS')">
-        PENDANTS
-    </div>
+    <div class="subcategory-btn ${subcategory === 'PENDANTS' ? 'active' : ''}"
+     onclick="showJewelry('PENDANTS')">
+    PENDANTS
+</div>
 
-    <div class="subcategory-btn"
-         onclick="showJewelry('EARRINGS')">
-        EARRINGS
-    </div>
+    <div class="subcategory-btn ${subcategory === 'EARRINGS' ? 'active' : ''}"
+     onclick="showJewelry('EARRINGS')">
+    EARRINGS
+</div>
 
-    <div class="subcategory-btn"
+    <div class="subcategory-btn ${subcategory === 'RINGS' ? 'active' : ''}"
          onclick="showJewelry('RINGS')">
         RINGS
     </div>
 
-    <div class="subcategory-btn"
+    <div class="subcategory-btn ${subcategory === 'PEARLS' ? 'active' : ''}"
          onclick="showJewelry('PEARLS')">
         PEARLS
     </div>

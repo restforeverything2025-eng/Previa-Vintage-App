@@ -79,9 +79,9 @@ h2{
 
     position:relative;
 
-    min-width:130px;
+    min-width:120px;
 
-    width:130px;
+    width:120px;
 
     height:120px;
 
@@ -580,5 +580,23 @@ img{
     font-size:14px;
 
     font-weight:600;
+
+}
+
+.subcategory-btn.active{
+
+    background:linear-gradient(
+        145deg,
+        #d8b46c,
+        #b88b3c
+    );
+
+    color:#4b0000;
+
+    border:2px solid #f6e0a8;
+
+    box-shadow:
+        0 4px 12px rgba(0,0,0,.2),
+        inset 0 1px 1px rgba(255,255,255,.4);
 
 }
