@@ -600,6 +600,10 @@ if(search.length < 2) {
 
         product.brand.toLowerCase().includes(search) ||
 
+        (product.sku || "")
+    .toLowerCase()
+    .includes(search) ||
+
         product.description.toLowerCase().includes(search) ||
 
         product.price.toLowerCase().includes(search)
