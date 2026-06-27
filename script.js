@@ -1,3 +1,6 @@
+let currentImages = [];
+let currentImageIndex = 0;
+let currentProduct = null;
 function showJewelry(brand = "ALL") {
 
     document.getElementById(
@@ -397,6 +400,12 @@ function showProduct(productId) {
         p => p.id === productId
     );
 
+    currentProduct = product;
+
+    currentImages = product.images;
+
+    currentImageIndex = 0;
+
     let currentImage = 0;
 
     const content = document.getElementById("content");
@@ -413,6 +422,7 @@ function showProduct(productId) {
         src="${product.images[0]}"
         alt="${product.name}"
         class="product-image"
+        onclick="openCurrentImage()"
     >
 
     ${product.images.length > 1 ? `
@@ -708,6 +718,73 @@ function scrollToTop() {
         behavior:"smooth"
 
     });
+
+}
+function openLightbox(images, index = 0) {
+
+    currentImages = images;
+
+    currentImageIndex = index;
+
+    document.getElementById("lightbox").style.display = "flex";
+
+    document.getElementById("lightbox-image").src =
+        currentImages[currentImageIndex];
+
+}
+function openCurrentImage() {
+
+    const currentSrc =
+        document.getElementById("main-product-image").src;
+
+    currentImageIndex =
+        currentImages.findIndex(image =>
+            currentSrc.includes(image)
+        );
+
+    if (currentImageIndex < 0) {
+
+        currentImageIndex = 0;
+
+    }
+
+    openLightbox(
+        currentImages,
+        currentImageIndex
+    );
+
+}
+function closeLightbox() {
+
+    document.getElementById("lightbox").style.display = "none";
+
+}
+function nextImage() {
+
+    currentImageIndex++;
+
+    if (currentImageIndex >= currentImages.length) {
+
+        currentImageIndex = 0;
+
+    }
+
+    document.getElementById("lightbox-image").src =
+        currentImages[currentImageIndex];
+
+}
+function previousImage() {
+
+    currentImageIndex--;
+
+    if (currentImageIndex < 0) {
+
+        currentImageIndex = currentImages.length - 1;
+
+    }
+
+    document.getElementById("lightbox-image").src =
+        currentImages[currentImageIndex];
 
 }
 window.addEventListener("scroll", function() {
