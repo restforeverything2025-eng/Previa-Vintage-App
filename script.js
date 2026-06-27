@@ -1,26 +1,41 @@
-function showJewelry(subcategory = "ALL") {
+function showJewelry(brand = "ALL") {
 
     document.getElementById(
-    "home-new-products"
-).innerHTML = "";
+        "home-new-products"
+    ).innerHTML = "";
+
     window.scrollTo(0, 0);
+
     document.getElementById("search-container").style.display = "block";
     document.getElementById("categories").style.display = "none";
+
     const content = document.getElementById("content");
 
     const jewelry = products.filter(product => {
 
-    if (product.category !== "Прикраси") {
-        return false;
-    }
+        if (product.category !== "Прикраси") {
+            return false;
+        }
 
-    if (subcategory === "ALL") {
-        return true;
-    }
+        if (brand === "ALL") {
+            return true;
+        }
 
-    return product.subcategory === subcategory;
+        return product.brand === brand;
 
-});
+    });
+
+    const jewelryBrands = products.filter(
+    product => product.category === "Прикраси"
+);
+
+const brands = [...new Set(
+
+    products
+        .filter(product => product.category === "Прикраси")
+        .map(product => product.brand)
+
+)].sort((a, b) => a.localeCompare(b));
 
     let html = `
     <div class="top-actions">
@@ -30,30 +45,25 @@ function showJewelry(subcategory = "ALL") {
 
 <div class="subcategory-menu">
 
-    <div class="subcategory-btn all-btn ${subcategory === 'ALL' ? 'active' : ''}"
-     onclick="showJewelry('ALL')">
-    ALL
-</div>
+    <div
+        class="subcategory-btn all-btn ${brand === 'ALL' ? 'active' : ''}"
+        onclick="showJewelry('ALL')">
 
-    <div class="subcategory-btn ${subcategory === 'PENDANTS' ? 'active' : ''}"
-     onclick="showJewelry('PENDANTS')">
-    PENDANTS
-</div>
+        ALL
 
-    <div class="subcategory-btn ${subcategory === 'EARRINGS' ? 'active' : ''}"
-     onclick="showJewelry('EARRINGS')">
-    EARRINGS
-</div>
-
-    <div class="subcategory-btn ${subcategory === 'RINGS' ? 'active' : ''}"
-         onclick="showJewelry('RINGS')">
-        RINGS
     </div>
 
-    <div class="subcategory-btn ${subcategory === 'PEARLS' ? 'active' : ''}"
-         onclick="showJewelry('PEARLS')">
-        PEARLS
-    </div>
+    ${brands.map(item => `
+
+        <div
+            class="subcategory-btn ${brand === item ? 'active' : ''}"
+            onclick="showJewelry('${item}')">
+
+            ${item}
+
+        </div>
+
+    `).join("")}
 
 </div>
 
@@ -66,10 +76,7 @@ function showJewelry(subcategory = "ALL") {
 
         html += `
     <div class="card" onclick="showProduct('${product.id}')">
-    ${isNewProduct(product)
-    ? '<div class="new-badge">🆕 NEW</div>'
-    : ''
-}
+    
         <img
             src="${product.images[0]}"
             alt="${product.name}"
@@ -118,6 +125,14 @@ function showWatches(brand = "ALL") {
 
 });
 
+const brands = [...new Set(
+
+    products
+        .filter(product => product.category === "Годинники")
+        .map(product => product.brand)
+
+)].sort((a, b) => a.localeCompare(b));
+
     let html = `
     <div class="top-actions">
 <button class="home-btn" onclick="goHome()">
@@ -126,40 +141,25 @@ function showWatches(brand = "ALL") {
 
 <div class="subcategory-menu">
 
-    <div class="subcategory-btn all-btn ${brand === 'ALL' ? 'active' : ''}"
-     onclick="showWatches('ALL')">
-    ALL
-</div>
+    <div
+        class="subcategory-btn all-btn ${brand === 'ALL' ? 'active' : ''}"
+        onclick="showWatches('ALL')">
 
-    <div class="subcategory-btn ${brand === 'OMEGA' ? 'active' : ''}"
-         onclick="showWatches('OMEGA')">
-        OMEGA
+        ALL
+
     </div>
 
-    <div class="subcategory-btn ${brand === 'LONGINES' ? 'active' : ''}"
-         onclick="showWatches('LONGINES')">
-        LONGINES
-    </div>
+    ${brands.map(item => `
 
-    <div class="subcategory-btn ${brand === 'NINA RICCI' ? 'active' : ''}"
-         onclick="showWatches('NINA RICCI')">
-        NINA RICCI
-    </div>
-    
-    <div class="subcategory-btn ${brand === 'SEIKO' ? 'active' : ''}"
-         onclick="showWatches('SEIKO')">
-        SEIKO
-    </div>
+        <div
+            class="subcategory-btn ${brand === item ? 'active' : ''}"
+            onclick="showWatches('${item}')">
 
-    <div class="subcategory-btn ${brand === 'CITIZEN' ? 'active' : ''}"
-         onclick="showWatches('CITIZEN')">
-        CITIZEN
-    </div>
+            ${item}
 
-    <div class="subcategory-btn ${brand === 'TISSOT' ? 'active' : ''}"
-         onclick="showWatches('TISSOT')">
-        TISSOT
-    </div>
+        </div>
+
+    `).join("")}
 
 </div>
 
@@ -265,9 +265,12 @@ function showNewProducts() {
     document.getElementById("categories").style.display = "none";
     const content = document.getElementById("content");
 
-    const newProducts = products.filter(
-    product => isNewProduct(product)
-);
+    const newProducts = products
+    .filter(product => isNewProduct(product))
+    .sort((a, b) =>
+        new Date(b.dateAdded) -
+        new Date(a.dateAdded)
+    );
 
     let html = `
     <div class="top-actions">
@@ -543,6 +546,8 @@ if(search.length < 2) {
 
         product.name.toLowerCase().includes(search) ||
 
+        product.brand.toLowerCase().includes(search) ||
+
         product.description.toLowerCase().includes(search) ||
 
         product.price.toLowerCase().includes(search)
@@ -600,7 +605,7 @@ function showHomeNewProducts() {
 
     let html = `
         <h2 class="home-section-title">
-            ✨ Нові надходження
+            NEW ARRIVALS
         </h2>
 
         <div class="products-grid">

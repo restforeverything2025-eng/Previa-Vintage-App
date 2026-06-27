@@ -3,7 +3,7 @@ let products = [
     id: "PV-0001",
     name: "Підвіска з синім каменем",
     category: "Прикраси",
-    subcategory: "PENDANTS",
+    brand:"Swarovski",
     price: "120 €",
     status: "available",
     dateAdded: "2026-06-24",
@@ -18,7 +18,7 @@ let products = [
     id: "PV-0002",
     name: "Кришталеве серце",
     category: "Прикраси",
-    subcategory: "PENDANTS",
+    brand:"Swarovski",
     price: "140 €",
     status: "available",
     dateAdded: "2026-06-24",
@@ -34,7 +34,7 @@ let products = [
     id: "PV-0003",
     name: "Серце з шармами",
     category: "Прикраси",
-    subcategory: "PENDANTS",
+    brand:"Swarovski",
     price: "110 €",
     status: "available",
     dateAdded: "2026-06-24",
@@ -49,9 +49,9 @@ let products = [
 
   {
     id: "PV-0004",
-    name: "Nina Ricci Paris",
+    name: "Nina Ricci",
     category: "Годинники",
-    brand: "NINA RICCI",
+    brand:"Nina Ricci Paris",
     price: "250 €",
     status: "available",
     dateAdded: "2026-06-24",
@@ -67,7 +67,7 @@ let products = [
     id: "PV-0005",
     name: "Сережки в зеленому кольорі",
     category: "Прикраси",
-    subcategory: "EARRINGS",
+    brand:"Two Sisters",
     price: "4 800 UAH",
     status: "available",
     dateAdded: "2026-06-24",
@@ -77,5 +77,21 @@ let products = [
         "images/Two-Sisters-2.jpg",
         "images/Two-Sisters-3.jpg"
     ]
-  }
+  },
+
+  {
+    id: "PV-0006",
+    name: "Gucci 1400 L",
+    category: "Годинники",
+    brand:"Gucci",
+    price: "250 €",
+    status: "available",
+    dateAdded: "2026-06-24",
+    description: `Елегантний годинник. Престижне та лаконічне жіноче прикраса відомого бренду - чудовий вибір для щоденного носіння та елегантного образу. Круглий корпус із полірованої нержавіючої сталі, швейцарського виробництва, з водозахистом 3 АТМ, на стильному металевому браслеті.`,
+    images: [
+        "images/Gucci-1.jpg",
+        "images/Gucci-2.jpg",
+        "images/Gucci-3.jpg"
+    ]
+  },
 ];
