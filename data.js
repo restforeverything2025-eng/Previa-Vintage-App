@@ -1,6 +1,7 @@
 let products = [
   {
     id: "PV-0001",
+    sku: "J0001",
     name: "Підвіска з синім каменем",
     category: "Прикраси",
     brand:"Swarovski",
@@ -16,6 +17,7 @@ let products = [
 
   {
     id: "PV-0002",
+    sku: "J0002",
     name: "Кришталеве серце",
     category: "Прикраси",
     brand:"Swarovski",
@@ -32,6 +34,7 @@ let products = [
 
   {
     id: "PV-0003",
+    sku: "J0003",
     name: "Серце з шармами",
     category: "Прикраси",
     brand:"Swarovski",
@@ -49,6 +52,7 @@ let products = [
 
   {
     id: "PV-0004",
+    sku: "W0004",
     name: "Nina Ricci",
     category: "Годинники",
     brand:"Nina Ricci Paris",
@@ -65,6 +69,7 @@ let products = [
 
 {
     id: "PV-0005",
+    sku: "J0005",
     name: "Сережки в зеленому кольорі",
     category: "Прикраси",
     brand:"Two Sisters",
@@ -81,6 +86,7 @@ let products = [
 
   {
     id: "PV-0006",
+    sku: "W0006",
     name: "Gucci 1400 L",
     category: "Годинники",
     brand:"Gucci",

@@ -433,17 +433,69 @@ function showProduct(productId) {
 
 </div>
 
-            <p><strong>Ціна:</strong> ${product.price}</p>
-            
-            <p>${product.description}</p>
-            <p>${getStatus(product.status)}</p>
-            <br>
+            <div class="product-info">
+
+    <div class="info-row">
+
+        <span class="info-title">
+            Brand
+        </span>
+
+        <span class="info-value">
+            ${product.brand}
+        </span>
+
+    </div>
+
+    <div class="info-row">
+
+        <span class="info-title">
+            Product Code
+        </span>
+
+        <span class="info-value">
+            ${product.sku.substring(0,1)}-${product.sku.substring(1)}
+        </span>
+
+    </div>
+
+    <div class="info-row">
+
+        <span class="info-title">
+            Price
+        </span>
+
+        <span class="info-value">
+            ${product.price}
+        </span>
+
+    </div>
+
+    <div class="info-row">
+
+        <span class="info-title">
+            Status
+        </span>
+
+        <span class="info-value">
+            ${getStatus(product.status)}
+        </span>
+
+    </div>
+
+</div>
+
+<p class="product-description">
+
+    ${product.description}
+
+</p>
 
             <button onclick="reserveProduct('${product.name}')">
                 💬 Написати в Telegram
             </button>
-<p style="font-size:14px;">
-    Напишіть менеджеру та вкажіть назву товару.
+<p class="telegram-note">
+    Напишіть менеджеру та вкажіть Product Code товару.
 </p>
             <br><br>
 

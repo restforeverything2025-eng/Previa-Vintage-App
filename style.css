@@ -688,3 +688,79 @@ img{
     background:#8d1b1b;
 
 }
+
+.product-info{
+
+    margin:25px 0;
+
+    border-top:1px solid #d7b36a;
+
+    border-bottom:1px solid #d7b36a;
+
+    padding:18px 0;
+
+}
+
+.info-row{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin:12px 0;
+
+}
+
+.info-title{
+
+    color:#7b6b52;
+
+    font-size:14px;
+
+    letter-spacing:1px;
+
+    text-transform:uppercase;
+
+}
+
+.info-value{
+
+    font-weight:600;
+
+    color:#2b2b2b;
+
+}
+
+.product-description{
+
+    margin-top:24px;
+
+    line-height:1.8;
+
+    text-align:left;
+
+}
+
+.product-description{
+
+    margin-top:24px;
+
+    margin-bottom:24px;
+
+    line-height:1.8;
+
+    text-align:left;
+
+}
+
+.telegram-note{
+
+    font-size:14px;
+
+    color:#666;
+
+    margin-top:10px;
+
+}
