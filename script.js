@@ -752,10 +752,6 @@ if(images.length <= 1){
 
     document.body.style.overflow = "hidden";
 
-    lightbox.addEventListener("touchstart", handleTouchStart);
-
-    lightbox.addEventListener("touchend", handleTouchEnd);
-
     document.getElementById("lightbox-image").src =
         currentImages[currentImageIndex];
 
@@ -874,6 +870,20 @@ function handleSwipe(){
     }
 
 }
+
+const lightbox =
+    document.getElementById("lightbox");
+
+lightbox.addEventListener(
+    "touchstart",
+    handleTouchStart
+);
+
+lightbox.addEventListener(
+    "touchend",
+    handleTouchEnd
+);
+
 document.addEventListener("keydown", function(event){
 
     const lightbox =
