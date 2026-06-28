@@ -112,8 +112,8 @@ let products = [
     dateAdded: "2026-06-28",
     description: `Вінтажні кліпси у вигляді золотих троянд, оздоблені сяючими кристалами. Вишуканий дизайн із романтичним характером, що стане яскравим акцентом як для вечірнього образу, або для особливих подій.`,
     images: [
-        "images/Elizabeth Taylor-1.jpg",
-        "images/Elizabeth Taylor-2.jpg"
+        "images/Elizabeth-Taylor-1.jpg",
+        "images/Elizabeth-Taylor-2.jpg"
     ]
   },
 
@@ -147,8 +147,8 @@ let products = [
     dateAdded: "2026-06-28",
     description: `Raymond Weil Genève Поєднання швейцарської майстерності та витонченого дизайну. Елегантний силует, золотистий браслет, кристали на циферблаті створюють образ стриманої розкоші.`,
     images: [
-        "images/Raymond Weil-1.jpg",
-        "images/Raymond Weil-2.jpg"
+        "images/Raymond-Weil-1.jpg",
+        "images/Raymond-Weil-2.jpg"
     ]
   },
 ];
