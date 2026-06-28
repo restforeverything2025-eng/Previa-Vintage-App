@@ -586,9 +586,10 @@ document.getElementById(
 ).innerHTML = "";
 
     const search = document
-        .getElementById("searchInput")
-        .value
-        .toLowerCase();
+    .getElementById("searchInput")
+    .value
+    .toLowerCase()
+    .replace(/-/g, "");
 
     if(search.length === 0) {
 
@@ -614,6 +615,7 @@ if(search.length < 2) {
 
         (product.sku || "")
     .toLowerCase()
+    .replace(/-/g, "")
     .includes(search) ||
 
         product.description.toLowerCase().includes(search) ||
