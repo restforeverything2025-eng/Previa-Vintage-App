@@ -1,6 +1,8 @@
 let currentImages = [];
 let currentImageIndex = 0;
 let currentProduct = null;
+let touchStartX = 0;
+let touchEndX = 0;
 function showJewelry(brand = "ALL") {
 
     document.getElementById(
@@ -728,6 +730,10 @@ function openLightbox(images, index = 0) {
 
     document.getElementById("lightbox").style.display = "flex";
 
+    lightbox.addEventListener("touchstart", handleTouchStart);
+
+    lightbox.addEventListener("touchend", handleTouchEnd);
+
     document.getElementById("lightbox-image").src =
         currentImages[currentImageIndex];
 
@@ -785,6 +791,41 @@ function previousImage() {
 
     document.getElementById("lightbox-image").src =
         currentImages[currentImageIndex];
+
+}
+function handleTouchStart(event){
+
+    touchStartX = event.changedTouches[0].screenX;
+
+}
+
+function handleTouchEnd(event){
+
+    touchEndX = event.changedTouches[0].screenX;
+
+    handleSwipe();
+
+}
+
+function handleSwipe(){
+
+    const distance = touchEndX - touchStartX;
+
+    if(Math.abs(distance) < 50){
+
+        return;
+
+    }
+
+    if(distance > 0){
+
+        previousImage();
+
+    }else{
+
+        nextImage();
+
+    }
 
 }
 document.addEventListener("keydown", function(event){
