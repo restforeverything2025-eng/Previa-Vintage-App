@@ -56,7 +56,7 @@ let products = [
     name: "Nina Ricci",
     category: "Годинники",
     brand:"Nina Ricci Paris",
-    price: "250 €",
+    price: "700 €",
     status: "available",
     dateAdded: "2026-06-24",
     description: `Елегантний золотий годинник Nina Ricci Paris - прямокутний корпус з білим циферблатом римськими цифрами, на широкому золотому браслеті в комплекті зі змінними ремінцями (червоний крокодил, чорний)`,
@@ -90,7 +90,7 @@ let products = [
     name: "Gucci 1400 L",
     category: "Годинники",
     brand:"Gucci",
-    price: "250 €",
+    price: "440 €",
     status: "available",
     dateAdded: "2026-06-24",
     description: `Елегантний годинник. Престижне та лаконічне жіноче прикраса відомого бренду - чудовий вибір для щоденного носіння та елегантного образу. Круглий корпус із полірованої нержавіючої сталі, швейцарського виробництва, з водозахистом 3 АТМ, на стильному металевому браслеті.`,
@@ -98,6 +98,57 @@ let products = [
         "images/Gucci-1.jpg",
         "images/Gucci-2.jpg",
         "images/Gucci-3.jpg"
+    ]
+  },
+
+  {
+    id: "PV-0007",
+    sku: "J0007",
+    name: "Elizabeth Taylor",
+    category: "Прикраси",
+    brand:"Elizabeth Taylor",
+    price: "160 €",
+    status: "available",
+    dateAdded: "2026-06-28",
+    description: `Вінтажні кліпси у вигляді золотих троянд, оздоблені сяючими кристалами. Вишуканий дизайн із романтичним характером, що стане яскравим акцентом як для вечірнього образу, або для особливих подій.`,
+    images: [
+        "images/Elizabeth Taylor-1.jpg",
+        "images/Elizabeth Taylor-2.jpg"
+    ]
+  },
+
+  {
+    id: "PV-0008",
+    sku: "W0008",
+    name: "Lancel",
+    category: "Годинники",
+    brand:"Lancel Paris",
+    price: "550 €",
+    status: "available",
+    dateAdded: "2026-06-28",
+    description: `Вінтажний годинник із витонченим прямокутним корпусом, римськими цифрами та браслетом золотистого відтінку. Елегантна французька класика, що підкреслює бездоганний смак та позачасовий стиль.`,
+    images: [
+        "images/Lancel Paris-1.jpg",
+        "images/Lancel Paris-2.jpg",
+        "images/Lancel Paris-3.jpg",
+        "images/Lancel Paris-4.jpg",
+        "images/Lancel Paris-5.jpg"
+    ]
+  },
+
+  {
+    id: "PV-0009",
+    sku: "W0009",
+    name: "Raymond Weil",
+    category: "Годинники",
+    brand:"Raymond Weil",
+    price: "450 €",
+    status: "available",
+    dateAdded: "2026-06-28",
+    description: `Raymond Weil Genève Поєднання швейцарської майстерності та витонченого дизайну. Елегантний силует, золотистий браслет, кристали на циферблаті створюють образ стриманої розкоші.`,
+    images: [
+        "images/Raymond Weil-1.jpg",
+        "images/Raymond Weil-2.jpg"
     ]
   },
 ];
