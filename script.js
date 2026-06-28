@@ -787,6 +787,36 @@ function previousImage() {
         currentImages[currentImageIndex];
 
 }
+document.addEventListener("keydown", function(event){
+
+    const lightbox =
+        document.getElementById("lightbox");
+
+    if(lightbox.style.display !== "flex"){
+
+        return;
+
+    }
+
+    if(event.key === "Escape"){
+
+        closeLightbox();
+
+    }
+
+    if(event.key === "ArrowLeft"){
+
+    previousImage();
+
+}
+
+if(event.key === "ArrowRight"){
+
+    nextImage();
+
+}
+
+});
 window.addEventListener("scroll", function() {
 
     const button = document.getElementById("scrollTopBtn");

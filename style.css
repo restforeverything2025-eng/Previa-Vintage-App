@@ -809,13 +809,21 @@ img{
 
 .lightbox-image{
 
-    max-width:90%;
+    max-width:96vw;
 
-    max-height:90%;
+    max-height:96vh;
+
+    object-fit:contain;
 
     border-radius:10px;
 
     box-shadow:0 0 35px rgba(0,0,0,.45);
+
+    cursor:grab;
+
+    transition:.2s;
+
+    animation:zoomIn .18s ease;
 
 }
 
@@ -832,12 +840,6 @@ img{
     color:white;
 
     cursor:pointer;
-
-}
-
-.lightbox-image{
-
-    animation:zoomIn .18s ease;
 
 }
 
