@@ -104,7 +104,7 @@ let products = [
   {
     id: "PV-0007",
     sku: "J0007",
-    name: "Elizabeth Taylor",
+    name: "Елегантні вінтажні кліпси",
     category: "Прикраси",
     brand:"Elizabeth Taylor",
     price: "160 €",
@@ -141,7 +141,7 @@ let products = [
     sku: "W0009",
     name: "Raymond Weil",
     category: "Годинники",
-    brand:"Raymond Weil",
+    brand:"Raymond Weil Genève",
     price: "450 €",
     status: "available",
     dateAdded: "2026-06-28",
