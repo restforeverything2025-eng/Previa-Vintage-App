@@ -68,11 +68,17 @@
 </button>
 <script src="data.js"></script>
 <script src="script.js"></script>
-<div id="lightbox" class="lightbox">
+<div
+    id="lightbox"
+    class="lightbox"
+    onclick="closeLightbox()">
 
-    <span class="close-lightbox"
-          onclick="closeLightbox()">
+    <span
+        class="close-lightbox"
+        onclick="event.stopPropagation(); closeLightbox()">
+
         ×
+
     </span>
 
     <img
@@ -80,11 +86,12 @@
         class="lightbox-image"
         src=""
         alt=""
+        onclick="event.stopPropagation()"
     >
 
     <button
         class="lightbox-prev"
-        onclick="previousImage()">
+        onclick="event.stopPropagation(); previousImage()">
 
         ❮
 
@@ -92,7 +99,7 @@
 
     <button
         class="lightbox-next"
-        onclick="nextImage()">
+        onclick="event.stopPropagation(); nextImage()">
 
         ❯
 
