@@ -791,30 +791,52 @@ function closeLightbox() {
 }
 function nextImage() {
 
-    currentImageIndex++;
+    const image =
+        document.getElementById("lightbox-image");
 
-    if (currentImageIndex >= currentImages.length) {
+    image.classList.add("fade");
 
-        currentImageIndex = 0;
+    setTimeout(() => {
 
-    }
+        currentImageIndex++;
 
-    document.getElementById("lightbox-image").src =
-        currentImages[currentImageIndex];
+        if(currentImageIndex >= currentImages.length){
+
+            currentImageIndex = 0;
+
+        }
+
+        image.src = currentImages[currentImageIndex];
+
+        image.classList.remove("fade");
+
+    },120);
 
 }
 function previousImage() {
 
-    currentImageIndex--;
+    const image =
+        document.getElementById("lightbox-image");
 
-    if (currentImageIndex < 0) {
+    image.classList.add("fade");
 
-        currentImageIndex = currentImages.length - 1;
+    setTimeout(() => {
 
-    }
+        currentImageIndex--;
 
-    document.getElementById("lightbox-image").src =
-        currentImages[currentImageIndex];
+        if(currentImageIndex < 0){
+
+            currentImageIndex =
+                currentImages.length - 1;
+
+        }
+
+        image.src =
+            currentImages[currentImageIndex];
+
+        image.classList.remove("fade");
+
+    },120);
 
 }
 function handleTouchStart(event){
