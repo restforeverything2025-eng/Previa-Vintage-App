@@ -752,6 +752,10 @@ if(images.length <= 1){
 
     document.body.style.overflow = "hidden";
 
+    lightbox.addEventListener("touchstart", handleTouchStart);
+
+    lightbox.addEventListener("touchend", handleTouchEnd);
+
     document.getElementById("lightbox-image").src =
         currentImages[currentImageIndex];
 
@@ -840,7 +844,6 @@ function handleTouchStart(event){
     touchStartX = event.changedTouches[0].screenX;
 
 }
-
 function handleTouchEnd(event){
 
     touchEndX = event.changedTouches[0].screenX;
@@ -848,7 +851,6 @@ function handleTouchEnd(event){
     handleSwipe();
 
 }
-
 function handleSwipe(){
 
     const distance = touchEndX - touchStartX;
@@ -870,20 +872,6 @@ function handleSwipe(){
     }
 
 }
-
-const lightbox =
-    document.getElementById("lightbox");
-
-lightbox.addEventListener(
-    "touchstart",
-    handleTouchStart
-);
-
-lightbox.addEventListener(
-    "touchend",
-    handleTouchEnd
-);
-
 document.addEventListener("keydown", function(event){
 
     const lightbox =
