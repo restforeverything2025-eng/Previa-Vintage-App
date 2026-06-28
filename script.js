@@ -728,7 +728,29 @@ function openLightbox(images, index = 0) {
 
     currentImageIndex = index;
 
+    const prevButton =
+    document.querySelector(".lightbox-prev");
+
+const nextButton =
+    document.querySelector(".lightbox-next");
+
+if(images.length <= 1){
+
+    prevButton.style.display = "none";
+
+    nextButton.style.display = "none";
+
+}else{
+
+    prevButton.style.display = "";
+
+    nextButton.style.display = "";
+
+}
+
     document.getElementById("lightbox").style.display = "flex";
+
+    document.body.style.overflow = "hidden";
 
     lightbox.addEventListener("touchstart", handleTouchStart);
 
@@ -763,6 +785,8 @@ function openCurrentImage() {
 function closeLightbox() {
 
     document.getElementById("lightbox").style.display = "none";
+
+    document.body.style.overflow = "";
 
 }
 function nextImage() {
