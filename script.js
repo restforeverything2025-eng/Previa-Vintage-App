@@ -90,7 +90,7 @@ const brands = [...new Set(
 
         <h3>${product.name}</h3>
 
-        <p class="product-price">${product.price}</p>
+        <p class="product-price">${formatPrice(product)}</p>
 
         <p>${getStatus(product.status)}</p>
 
@@ -188,7 +188,7 @@ const brands = [...new Set(
 
         <h3>${product.name}</h3>
 
-        <p class="product-price">${product.price}</p>
+        <p class="product-price">${formatPrice(product)}</p>
 
         <p>${getStatus(product.status)}</p>
 
@@ -301,7 +301,7 @@ function showNewProducts() {
 
         <h3>${product.name}</h3>
 
-        <p class="product-price">${product.price}</p>
+        <p class="product-price">${formatPrice(product)}</p>
 
         <p>${getStatus(product.status)}</p>
 
@@ -392,6 +392,21 @@ function goHome() {
 
 showHomeNewProducts();
 }
+function formatPrice(product) {
+
+    const symbols = {
+
+        EUR: "€",
+        USD: "$",
+        UAH: "₴"
+
+    };
+
+    return (
+        symbols[product.currency] || product.currency
+    ) + product.price;
+
+}
 function showProduct(productId) {
 
     document.getElementById(
@@ -478,8 +493,8 @@ function showProduct(productId) {
         </span>
 
         <span class="info-value">
-            ${product.price}
-        </span>
+    ${formatPrice(product)}
+</span>
 
     </div>
 
@@ -697,9 +712,7 @@ function showHomeNewProducts() {
 
                 <h3>${product.name}</h3>
 
-                <p class="product-price">
-                    ${product.price}
-                </p>
+                <p class="product-price">${formatPrice(product)}</p>
 
             </div>
         `;
