@@ -176,7 +176,7 @@ const products = [
     "price": 650,
     "status": "available",
     "dateAdded": "2026-07-01",
-    "description": "Стильний жіночий годинник Royal London у золотому корпусі. Прямокутний «танк» дизайн, білий циферблат з римськими цифрами та якісний ремінець під крокодил.\r\nІзюминка: Ця модель натхненна легендарними Cartier Tank — одним з найвпізнаваніших дизайнів XX століття. Британський бренд Royal London поєднує елегантність Лондона з доступною розкішшю 18K gold electroplated.",
+    "description": "Стильний жіночий годинник Royal London у золотому корпусі. Прямокутний «танк» дизайн, білий циферблат з римськими цифрами та якісний ремінець під крокодил.\nІзюминка: Ця модель натхненна легендарними Cartier Tank — одним з найвпізнаваніших дизайнів XX століття. Британський бренд Royal London поєднує елегантність Лондона з доступною розкішшю 18K gold electroplated.",
     "images": [
       "images/W0011/1.jpg",
       "images/W0011/2.jpg",
@@ -199,6 +199,36 @@ const products = [
     "images": [
       "images/W0012/1.jpg",
       "images/W0012/2.jpg"
+    ]
+  },
+  {
+    "id": "PV-0013",
+    "sku": "W0013",
+    "category": "Годинники",
+    "brand": "Tissot",
+    "name": "Tissot",
+    "currency": "EUR",
+    "price": 200,
+    "status": "reserved",
+    "dateAdded": "2026-07-02",
+    "description": "Стильний жіночий годинник Tissot",
+    "images": [
+      "images/W0013/1.JPG"
+    ]
+  },
+  {
+    "id": "PV-0014",
+    "sku": "W0014",
+    "category": "Годинники",
+    "brand": "Christian Dior",
+    "name": "Christian Dior",
+    "currency": "EUR",
+    "price": 430,
+    "status": "sold",
+    "dateAdded": "2026-07-02",
+    "description": "Витончений вінтажний годинник Christian Dior",
+    "images": [
+      "images/W0014/1.JPG"
     ]
   }
 ];
