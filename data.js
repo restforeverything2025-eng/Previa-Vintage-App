@@ -184,5 +184,21 @@ const products = [
       "images/W0011/4.jpg",
       "images/W0011/5.jpg"
     ]
+  },
+  {
+    "id": "PV-0012",
+    "sku": "W0012",
+    "category": "Годинники",
+    "brand": "Anna Klein",
+    "name": "Anna Klein",
+    "currency": "EUR",
+    "price": 140,
+    "status": "available",
+    "dateAdded": "2026-07-02",
+    "description": "Вінтажний годинник Anna Klein",
+    "images": [
+      "images/W0012/1.jpg",
+      "images/W0012/2.jpg"
+    ]
   }
 ];
