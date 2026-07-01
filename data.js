@@ -165,5 +165,24 @@ const products = [
       "images/W0010/1.JPG",
       "images/W0010/2.JPG"
     ]
+  },
+  {
+    "id": "PV-0011",
+    "sku": "W0011",
+    "category": "Годинники",
+    "brand": "Raymond Weil Genève",
+    "name": "Royal London",
+    "currency": "EUR",
+    "price": 650,
+    "status": "available",
+    "dateAdded": "2026-07-01",
+    "description": "Стильний жіночий годинник Royal London у золотому корпусі. Прямокутний «танк» дизайн, білий циферблат з римськими цифрами та якісний ремінець під крокодил.\r\nІзюминка: Ця модель натхненна легендарними Cartier Tank — одним з найвпізнаваніших дизайнів XX століття. Британський бренд Royal London поєднує елегантність Лондона з доступною розкішшю 18K gold electroplated.",
+    "images": [
+      "images/W0011/1.jpg",
+      "images/W0011/2.jpg",
+      "images/W0011/3.jpg",
+      "images/W0011/4.jpg",
+      "images/W0011/5.jpg"
+    ]
   }
 ];
