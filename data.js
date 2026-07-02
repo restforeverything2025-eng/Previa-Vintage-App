@@ -230,5 +230,22 @@ const products = [
     "images": [
       "images/W0014/1.JPG"
     ]
+  },
+  {
+    "id": "PV-0015",
+    "sku": "W0015",
+    "category": "Годинники",
+    "brand": "Cenere",
+    "name": "Cenere USA ",
+    "currency": "EUR",
+    "price": 290,
+    "status": "available",
+    "dateAdded": "2026-07-02",
+    "description": "Стильний витончений жіночий годинник вінтажний годинник Cenere",
+    "images": [
+      "images/W0015/1.jpg",
+      "images/W0015/2.jpg",
+      "images/W0015/3.jpg"
+    ]
   }
 ];
