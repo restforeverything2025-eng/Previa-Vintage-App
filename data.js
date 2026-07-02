@@ -247,5 +247,24 @@ const products = [
       "images/W0015/2.jpg",
       "images/W0015/3.jpg"
     ]
+  },
+  {
+    "id": "PV-0016",
+    "sku": "W0016",
+    "category": "Годинники",
+    "brand": "Tissot ",
+    "name": "Tissot 1853",
+    "currency": "EUR",
+    "price": 500,
+    "status": "available",
+    "dateAdded": "2026-07-02",
+    "description": "Елегантний золотий годинник Tissot 1853",
+    "images": [
+      "images/W0016/1.jpg",
+      "images/W0016/2.jpg",
+      "images/W0016/3.jpg",
+      "images/W0016/4.jpg",
+      "images/W0016/5.jpg"
+    ]
   }
 ];
