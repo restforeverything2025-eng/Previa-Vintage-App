@@ -1,15 +1,18 @@
 let currentImages = [];
 let currentImageIndex = 0;
 let currentProduct = null;
+let currentCategory = null;
+let currentView = "home";
 let touchStartX = 0;
 let touchEndX = 0;
 function showJewelry(brand = "ALL") {
-
+    currentView = "category";
+    currentCategory = () => showJewelry(brand);
     document.getElementById(
         "home-new-products"
     ).innerHTML = "";
 
-    window.scrollTo(0, 0);
+    scrollToCatalog();
 
     document.getElementById("search-container").style.display = "block";
     document.getElementById("categories").style.display = "none";
@@ -103,11 +106,12 @@ const brands = [...new Set(
     content.innerHTML = html;
 }
 function showWatches(brand = "ALL") {
-
+    currentView = "category";
+    currentCategory = () => showWatches(brand);
     document.getElementById(
     "home-new-products"
 ).innerHTML = "";
-    window.scrollTo(0, 0);
+    scrollToCatalog();
     document.getElementById("search-container").style.display = "block";
     document.getElementById("categories").style.display = "none";
     const content = document.getElementById("content");
@@ -201,11 +205,12 @@ const brands = [...new Set(
     content.innerHTML = html;
 }
 function showAccessories() {
-
+    currentView = "category";
+    currentCategory = showAccessories;
     document.getElementById(
     "home-new-products"
 ).innerHTML = "";
-    window.scrollTo(0, 0);
+    scrollToCatalog();
 
     document.getElementById("search-container").style.display = "none";
 
@@ -231,11 +236,12 @@ function showAccessories() {
     `;
 }
 function showSale() {
-
+    currentView = "category";
+    currentCategory = showSale;
     document.getElementById(
     "home-new-products"
 ).innerHTML = "";
-    window.scrollTo(0, 0);
+    scrollToCatalog();
 
     document.getElementById("search-container").style.display = "none";
 
@@ -261,11 +267,12 @@ function showSale() {
     `;
 }
 function showNewProducts() {
-
+    currentView = "category";
+    currentCategory = showNewProducts;
     document.getElementById(
     "home-new-products"
 ).innerHTML = "";
-    window.scrollTo(0, 0);
+    scrollToCatalog();
     document.getElementById("search-container").style.display = "block";
     document.getElementById("categories").style.display = "none";
     const content = document.getElementById("content");
@@ -376,7 +383,7 @@ function getStatus(status) {
 
 }
 function goHome() {
-    window.scrollTo(0, 0);
+    scrollToCatalog();
     document.getElementById("categories").style.display = "";
 
     document.getElementById("search-container").style.display = "block";
@@ -408,11 +415,11 @@ function formatPrice(product) {
 
 }
 function showProduct(productId) {
-
+    currentView = "product";
     document.getElementById(
     "home-new-products"
 ).innerHTML = "";
-    window.scrollTo(0, 0);
+    scrollToCatalog();
     const product = products.find(
         p => p.id === productId
     );
@@ -525,18 +532,6 @@ function showProduct(productId) {
     Напишіть менеджеру та вкажіть Product Code товару.
 </p>
             <br><br>
-
-            <button onclick="${
-    product.category === 'Прикраси'
-        ? 'showJewelry()'
-        : 'showWatches()'
-}">
-    ← Назад
-</button>
-
-<button class="home-btn" onclick="goHome()">
-    ⌘ Home
-</button>
 
         </div>
 
@@ -735,6 +730,36 @@ function scrollToTop() {
         behavior:"smooth"
 
     });
+
+}
+function scrollToCatalog() {
+
+    document.getElementById(
+        "search-container"
+    ).scrollIntoView({
+
+        behavior: "smooth",
+
+        block: "start"
+
+    });
+
+}
+function goBack() {
+
+    if (currentView === "product") {
+
+        currentCategory();
+        return;
+
+    }
+
+    if (currentView === "category") {
+
+        goHome();
+        return;
+
+    }
 
 }
 function openLightbox(images, index = 0) {
