@@ -255,7 +255,7 @@ const products = [
     "brand": "Tissot ",
     "name": "Tissot 1853",
     "currency": "EUR",
-    "price": 500,
+    "price": 380,
     "status": "available",
     "dateAdded": "2026-07-02",
     "description": "Елегантний золотий годинник Tissot 1853",
@@ -265,6 +265,24 @@ const products = [
       "images/W0016/3.jpg",
       "images/W0016/4.jpg",
       "images/W0016/5.jpg"
+    ]
+  },
+  {
+    "id": "PV-0017",
+    "sku": "W0017",
+    "category": "Годинники",
+    "brand": "Tissot ",
+    "name": "Tissot T109210A",
+    "currency": "EUR",
+    "price": 550,
+    "status": "available",
+    "dateAdded": "2026-07-02",
+    "description": "Коли годинник — це не просто аксесуар, а маленький шедевр ✨\nВінтажний Tissot у нашому бутику",
+    "images": [
+      "images/W0017/1.jpg",
+      "images/W0017/2.jpg",
+      "images/W0017/3.jpg",
+      "images/W0017/4.jpg"
     ]
   }
 ];
