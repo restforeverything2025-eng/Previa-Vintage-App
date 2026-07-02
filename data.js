@@ -284,5 +284,22 @@ const products = [
       "images/W0017/3.jpg",
       "images/W0017/4.jpg"
     ]
+  },
+  {
+    "id": "PV-0018",
+    "sku": "W0018",
+    "category": "Годинники",
+    "brand": "Cenere",
+    "name": "Cenere USA ",
+    "currency": "EUR",
+    "price": 230,
+    "status": "available",
+    "dateAdded": "2026-07-02",
+    "description": "Елегантний годинник Cenere USA Japan Movt",
+    "images": [
+      "images/W0018/1.jpg",
+      "images/W0018/2.jpg",
+      "images/W0018/3.jpg"
+    ]
   }
 ];
