@@ -324,7 +324,7 @@ const products = [
     "brand": "Francesca Visconti",
     "name": "Francesca Visconti",
     "currency": "UAH",
-    "price": 4900,
+    "price": 96,
     "status": "available",
     "dateAdded": "2026-07-03",
     "description": "Італійська ручна робота, яскравий дизайн-багато кольорового каміння, контрастів, великихформ.Натхнення природою. Матеріали-дорогоцінні та напівдорогоцінні камені,діаманти й благородні метали.",
