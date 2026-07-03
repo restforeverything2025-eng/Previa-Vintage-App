@@ -277,7 +277,7 @@ const products = [
     "price": 550,
     "status": "available",
     "dateAdded": "2026-07-02",
-    "description": "Коли годинник — це не просто аксесуар, а маленький шедевр ✨\nВінтажний Tissot у нашому бутику",
+    "description": "Коли годинник — це не просто аксесуар, а маленький шедевр \nВінтажний Tissot у нашому бутику",
     "images": [
       "images/W0017/1.jpg",
       "images/W0017/2.jpg",
@@ -300,6 +300,38 @@ const products = [
       "images/W0018/1.jpg",
       "images/W0018/2.jpg",
       "images/W0018/3.jpg"
+    ]
+  },
+  {
+    "id": "PV-0019",
+    "sku": "W0019",
+    "category": "Годинники",
+    "brand": "Seiko",
+    "name": "Seiko Bamboo Limited Edition ",
+    "currency": "EUR",
+    "price": 540,
+    "status": "available",
+    "dateAdded": "2026-07-03",
+    "description": "Елегантний Seiko Bamboo. Шедевр Limited Edition ",
+    "images": [
+      "images/W0019/1.jpg"
+    ]
+  },
+  {
+    "id": "PV-0020",
+    "sku": "J0008",
+    "category": "Прикраси",
+    "brand": "Francesca Visconti",
+    "name": "Francesca Visconti",
+    "currency": "UAH",
+    "price": 4900,
+    "status": "available",
+    "dateAdded": "2026-07-03",
+    "description": "Італійська ручна робота, яскравий дизайн-багато кольорового каміння, контрастів, великихформ.Натхнення природою. Матеріали-дорогоцінні та напівдорогоцінні камені,діаманти й благородні метали.",
+    "images": [
+      "images/J0008/1.jpg",
+      "images/J0008/2.jpg",
+      "images/J0008/3.jpg"
     ]
   }
 ];
