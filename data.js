@@ -333,5 +333,20 @@ const products = [
       "images/J0008/2.jpg",
       "images/J0008/3.jpg"
     ]
+  },
+  {
+    "id": "PV-0021",
+    "sku": "J0009",
+    "category": "Прикраси",
+    "brand": "Chanel",
+    "name": "CHANEL Clip-On Earrings",
+    "currency": "EUR",
+    "price": 100,
+    "status": "available",
+    "dateAdded": "2026-07-03",
+    "description": "Легендарний символ французької елегантності — подвійне CC, втілений у вишуканих вінтажних кліпсах Chanel. Золотистий медальйон із культовим логотипом, обрамлений декоративними кріпленнями, створює образ, що не підвладний часу.",
+    "images": [
+      "images/J0009/1.jpg"
+    ]
   }
 ];
