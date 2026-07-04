@@ -55,3 +55,9 @@ search.messages.js
 search.state.js
 
 search.utils.js
+
+const MIN_SEARCH_LENGTH = 3;
+
+const MAX_SUGGESTIONS = 5;
+
+const SEARCH_DELAY = 500;
