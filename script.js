@@ -615,7 +615,7 @@ if(search.length < 2) {
 
         product.description.toLowerCase().includes(search) ||
 
-        product.price.toLowerCase().includes(search)
+        (product.price + "").includes(search)
 
     );
 

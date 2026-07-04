@@ -28,6 +28,7 @@
         type="text"
         id="searchInput"
         placeholder="🔍 Пошук товару..."
+        onfocus="Search.enterSearchMode()"
         onkeyup="globalSearch()"
     >
 </div>    
@@ -78,6 +79,7 @@
     ←
 </button>
 <script src="data.js"></script>
+<script src="search.js"></script>
 <script src="script.js"></script>
 <div
     id="lightbox"
