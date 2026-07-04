@@ -47,9 +47,6 @@ const brands = [...new Set(
 
     let html = `
     <div class="top-actions">
-<button class="home-btn" onclick="goHome()">
-    ⌘ Home
-</button>
 
 <div class="subcategory-menu">
 
@@ -144,9 +141,6 @@ const brands = [...new Set(
 
     let html = `
     <div class="top-actions">
-<button class="home-btn" onclick="goHome()">
-    ⌘ Home
-</button>
 
 <div class="subcategory-menu">
 
@@ -219,15 +213,12 @@ function showAccessories() {
     document.getElementById("content").innerHTML = `
 
         <div class="top-actions">
-<button class="home-btn" onclick="goHome()">
-    ⌘ Home
-</button>
 
         </div>
 
         <div class="card">
 
-            <h2>VINTAGE</h2>
+            <h2>SKARB</h2>
 
             <p>Розділ наповнюється новими товарами.</p>
 
@@ -250,9 +241,6 @@ function showSale() {
     document.getElementById("content").innerHTML = `
 
         <div class="top-actions">
-<button class="home-btn" onclick="goHome()">
-    ⌘ Home
-</button>
 
         </div>
 
@@ -286,9 +274,6 @@ function showNewProducts() {
 
     let html = `
     <div class="top-actions">
-<button class="home-btn" onclick="goHome()">
-    ⌘ Home
-</button>
 
     </div>
     <h2>NEW ARRIVALS</h2>
