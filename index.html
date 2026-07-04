@@ -29,9 +29,12 @@
         id="searchInput"
         placeholder="🔍 Пошук товару..."
         onfocus="Search.enterSearchMode()"
-        onkeyup="globalSearch()"
+        onblur="Search.exitSearchMode()"
+        oninput="Search.handleInput(this.value)"
     >
 </div>    
+
+<div id="main-screen">
 
 <div class="home-container">
 
@@ -72,6 +75,23 @@
 <div id="home-new-products"></div>
 
 <div id="content"></div>
+
+</div>
+
+<div id="search-screen">
+
+    <div id="search-message">
+
+        Пошук за назвою, брендом або SKU.
+
+    </div>
+
+    <div id="search-suggestions"></div>
+
+    <div id="search-results"></div>
+
+</div>
+
 <button id="scrollTopBtn" onclick="scrollToTop()">
     ⬆
 </button>

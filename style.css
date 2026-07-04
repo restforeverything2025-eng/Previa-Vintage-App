@@ -960,3 +960,37 @@ img{
 body.search-mode .container {
     display: none;
 }
+
+body.search-mode #main-screen {
+    display: none;
+}
+
+/* Search Screen */
+
+#search-screen {
+
+    display: none;
+
+    padding: 20px;
+
+}
+
+body.search-mode #search-screen {
+
+    display: block;
+
+}
+
+#search-message {
+
+    text-align: center;
+
+    color: #443720;
+
+    font-size: 18px;
+
+    line-height: 1.7;
+
+    margin-top: 12px;
+
+}
