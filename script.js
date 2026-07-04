@@ -400,11 +400,15 @@ function formatPrice(product) {
 
 }
 function showProduct(productId) {
+
     currentView = "product";
-    document.getElementById(
-    "home-new-products"
-).innerHTML = "";
-    scrollToCatalog();
+
+    Search.clearSearch();
+
+    document.getElementById("home-new-products").innerHTML = "";
+
+    // scrollToCatalog();
+
     const product = products.find(
         p => p.id === productId
     );
@@ -521,6 +525,11 @@ function showProduct(productId) {
         </div>
 
     `;
+
+    content.scrollIntoView({
+    behavior: "smooth",
+    block: "start"
+});
 }
 function changeMainImage(imageSrc) {
 

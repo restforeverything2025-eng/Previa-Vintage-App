@@ -994,3 +994,63 @@ body.search-mode #search-screen {
     margin-top: 12px;
 
 }
+
+/* =========================================
+   Search Product Card
+========================================= */
+
+.search-product {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 14px;
+
+    padding: 12px 0;
+
+    border-bottom: 1px solid rgba(180,160,110,.2);
+
+}
+
+.search-product-image {
+
+    width: 64px;
+
+    height: 64px;
+
+    object-fit: cover;
+
+    border-radius: 8px;
+
+    flex-shrink: 0;
+
+}
+
+.search-product-brand {
+
+    font-weight: 600;
+
+    color: #b89b5e;
+
+}
+
+.search-product-name {
+
+    margin-top: 4px;
+
+}
+
+.search-product {
+
+    cursor: pointer;
+
+    transition: background .2s ease;
+
+}
+
+.search-product:hover {
+
+    background: rgba(184,155,94,.08);
+
+}

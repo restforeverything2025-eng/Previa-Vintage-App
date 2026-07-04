@@ -29,6 +29,97 @@ setMessage(text) {
 
 }
 
+renderResults(results) {
+
+    const container = document.getElementById("search-results");
+
+    if (!container) return;
+
+    if (results.length === 0) {
+
+        container.innerHTML = "<p>Нічого не знайдено.</p>";
+
+        return;
+
+    }
+
+    let html = "";
+
+    results.forEach(product => {
+
+        html += this.renderProductCard(product);
+
+    });
+
+    container.innerHTML = html;
+
+}
+
+clearSearch() {
+
+    const input = document.getElementById("searchInput");
+
+    const results = document.getElementById("search-results");
+
+    const suggestions = document.getElementById("search-suggestions");
+
+    if (input) {
+        input.value = "";
+    }
+
+    if (results) {
+        results.innerHTML = "";
+    }
+
+    if (suggestions) {
+        suggestions.innerHTML = "";
+    }
+
+    this.setMessage("Пошук за назвою, брендом або SKU.");
+
+    document.body.classList.remove("search-mode");
+
+    this.state = "HOME";
+
+}
+
+renderProductCard(product) {
+
+    return `
+
+        <div
+            class="search-product"
+            onclick="showProduct('${product.id}')"
+        >
+
+            <img
+                src="${product.images[0]}"
+                class="search-product-image"
+                alt="${product.name}"
+            >
+
+            <div class="search-product-info">
+
+                <div class="search-product-brand">
+
+                    ${product.brand}
+
+                </div>
+
+                <div class="search-product-name">
+
+                    ${product.name}
+
+                </div>
+
+            </div>
+
+        </div>
+
+    `;
+
+}
+
 handleInput(value) {
 
     value = value.trim().toLowerCase();
@@ -55,7 +146,9 @@ handleInput(value) {
 
     this.searchTimer = setTimeout(() => {
 
-        this.performSearch(value);
+        const results = this.performSearch(value);
+
+        this.renderResults(results);
 
     }, SEARCH_DELAY);
 
