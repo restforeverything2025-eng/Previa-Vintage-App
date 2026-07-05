@@ -55,6 +55,28 @@ renderResults(results) {
 
 }
 
+resetSearchView() {
+
+    const results = document.getElementById("search-results");
+
+    const suggestions = document.getElementById("search-suggestions");
+
+    if (results) {
+
+        results.innerHTML = "";
+
+    }
+
+    if (suggestions) {
+
+        suggestions.innerHTML = "";
+
+    }
+
+    this.setMessage("Почніть вводити назву, бренд або SKU.");
+
+}
+
 clearSearch() {
 
     const input = document.getElementById("searchInput");
@@ -130,19 +152,21 @@ handleInput(value) {
 
     if (value.length === 0) {
 
-        this.setMessage("Почніть вводити назву, бренд або SKU.");
+    this.resetSearchView();
 
-        return;
+    return;
 
-    }
+}
 
     if (value.length < 3) {
 
-        this.setMessage("Введіть мінімум 3 символи...");
+    this.resetSearchView();
 
-        return;
+    this.setMessage("Введіть мінімум 3 символи...");
 
-    }
+    return;
+
+}
 
     this.searchTimer = setTimeout(() => {
 

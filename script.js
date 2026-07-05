@@ -1,10 +1,39 @@
-let currentImages = [];
-let currentImageIndex = 0;
+/* =========================================
+   Product State
+========================================= */
+
 let currentProduct = null;
 let currentCategory = null;
+
+let currentImages = [];
+let currentImageIndex = 0;
+
+/* =========================================
+   Navigation
+========================================= */
+
 let currentView = "home";
+let navigationSource = "home";
+
+function setNavigationSource(source) {
+
+    navigationSource = source;
+
+}
+
+function getNavigationSource() {
+
+    return navigationSource;
+
+}
+
+/* =========================================
+   Touch Navigation
+========================================= */
+
 let touchStartX = 0;
 let touchEndX = 0;
+
 function showJewelry(brand = "ALL") {
     currentView = "category";
     currentCategory = () => showJewelry(brand);
