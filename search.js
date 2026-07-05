@@ -103,6 +103,8 @@ clearSearch() {
 
     this.state = "HOME";
 
+    currentView = getNavigationSource();
+
 }
 
 renderProductCard(product) {
@@ -196,8 +198,6 @@ performSearch(query) {
 
     const uniqueResults = this.removeDuplicates(results);
 
-    console.table(uniqueResults);
-
     return uniqueResults;
 
 }
@@ -278,6 +278,8 @@ enterSearchMode() {
         this.state = "SEARCH";
 
         setNavigationSource(currentView);
+
+        currentView = "search";
 
         document.body.classList.add("search-mode");
 

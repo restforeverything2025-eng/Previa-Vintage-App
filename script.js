@@ -27,6 +27,24 @@ function getNavigationSource() {
 
 }
 
+function updateNavigation() {
+
+    const backButton = document.getElementById("backBtn");
+
+    if (!backButton) return;
+
+    if (currentView === "home") {
+
+        backButton.style.display = "none";
+
+    } else {
+
+        backButton.style.display = "block";
+
+    }
+
+}
+
 /* =========================================
    Touch Navigation
 ========================================= */
@@ -397,7 +415,11 @@ function getStatus(status) {
 
 }
 function goHome() {
+
+    currentView = "home";
+
     scrollToCatalog();
+
     document.getElementById("categories").style.display = "";
 
     document.getElementById("search-container").style.display = "block";
@@ -434,11 +456,15 @@ function showProduct(productId, source = null) {
 
     if (source) {
 
-    setNavigationSource(source);
+        setNavigationSource(source);
 
-}
+    }
 
-    Search.clearSearch();
+    if (source === "search") {
+
+        Search.clearSearch();
+
+    }
 
     document.getElementById("home-new-products").innerHTML = "";
 
@@ -772,6 +798,21 @@ function scrollToCatalog() {
         block: "start"
 
     });
+
+}
+function handleBackButton() {
+
+    if (currentView === "search") {
+
+        Search.clearSearch();
+
+        goHome();
+
+        return;
+
+    }
+
+    goBack();
 
 }
 function goBack() {
