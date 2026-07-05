@@ -356,7 +356,7 @@ const products = [
     "brand": "Cartier ",
     "name": "Cartier Paris VERMEIL ",
     "currency": "EUR",
-    "price": 550,
+    "price": 2600,
     "status": "reserved",
     "dateAdded": "2026-07-05",
     "description": "Cartier Vermeil — втілення витонченої класики.\nЕлегантний вінтажний годинник з круглим золотим корпусом, швейцарським кварцовим механізмом та делікатним шкіряним ремінцем. Виготовлений у техніці Vermeil — срібло з благородною позолотою 20 мікрон.",
@@ -367,6 +367,64 @@ const products = [
       "images/W0020/4.jpg",
       "images/W0020/5.jpg",
       "images/W0020/6.jpg"
+    ]
+  },
+  {
+    "id": "PV-0023",
+    "sku": "J0010",
+    "category": "Прикраси",
+    "brand": "Yves Saint Laurent",
+    "name": "Yves Saint Laurent",
+    "currency": "EUR",
+    "price": 730,
+    "status": "available",
+    "dateAdded": "2026-07-06",
+    "description": "Цей вінтажний браслет Yves Saint Laurent — яскравий приклад французької естетики, де сміливий дизайн поєднується з бездоганною елегантністю. Ланки у формі сердець створюють впізнаваний силует, що символізує жіночність, свободу та любов до прекрасного.",
+    "images": [
+      "images/J0010/1.jpg",
+      "images/J0010/2.jpg",
+      "images/J0010/3.jpg",
+      "images/J0010/4.jpg"
+    ]
+  },
+  {
+    "id": "PV-0024",
+    "sku": "W0021",
+    "category": "Годинники",
+    "brand": "Michel Herbelin Paris",
+    "name": "Michel Herbelin Paris",
+    "currency": "EUR",
+    "price": 540,
+    "status": "available",
+    "dateAdded": "2026-07-06",
+    "description": "Цей витончений вінтажний годинник Michel Herbelin Paris — приклад французької елегантності, де кожна деталь продумана до дрібниць. Лаконічний прямокутний циферблат, золотистий браслет із м'якими округлими ланками та стриманий дизайн створюють прикрасу, яка виглядає актуально незалежно від епохи.",
+    "images": [
+      "images/W0021/1.jpg",
+      "images/W0021/2.jpg",
+      "images/W0021/3.jpg",
+      "images/W0021/4.jpg",
+      "images/W0021/5.jpg",
+      "images/W0021/6.jpg"
+    ]
+  },
+  {
+    "id": "PV-0025",
+    "sku": "W0022",
+    "category": "Годинники",
+    "brand": "Gucci",
+    "name": "Gucci 1500L MOP",
+    "currency": "EUR",
+    "price": 640,
+    "status": "available",
+    "dateAdded": "2026-07-06",
+    "description": "Цей вінтажний Gucci створений для тих, хто цінує стриману розкіш. Витончений прямокутний циферблат із перламутровим сяйвом гармонійно поєднується з культовим браслетом Horsebit — дизайном, що вже десятиліттями залишається одним із найвпізнаваніших символів модного дому Gucci.",
+    "images": [
+      "images/W0022/1.jpg",
+      "images/W0022/2.jpg",
+      "images/W0022/3.jpg",
+      "images/W0022/4.jpg",
+      "images/W0022/5.jpg",
+      "images/W0022/6.jpg"
     ]
   }
 ];
