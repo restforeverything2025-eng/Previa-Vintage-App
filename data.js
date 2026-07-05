@@ -348,5 +348,25 @@ const products = [
     "images": [
       "images/J0009/1.jpg"
     ]
+  },
+  {
+    "id": "PV-0022",
+    "sku": "W0020",
+    "category": "Годинники",
+    "brand": "Cartier ",
+    "name": "Cartier Paris VERMEIL ",
+    "currency": "EUR",
+    "price": 550,
+    "status": "reserved",
+    "dateAdded": "2026-07-05",
+    "description": "Cartier Vermeil — втілення витонченої класики.\nЕлегантний вінтажний годинник з круглим золотим корпусом, швейцарським кварцовим механізмом та делікатним шкіряним ремінцем. Виготовлений у техніці Vermeil — срібло з благородною позолотою 20 мікрон.",
+    "images": [
+      "images/W0020/1.jpg",
+      "images/W0020/2.jpg",
+      "images/W0020/3.jpg",
+      "images/W0020/4.jpg",
+      "images/W0020/5.jpg",
+      "images/W0020/6.jpg"
+    ]
   }
 ];
