@@ -428,9 +428,15 @@ function formatPrice(product) {
     ) + product.price;
 
 }
-function showProduct(productId) {
+function showProduct(productId, source = null) {
 
     currentView = "product";
+
+    if (source) {
+
+    setNavigationSource(source);
+
+}
 
     Search.clearSearch();
 
@@ -772,8 +778,21 @@ function goBack() {
 
     if (currentView === "product") {
 
-        currentCategory();
-        return;
+        switch (getNavigationSource()) {
+
+            case "search":
+                goHome();
+                return;
+
+            case "category":
+                currentCategory();
+                return;
+
+            default:
+                currentCategory();
+                return;
+
+        }
 
     }
 

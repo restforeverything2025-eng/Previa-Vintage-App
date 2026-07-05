@@ -111,7 +111,7 @@ renderProductCard(product) {
 
         <div
             class="search-product"
-            onclick="showProduct('${product.id}')"
+            onclick="showProduct('${product.id}', 'search')"
         >
 
             <img
@@ -276,6 +276,8 @@ removeDuplicates(results) {
 enterSearchMode() {
 
         this.state = "SEARCH";
+
+        setNavigationSource(currentView);
 
         document.body.classList.add("search-mode");
 
