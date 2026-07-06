@@ -426,5 +426,25 @@ const products = [
       "images/W0022/5.jpg",
       "images/W0022/6.jpg"
     ]
+  },
+  {
+    "id": "PV-0026",
+    "sku": "W0023",
+    "category": "Годинники",
+    "brand": "Kolber Genève",
+    "name": "Kolber Genève",
+    "currency": "EUR",
+    "price": 200,
+    "status": "available",
+    "dateAdded": "2026-07-06",
+    "description": "Срібний вінтажних годинник це справжня знахідка Годинник бренду Kolber Genève швейцарський годинниковий бренд, заснований у Женеві у 1983 році!",
+    "images": [
+      "images/W0023/1.jpg",
+      "images/W0023/2.jpg",
+      "images/W0023/3.jpg",
+      "images/W0023/4.jpg",
+      "images/W0023/5.jpg",
+      "images/W0023/6.jpg"
+    ]
   }
 ];
