@@ -127,7 +127,7 @@ const brands = [...new Set(
     jewelry.forEach(product => {
 
         html += `
-    <div class="card" onclick="showProduct('${product.id}')">
+    <div class="card" onclick="showProduct('${product.id}', 'category')">
     
         <img
             src="${product.images[0]}"
@@ -223,7 +223,7 @@ const brands = [...new Set(
     watches.forEach(product => {
 
         html += `
-    <div class="card" onclick="showProduct('${product.id}')">
+    <div class="card" onclick="showProduct('${product.id}', 'category')">
 
         <img
             src="${product.images[0]}"
@@ -330,7 +330,7 @@ function showNewProducts() {
     newProducts.forEach(product => {
 
         html += `
-    <div class="card" onclick="showProduct('${product.id}')">
+    <div class="card" onclick="showProduct('${product.id}', 'category')">
 
         <img
             src="${product.images[0]}"
@@ -616,117 +616,6 @@ function updateCounters() {
 
     <div class="category-title">NEW</div>
 `;
-}
-updateCounters();
-function searchProducts() {
-
-    const search = document
-        .getElementById("searchInput")
-        .value
-        .toLowerCase();
-
-    const cards = document.querySelectorAll(".products-grid .card");
-
-    cards.forEach(card => {
-
-        const text = card.textContent.toLowerCase();
-
-        if(text.includes(search)) {
-
-            card.style.display = "block";
-
-        } else {
-
-            card.style.display = "none";
-
-        }
-
-    });
-
-}
-function globalSearch() {
-
-document.getElementById(
-    "home-new-products"
-).innerHTML = "";
-
-    const search = document
-    .getElementById("searchInput")
-    .value
-    .toLowerCase()
-    .replace(/-/g, "");
-
-    if(search.length === 0) {
-
-    goHome();
-
-    return;
-
-}
-
-if(search.length < 2) {
-
-    return;
-
-}
-
-    document.getElementById("categories").style.display = "none";
-
-    let results = products.filter(product =>
-
-        product.name.toLowerCase().includes(search) ||
-
-        product.brand.toLowerCase().includes(search) ||
-
-        (product.sku || "")
-    .toLowerCase()
-    .replace(/-/g, "")
-    .includes(search) ||
-
-        product.description.toLowerCase().includes(search) ||
-
-        (product.price + "").includes(search)
-
-    );
-
-    let html = `
-        <h2>🔍 Результати пошуку</h2>
-        <div class="products-grid">
-    `;
-
-    results.forEach(product => {
-
-        html += `
-            <div class="card" onclick="showProduct('${product.id}')">
-
-                <img
-                    src="${product.images[0]}"
-                    alt="${product.name}"
-                    class="catalog-image"
-                >
-
-                <h3>${product.name}</h3>
-
-                <p>${product.price}</p>
-
-                <p>${getStatus(product.status)}</p>
-
-            </div>
-        `;
-
-    });
-
-    html += `</div>`;
-
-    html += `
-        <br>
-        <button class="home-btn" onclick="goHome()">
-    ⌘ Home
-</button>
-    `;
-
-    document.getElementById("content").innerHTML = html;
-
 }
 updateCounters();
 showHomeNewProducts();
