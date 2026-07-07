@@ -65,6 +65,10 @@ function goBack() {
                 currentCategory();
                 return;
 
+            case "favorites":
+                currentCategory();
+                return;
+
             default:
                 currentCategory();
                 return;
@@ -79,5 +83,12 @@ function goBack() {
         return;
 
     }
+
+    if (currentView === "favorites") {
+
+    goHome();
+    return;
+
+}
 
 }

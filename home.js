@@ -82,6 +82,8 @@ function goHome() {
 
     currentView = "home";
 
+    currentCategory = null;
+
     scrollToCatalog();
 
     document.getElementById("categories").style.display = "";
