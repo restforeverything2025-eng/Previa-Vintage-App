@@ -3,7 +3,11 @@
    Shared product card renderer
 ========================================= */
 
-function renderProductCard(product, source = "category") {
+function renderProductCard(
+    product,
+    source = "category",
+    showStatus = true
+) {
 
     return `
         <div
@@ -30,9 +34,10 @@ function renderProductCard(product, source = "category") {
                 ${formatPrice(product)}
             </p>
 
-            <p>
-                ${getStatus(product.status)}
-            </p>
+            ${showStatus
+                ? `<p>${getStatus(product.status)}</p>`
+                : ""
+            }
 
         </div>
     `;

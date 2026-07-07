@@ -27,6 +27,8 @@ function updateCounters() {
 
 function showHomeNewProducts() {
 
+    currentCategory = goHome;
+
     const container =
         document.getElementById("home-new-products");
 
@@ -43,32 +45,13 @@ function showHomeNewProducts() {
 
     latestProducts.forEach(product => {
 
-        html += `
-            <div
-                class="card"
-                onclick="showProduct('${product.id}', 'home')">
+    html += renderProductCard(
+        product,
+        "home",
+        false
+    );
 
-            <div
-                class="favorite-button"
-                onclick="toggleFavorite('${product.id}', this, event)"
-            >
-                ${Favorites.has(product.id) ? "♥" : "♡"}
-            </div>
-
-                <img
-                    src="${product.images[0]}"
-                    alt="${product.name}"
-                    class="catalog-image"
-                >
-
-                <h3>${product.name}</h3>
-
-                <p class="product-price">${formatPrice(product)}</p>
-
-            </div>
-        `;
-
-    });
+});
 
     html += `
         </div>

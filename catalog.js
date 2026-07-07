@@ -96,32 +96,10 @@ const brands = [...new Set(
 
     jewelry.forEach(product => {
 
-        html += `
-    <div class="card" onclick="showProduct('${product.id}', 'category')">
-    
-    <div
-        class="favorite-button"
-        onclick="toggleFavorite('${product.id}', this, event)"
-    >
-        ${Favorites.has(product.id) ? "♥" : "♡"}
-    </div>
+    html += renderProductCard(product);
 
-        <img
-            src="${product.images[0]}"
-            alt="${product.name}"
-            class="catalog-image"
-        >
+});
 
-        <h3>${product.name}</h3>
-
-        <p class="product-price">${formatPrice(product)}</p>
-
-        <p>${getStatus(product.status)}</p>
-
-    </div>
-`;
-
-    });
     html += `</div>`;
     
     content.innerHTML = html;
@@ -200,32 +178,10 @@ const brands = [...new Set(
 
     watches.forEach(product => {
 
-        html += `
-    <div class="card" onclick="showProduct('${product.id}', 'category')">
+    html += renderProductCard(product);
 
-    <div
-        class="favorite-button"
-        onclick="toggleFavorite('${product.id}', this, event)"
-    >
-        ${Favorites.has(product.id) ? "♥" : "♡"}
-    </div>
+});
 
-        <img
-            src="${product.images[0]}"
-            alt="${product.name}"
-            class="catalog-image"
-        >
-
-        <h3>${product.name}</h3>
-
-        <p class="product-price">${formatPrice(product)}</p>
-
-        <p>${getStatus(product.status)}</p>
-
-    </div>
-`;
-
-    });
     html += `</div>`;
 
     content.innerHTML = html;
@@ -317,33 +273,12 @@ function showNewProducts() {
 
     newProducts.forEach(product => {
 
-        html += `
-    <div class="card" onclick="showProduct('${product.id}', 'category')">
+    html += renderProductCard(product);
 
-    <div
-        class="favorite-button"
-        onclick="toggleFavorite('${product.id}', this, event)"
-    >
-        ${Favorites.has(product.id) ? "♥" : "♡"}
-    </div>
-        <img
-            src="${product.images[0]}"
-            alt="${product.name}"
-            class="catalog-image"
-        >
+});
 
-        <h3>${product.name}</h3>
+html += `</div>`;
 
-        <p class="product-price">${formatPrice(product)}</p>
+content.innerHTML = html;
 
-        <p>${getStatus(product.status)}</p>
-
-    </div>
-`;
-
-    });
-    html += `</div>`;
-    
-    content.innerHTML = html;
 }
-
