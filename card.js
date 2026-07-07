@@ -16,10 +16,10 @@ function renderProductCard(
         >
 
             <div
-                class="favorite-button"
+                class="favorite-button ${Favorites.has(product.id) ? "active" : ""}"
                 onclick="toggleFavorite('${product.id}', this, event)"
             >
-                ${Favorites.has(product.id) ? "♥" : "♡"}
+                ♡
             </div>
 
             <img

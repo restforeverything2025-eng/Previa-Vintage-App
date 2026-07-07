@@ -75,7 +75,12 @@ function toggleFavorite(productId, button, event) {
 
     Favorites.toggle(productId);
 
-    button.textContent =
-        Favorites.has(productId) ? "♥" : "♡";
+    const isFavorite =
+        Favorites.has(productId);
+
+    button.classList.toggle(
+        "active",
+        isFavorite
+    );
 
 }
