@@ -87,3 +87,9 @@ window.addEventListener("scroll", function() {
     }
 
 });
+
+/* =========================================
+   Application Initialization
+========================================= */
+
+Favorites.init();

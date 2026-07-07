@@ -110,6 +110,12 @@ function showProduct(productId, source = null) {
         <div class="card">
 
             <h2>${product.name}</h2>
+            <div
+    class="favorite-button"
+    onclick="toggleFavorite('${product.id}', this)"
+>
+    ${Favorites.has(product.id) ? "♥" : "♡"}
+</div>
             <div class="product-gallery">
 
     <img

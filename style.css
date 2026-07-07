@@ -156,6 +156,43 @@ h2{
 
     transition:0.3s;
 }
+
+.favorite-button{
+
+    position:absolute;
+
+    top:18px;
+
+    right:18px;
+
+    width:38px;
+
+    height:38px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    font-size:42px;
+
+    cursor:pointer;
+
+    user-select:none;
+
+    border-radius:50%;
+
+    transition:0.25s;
+
+}
+
+.favorite-button:hover{
+
+    transform:scale(1.12);
+
+}
+
 .card h3{
 
     font-family:"Cormorant Garamond", serif;
