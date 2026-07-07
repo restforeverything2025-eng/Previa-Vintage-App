@@ -65,7 +65,13 @@ const Favorites = (() => {
 
 })();
 
-function toggleFavorite(productId, button) {
+function toggleFavorite(productId, button, event) {
+
+    if (event) {
+
+        event.stopPropagation();
+
+    }
 
     Favorites.toggle(productId);
 

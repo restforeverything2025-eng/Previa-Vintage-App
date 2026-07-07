@@ -46,8 +46,14 @@ function showHomeNewProducts() {
         html += `
             <div
                 class="card"
-                onclick="showProduct('${product.id}', 'home')"
+                onclick="showProduct('${product.id}', 'home')">
+
+            <div
+                class="favorite-button"
+                onclick="toggleFavorite('${product.id}', this, event)"
             >
+                ${Favorites.has(product.id) ? "♥" : "♡"}
+            </div>
 
                 <img
                     src="${product.images[0]}"
@@ -94,6 +100,10 @@ function goHome() {
 showHomeNewProducts();
 }
 
-updateCounters();
+function initializeHome() {
 
-showHomeNewProducts();
+    updateCounters();
+
+    showHomeNewProducts();
+
+}

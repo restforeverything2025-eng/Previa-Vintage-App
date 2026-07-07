@@ -93,3 +93,5 @@ window.addEventListener("scroll", function() {
 ========================================= */
 
 Favorites.init();
+
+initializeHome();

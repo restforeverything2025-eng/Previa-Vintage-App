@@ -99,6 +99,13 @@ const brands = [...new Set(
         html += `
     <div class="card" onclick="showProduct('${product.id}', 'category')">
     
+    <div
+        class="favorite-button"
+        onclick="toggleFavorite('${product.id}', this, event)"
+    >
+        ${Favorites.has(product.id) ? "♥" : "♡"}
+    </div>
+
         <img
             src="${product.images[0]}"
             alt="${product.name}"
@@ -195,6 +202,13 @@ const brands = [...new Set(
 
         html += `
     <div class="card" onclick="showProduct('${product.id}', 'category')">
+
+    <div
+        class="favorite-button"
+        onclick="toggleFavorite('${product.id}', this, event)"
+    >
+        ${Favorites.has(product.id) ? "♥" : "♡"}
+    </div>
 
         <img
             src="${product.images[0]}"
@@ -306,6 +320,12 @@ function showNewProducts() {
         html += `
     <div class="card" onclick="showProduct('${product.id}', 'category')">
 
+    <div
+        class="favorite-button"
+        onclick="toggleFavorite('${product.id}', this, event)"
+    >
+        ${Favorites.has(product.id) ? "♥" : "♡"}
+    </div>
         <img
             src="${product.images[0]}"
             alt="${product.name}"
