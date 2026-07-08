@@ -8,6 +8,10 @@ Status: Development
 
 const Icons = {
 
+    /* =========================================
+   Navigation
+========================================= */
+
     getBack(className = "") {
 
     return `
@@ -64,6 +68,31 @@ const Icons = {
             stroke-linejoin="round"
         >
             <path d="M9 18l6-6-6-6"/>
+        </svg>
+    `;
+
+},
+
+/* =========================================
+   Actions
+========================================= */
+
+    getClose() {
+
+    return `
+        <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="26"
+            height="26"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2.2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+        >
+            <path d="M6 6l12 12"/>
+            <path d="M18 6L6 18"/>
         </svg>
     `;
 

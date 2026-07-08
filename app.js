@@ -105,5 +105,8 @@ Favorites.init();
 
     document.getElementById("lightboxNext").innerHTML =
     Icons.getNext();
+
+    document.getElementById("lightboxClose").innerHTML =
+    Icons.getClose();
       
 initializeHome();
