@@ -110,13 +110,22 @@ function showProduct(productId, source = null) {
         <div class="card">
 
             <h2>${product.name}</h2>
-            <div
+
+<div
     class="favorite-button ${Favorites.has(product.id) ? "active" : ""}"
     onclick="toggleFavorite('${product.id}', this, event)"
 >
     ♡
 </div>
-            <div class="product-gallery">
+
+<div
+    class="share-button"
+    onclick="Share.shareProduct(currentProduct)"
+>
+    ↗
+</div>
+
+<div class="product-gallery">
 
     <img
         id="main-product-image"
