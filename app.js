@@ -110,3 +110,13 @@ Favorites.init();
     Icons.getClose();
       
 initializeHome();
+
+const params = new URLSearchParams(window.location.search);
+
+const productId = params.get("product");
+
+if (productId) {
+
+    showProduct(productId);
+
+}

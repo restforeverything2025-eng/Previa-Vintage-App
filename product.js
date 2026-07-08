@@ -93,9 +93,19 @@ function showProduct(productId, source = null) {
 
     const product = products.find(
         p => p.id === productId
-    );
+);
 
     currentProduct = product;
+
+    history.replaceState(
+
+    null,
+
+    "",
+
+    `${window.location.pathname}?product=${product.id}`
+
+);
 
     currentImages = product.images;
 
