@@ -29,7 +29,7 @@ function updateNavigation() {
 
     } else {
 
-        backButton.style.display = "block";
+        backButton.style.display = "flex";
 
     }
 

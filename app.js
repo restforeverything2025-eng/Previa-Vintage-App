@@ -78,7 +78,7 @@ window.addEventListener("scroll", function() {
 
     if(window.scrollY > 300) {
 
-        button.style.display = "block";
+        button.style.display = "flex";
 
     } else {
 
@@ -94,4 +94,16 @@ window.addEventListener("scroll", function() {
 
 Favorites.init();
 
+    document.getElementById("backBtn").innerHTML =
+    Icons.getBack();
+
+    document.getElementById("scrollTopBtn").innerHTML =
+    Icons.getUp();
+
+    document.getElementById("lightboxPrev").innerHTML =
+    Icons.getBack();
+
+    document.getElementById("lightboxNext").innerHTML =
+    Icons.getNext();
+      
 initializeHome();

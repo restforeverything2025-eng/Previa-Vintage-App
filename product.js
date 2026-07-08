@@ -111,10 +111,10 @@ function showProduct(productId, source = null) {
 
             <h2>${product.name}</h2>
             <div
-    class="favorite-button"
-    onclick="toggleFavorite('${product.id}', this)"
+    class="favorite-button ${Favorites.has(product.id) ? "active" : ""}"
+    onclick="toggleFavorite('${product.id}', this, event)"
 >
-    ${Favorites.has(product.id) ? "♥" : "♡"}
+    ♡
 </div>
             <div class="product-gallery">
 
