@@ -132,7 +132,7 @@ function showProduct(productId, source = null) {
     class="share-button"
     onclick="Share.shareProduct(currentProduct)"
 >
-    ↗
+    ${Icons.getShare()}
 </div>
 
 <div class="product-gallery">

@@ -228,6 +228,61 @@ h2{
     color:#2f2f2f;
 
 }
+
+.share-button{
+
+    position:absolute;
+
+    top:33px;
+
+    left:33px;
+
+    width:35px;
+
+    height:35px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    border-radius:50%;
+
+    background:rgb(255,255,240);
+
+    color:#C9A86A;
+
+    backdrop-filter:blur(3px);
+
+    box-shadow:0 3px 10px rgba(0,0,0,.18);
+
+    cursor:pointer;
+
+    transition:
+        transform .18s ease,
+        box-shadow .20s ease,
+        background .20s ease,
+        color .20s ease;
+
+}
+
+.share-button:hover{
+
+    transform:scale(1.08);
+
+    box-shadow:0 5px 14px rgba(0,0,0,.25);
+
+}
+
+.share-button svg{
+
+    width:20px;
+
+    height:20px;
+
+}
+
 .card h3{
 
     font-family:"Cormorant Garamond", serif;
