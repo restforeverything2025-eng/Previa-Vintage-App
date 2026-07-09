@@ -138,7 +138,7 @@ h2{
 
     position:relative;
 
-    background:white;
+    background:rgb(255, 255, 255);
 
     border-radius:8px;
 
@@ -175,7 +175,7 @@ h2{
 
     justify-content:center;
 
-    font-size:30px;
+    font-size:20px;
 
     cursor:pointer;
 
@@ -183,9 +183,9 @@ h2{
 
     border-radius:50%;
 
-    background:rgba(66, 97, 126, 0.39);
+    background:rgba(255, 255, 255, 0);
 
-    color:#C9A86A;
+    color:#000000;
 
     backdrop-filter:blur(3px);
 
@@ -201,9 +201,9 @@ h2{
 
 .favorite-button.active{
 
-    background:#6D1F32;
+    background:#ffffff;
 
-    color:#E4C27A;
+    color:#ff0000;
 
     transform:scale(1.05);
 
@@ -249,9 +249,9 @@ h2{
 
     border-radius:50%;
 
-    background:rgb(66, 97, 126, 0.39);
+    background:rgba(255, 255, 255, 0);
 
-    color:#C9A86A;
+    color:#000000;
 
     backdrop-filter:blur(3px);
 
@@ -527,9 +527,9 @@ button:hover{
 
     right:20px;
 
-    width:58px;
+    width:55px;
 
-    height:58px;
+    height:55px;
 
     display:none;
 
@@ -541,9 +541,9 @@ button:hover{
 
     border-radius:50%;
 
-    background:rgb(0, 0, 0);
+    background:rgba(255, 255, 255, 0);
 
-    color:#C9A86A;
+    color:#000000;
 
     cursor:pointer;
 
@@ -589,9 +589,9 @@ button:hover{
 
     right: 20px;
 
-    width: 58px;
+    width: 55px;
 
-    height: 58px;
+    height: 55px;
 
     display: flex;
 
@@ -603,9 +603,9 @@ button:hover{
 
     border-radius: 50%;
 
-    background: rgb(0, 0, 0);
+    background: rgba(255, 255, 255, 0);
 
-    color: #C9A86A;
+    color: #000000;
 
     cursor: pointer;
 
@@ -685,7 +685,7 @@ button:hover{
 
     height:52px;
 
-    border-radius:30px;
+    border-radius:15px;
 
     background:#181717;
 
