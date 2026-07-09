@@ -161,9 +161,9 @@ h2{
 
     position:absolute;
 
-    top:33px;
+    top:20px;
 
-    right:33px;
+    right:24px;
 
     width:35px;
 
@@ -183,7 +183,7 @@ h2{
 
     border-radius:50%;
 
-    background:rgb(255, 255, 240);
+    background:rgb(255, 195, 195);
 
     color:#C9A86A;
 
@@ -213,7 +213,7 @@ h2{
 
     transform:scale(1.12);
 
-    box-shadow:0 6px 16px rgba(0,0,0,.25);
+    box-shadow:0 6px 16px rgba(245, 11, 11, 0.25);
 
 }
 
@@ -233,9 +233,9 @@ h2{
 
     position:absolute;
 
-    top:33px;
+    top:20px;
 
-    left:33px;
+    left:24px;
 
     width:35px;
 
@@ -249,7 +249,7 @@ h2{
 
     border-radius:50%;
 
-    background:rgb(255,255,240);
+    background:rgb(255, 195, 195);
 
     color:#C9A86A;
 
