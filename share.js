@@ -24,7 +24,7 @@ const Share = {
 
     image: product.images[0],
 
-    url: window.location.href
+    url: `${Config.siteUrl}?product=${product.id}`
 
 };
 
