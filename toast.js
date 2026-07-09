@@ -4,7 +4,7 @@
 
 const Toast = {
 
-    show(message) {
+    show(message, duration = 2200) {
 
     const toast = document.getElementById("toast");
 
@@ -20,7 +20,7 @@ const Toast = {
 
         toast.style.opacity = "0";
 
-    }, 2200);
+    }, duration);
 
 }
 

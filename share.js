@@ -8,17 +8,43 @@ const Share = {
 
         return {
 
-            id: product.id,
+    id: product.id,
 
-            sku: product.sku,
+    sku: product.sku,
 
-            name: product.name,
+    category: product.category,
 
-            price: formatPrice(product),
+    brand: product.brand,
 
-            url: window.location.href
+    name: product.name,
 
-        };
+    price: formatPrice(product),
+
+    status: product.status,
+
+    image: product.images[0],
+
+    url: window.location.href
+
+};
+
+},
+
+    getShareMessage(data) {
+
+   return `Знайшов цікаву вінтажну прикрасу у PREVIA.
+
+Vintage Chanel Earrings
+
+${data.name}
+
+🏷️ Бренд: ${data.brand}
+📂 Категорія: ${data.category}
+🔖 SKU: ${data.sku}
+
+💰 ${data.price}
+
+🔗 ${data.url}`;
 
 },
 
@@ -41,22 +67,6 @@ const Share = {
 
 },
 
-    copyLink(url) {
-
-    if (!this.canCopy()) {
-
-        alert(url);
-
-        return;
-
-    }
-
-    navigator.clipboard.writeText(url);
-
-    Toast.show("Посилання скопійовано.");
-
-},
-
     async shareProduct(product) {
 
     const data = this.getProductData(product);
@@ -75,7 +85,7 @@ const Share = {
 
             title: data.name,
 
-            text: `${data.name}\n${data.price}`,
+            text: this.getShareMessage(data),
 
             url: data.url
 
@@ -86,6 +96,35 @@ const Share = {
         console.log("Share cancelled.", error);
 
     }
+
+},
+
+    shareToTelegram(product) {
+
+    const data = this.getProductData(product);
+
+    const message = this.getShareMessage(data);
+
+    const telegramUrl =
+        `https://t.me/share/url?url=${encodeURIComponent(data.url)}&text=${encodeURIComponent(message)}`;
+
+    window.open(telegramUrl, "_blank");
+
+},
+
+    copyLink(url) {
+
+    if (!this.canCopy()) {
+
+    Toast.show("Не вдалося скопіювати посилання.");
+
+    return;
+
+}
+
+    navigator.clipboard.writeText(url);
+
+    Toast.show("Посилання скопійовано.");
 
 }
 
