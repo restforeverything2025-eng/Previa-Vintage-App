@@ -53,7 +53,7 @@ const Share = {
 
     navigator.clipboard.writeText(url);
 
-    alert("Посилання скопійовано.");
+    Toast.show("Посилання скопійовано.");
 
 },
 
