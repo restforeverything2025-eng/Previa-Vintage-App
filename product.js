@@ -22,6 +22,22 @@ function formatPrice(product) {
 
 }
 
+function formatPriceUAH(product) {
+
+    if (product.currency !== "EUR") {
+
+        return "";
+
+    }
+
+    const price = Math.round(
+        product.price * exchangeRate.eurToUah
+    );
+
+    return `≈ ₴ ${price.toLocaleString("uk-UA")}`;
+
+}
+
 function getStatus(status) {
 
     switch(status) {
@@ -189,15 +205,23 @@ function showProduct(productId, source = null) {
 
     </div>
 
-    <div class="info-row">
+            <div class="info-row">
 
         <span class="info-title">
             Price
         </span>
 
         <span class="info-value">
-    ${formatPrice(product)}
-</span>
+
+        ${formatPrice(product)}
+
+        <br>
+
+        <span class="product-price-uah">
+            ${formatPriceUAH(product)}
+        </span>
+
+        </span>
 
     </div>
 

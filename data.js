@@ -1,3 +1,13 @@
+const exchangeRate = {
+
+    eurToUah: 48.50,
+
+    source: "NBU",
+
+    updated: "2026-07-11"
+
+};
+
 const products = [
   {
     "id": "PV-0001",
