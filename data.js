@@ -1,11 +1,7 @@
 const exchangeRate = {
-
-    eurToUah: 48.50,
-
-    source: "NBU",
-
-    updated: "2026-07-11"
-
+  "eurToUah": 50.86,
+  "source": "NBU",
+  "updated": "2026-07-10"
 };
 
 const products = [
@@ -81,8 +77,8 @@ const products = [
     "category": "Прикраси",
     "brand": "Two Sisters",
     "name": "Сережки в зеленому кольорі",
-    "currency": "UAH",
-    "price": 4800,
+    "currency": "EUR",
+    "price": 95,
     "status": "available",
     "dateAdded": "2026-06-24",
     "description": "Сережки в ніжно зеленому кольорі з матовою поверхнею, бренду Two Sisters",
@@ -216,7 +212,7 @@ const products = [
     "sku": "W0013",
     "category": "Годинники",
     "brand": "Tissot",
-    "name": "Tissot",
+    "name": "Tissot T100",
     "currency": "EUR",
     "price": 200,
     "status": "reserved",
@@ -234,7 +230,7 @@ const products = [
     "name": "Christian Dior",
     "currency": "EUR",
     "price": 430,
-    "status": "sold",
+    "status": "available",
     "dateAdded": "2026-07-02",
     "description": "Витончений вінтажний годинник Christian Dior",
     "images": [
@@ -333,7 +329,7 @@ const products = [
     "category": "Прикраси",
     "brand": "Francesca Visconti",
     "name": "Francesca Visconti",
-    "currency": "UAH",
+    "currency": "EUR",
     "price": 96,
     "status": "available",
     "dateAdded": "2026-07-03",
@@ -444,7 +440,7 @@ const products = [
     "brand": "Kolber Genève",
     "name": "Kolber Genève",
     "currency": "EUR",
-    "price": 200,
+    "price": 440,
     "status": "available",
     "dateAdded": "2026-07-06",
     "description": "Срібний вінтажних годинник це справжня знахідка Годинник бренду Kolber Genève швейцарський годинниковий бренд, заснований у Женеві у 1983 році!",
