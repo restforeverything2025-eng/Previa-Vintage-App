@@ -117,7 +117,7 @@ function showProduct(productId, source = null) {
 
     content.innerHTML = `
 
-        <div class="card">
+        <div class="card product-card">
 
             <h2>${product.name}</h2>
 
@@ -125,7 +125,7 @@ function showProduct(productId, source = null) {
     class="favorite-button ${Favorites.has(product.id) ? "active" : ""}"
     onclick="toggleFavorite('${product.id}', this, event)"
 >
-    ♡
+   ${Icons.getHeart()}
 </div>
 
 <div

@@ -134,6 +134,13 @@ h2{
     pointer-events:none;
 
 }
+
+.catalog-image-wrapper{
+
+    margin-top:36px;
+
+}
+
 .card{
 
     position:relative;
@@ -161,13 +168,13 @@ h2{
 
     position:absolute;
 
-    top:3px;
+    top:16px;
 
-    right:5px;
+    right:16px;
 
-    width:28px;
+    width:42px;
 
-    height:28px;
+    height:42px;
 
     display:flex;
 
@@ -181,7 +188,7 @@ h2{
 
     user-select:none;
 
-    border-radius:50%;
+    border-radius:14px;
 
     background:rgba(255, 255, 255, 0);
 
@@ -189,13 +196,21 @@ h2{
 
     backdrop-filter:blur(3px);
 
-    box-shadow:0 3px 10px rgba(247, 2, 2, 0.18);
+    box-shadow:0 4px 12px rgba(0,0,0,.10);
 
     transition:
     transform .18s ease,
     box-shadow .20s ease,
     background .20s ease,
     color .20s ease;
+
+}
+
+.favorite-button svg{
+
+    width:20px;
+
+    height:20px;
 
 }
 
@@ -233,13 +248,13 @@ h2{
 
     position:absolute;
 
-    top:3px;
+    top:16px;
 
-    left:5px;
+    left:16px;
 
-    width:28px;
+    width:42px;
 
-    height:28px;
+    height:42px;
 
     display:flex;
 
@@ -247,7 +262,7 @@ h2{
 
     justify-content:center;
 
-    border-radius:50%;
+    border-radius:14px;
 
     background:rgba(255, 255, 255, 0);
 
@@ -255,7 +270,7 @@ h2{
 
     backdrop-filter:blur(3px);
 
-    box-shadow:0 3px 10px rgba(0,0,0,.18);
+    box-shadow:0 4px 12px rgba(0,0,0,.10);
 
     cursor:pointer;
 
@@ -320,12 +335,11 @@ button{
 button:hover{
     opacity:0.9;
 }
+
 .product-card{
-    background:white;
-    padding:25px;
-    border-radius:16px;
-    box-shadow:0 3px 12px rgba(0,0,0,0.08);
-    margin-top:20px;
+
+    padding-top:42px;
+
 }
 
 .product-title{
@@ -681,11 +695,13 @@ button:hover{
 
 .home-btn{
 
-    min-width:90px;
+    width:140px;
 
-    height:52px;
+    height:56px;
 
-    border-radius:15px;
+    max-width:none;
+
+    border-radius:18px;
 
     background:#181717;
 
@@ -695,7 +711,7 @@ button:hover{
 
     font-family:'Cormorant Garamond', serif;
 
-    font-size:18px;
+    font-size:20px;
 
     font-weight:600;
 
@@ -709,21 +725,27 @@ button:hover{
 
     padding:0 16px;
 
+    box-sizing:border-box;
+
     box-shadow:
         0 3px 8px rgba(0,0,0,0.18);
 
-    transition:0.25s;
+    transition:.25s;
 
 }
+
 .home-container{
 
     display:flex;
 
-    justify-content:center;
+    justify-content:space-between;
 
-    margin:14px 0 18px;
+    align-items:center;
+
+    margin:14px 17px 18px;
 
 }
+
 .home-btn:hover{
 
     background:#3a342c;

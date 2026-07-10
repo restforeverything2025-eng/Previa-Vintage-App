@@ -15,18 +15,21 @@ function renderProductCard(
             onclick="showProduct('${product.id}', '${source}')"
         >
 
-            <div
-                class="favorite-button ${Favorites.has(product.id) ? "active" : ""}"
-                onclick="toggleFavorite('${product.id}', this, event)"
-            >
-                ♡
-            </div>
+        <div
+            class="favorite-button ${Favorites.has(product.id) ? "active" : ""}"
+            onclick="toggleFavorite('${product.id}', this, event)"
+        >
+            ${Icons.getHeart()}
+</div>
 
-            <img
-                src="${product.images[0]}"
-                alt="${product.name}"
-                class="catalog-image"
-            >
+        <div class="catalog-image-wrapper">
+
+        <img
+            src="${product.images[0]}"
+            alt="${product.name}"
+            class="catalog-image"
+        >
+</div>
 
             <h3>${product.name}</h3>
 
