@@ -1,9 +1,3 @@
-const exchangeRate = {
-  "eurToUah": 50.86,
-  "source": "NBU",
-  "updated": "2026-07-11"
-};
-
 const products = [
   {
     "id": "PV-0001",
@@ -451,6 +445,24 @@ const products = [
       "images/W0023/4.jpg",
       "images/W0023/5.jpg",
       "images/W0023/6.jpg"
+    ]
+  },
+  {
+    "id": "PV-0027",
+    "sku": "J0011",
+    "category": "Прикраси",
+    "brand": "Кольє ",
+    "name": "Panther Necklace",
+    "currency": "EUR",
+    "price": 180,
+    "status": "available",
+    "dateAdded": "2026-07-11",
+    "description": "Є прикраси, які не потребують гучних слів.\nЛаконічний ланцюг із двома витонченими головами пантери — символом сили, грації та впевненості. Дизайн, натхненний легендарною естетикою французького ювелірного дому, залишається актуальним уже багато десятиліть.",
+    "images": [
+      "images/J0011/1.jpg",
+      "images/J0011/2.jpg",
+      "images/J0011/3.jpg",
+      "images/J0011/4.jpg"
     ]
   }
 ];
