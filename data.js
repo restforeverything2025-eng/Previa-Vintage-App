@@ -1,7 +1,7 @@
 const exchangeRate = {
   "eurToUah": 50.86,
   "source": "NBU",
-  "updated": "2026-07-10"
+  "updated": "2026-07-11"
 };
 
 const products = [
@@ -212,12 +212,12 @@ const products = [
     "sku": "W0013",
     "category": "Годинники",
     "brand": "Tissot",
-    "name": "Tissot T100",
+    "name": "Tissot 101",
     "currency": "EUR",
-    "price": 200,
-    "status": "reserved",
+    "price": 250,
+    "status": "available",
     "dateAdded": "2026-07-02",
-    "description": "Стильний жіночий годинник Tissot",
+    "description": "Стильний - вінтажний жіночий годинник Tissot",
     "images": [
       "images/W0013/1.JPG"
     ]
