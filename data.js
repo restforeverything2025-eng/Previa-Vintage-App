@@ -78,7 +78,7 @@ const products = [
     "brand": "Two Sisters",
     "name": "Сережки в зеленому кольорі",
     "currency": "EUR",
-    "price": 95,
+    "price": 100,
     "status": "available",
     "dateAdded": "2026-06-24",
     "description": "Сережки в ніжно зеленому кольорі з матовою поверхнею, бренду Two Sisters",
