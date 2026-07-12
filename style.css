@@ -1435,25 +1435,65 @@ body.search-mode #search-screen {
 
 }
 
-.instagram-link{
+.social-links{
 
-    display:inline-block;
+    display:flex;
 
-    text-decoration:none;
+    justify-content:center;
 
-    color:#2f2a24;
-
-    font-size:17px;
+    gap:14px;
 
     margin-bottom:22px;
 
-    transition:.25s;
+}
+
+.instagram-link{
+
+    width:42px;
+
+    height:42px;
+
+    margin:0;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    border-radius:14px;
+
+    background:rgba(255,255,255,0);
+
+    color:#2f2f2f;
+
+    text-decoration:none;
+
+    backdrop-filter:blur(3px);
+
+    box-shadow:0 4px 12px rgba(0,0,0,.10);
+
+    transition:
+        transform .18s ease,
+        box-shadow .20s ease,
+        background .20s ease,
+        color .20s ease;
 
 }
 
 .instagram-link:hover{
 
-    color:#b88c32;
+    transform:scale(1.08);
+
+    box-shadow:0 6px 16px rgba(0,0,0,.25);
+
+}
+
+.instagram-link svg{
+
+    width:20px;
+
+    height:20px;
 
 }
 

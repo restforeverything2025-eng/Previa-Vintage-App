@@ -207,7 +207,7 @@ function showAccessories() {
 
         <div class="card">
 
-            <h2>SKARB</h2>
+            <h2>BAGS</h2>
 
             <p>Розділ наповнюється новими товарами.</p>
 

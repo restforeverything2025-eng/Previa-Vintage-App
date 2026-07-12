@@ -7,7 +7,9 @@ function renderProductCard(
     product,
     source = "category",
     showStatus = true
-) {
+ )
+  
+{
 
     return `
         <div

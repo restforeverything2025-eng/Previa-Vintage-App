@@ -64,14 +64,29 @@ function showHomeNewProducts() {
                 FOLLOW PREVIA
             </div>
 
-                <a
-                    class="instagram-link"
-                    href="https://www.instagram.com/previa.vintage?igsh=Y3VocjhkaGkxNmty"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-                    Instagram
-                </a>
+                <div class="social-links">
+
+    <a
+        class="instagram-link"
+        href="https://www.instagram.com/previa.vintage?igsh=Y3VocjhkaGkxNmty"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Instagram"
+    >
+        ${Icons.getInstagram()}
+    </a>
+
+    <a
+        class="instagram-link"
+        href="https://www.threads.com/@previa.vintage"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Threads"
+    >
+        ${Icons.getThreads()}
+    </a>
+
+</div>
 
             <div class="links-pages">
 
