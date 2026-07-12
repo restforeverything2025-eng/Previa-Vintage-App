@@ -1393,3 +1393,105 @@ body.search-mode #search-screen {
 
 }
 
+/* =========================================
+   PREVIA Links Hub
+========================================= */
+
+.links-hub{
+
+    text-align:center;
+
+    padding:36px 20px 46px;
+
+}
+
+.links-hub-divider{
+
+    width:140px;
+
+    height:1px;
+
+    margin:0 auto 26px;
+
+    background:#d4af37;
+
+    opacity:.65;
+
+}
+
+.links-hub-title{
+
+    font-family:'Cormorant Garamond', serif;
+
+    font-size:18px;
+
+    font-weight:600;
+
+    letter-spacing:3px;
+
+    color:#c9a25b;
+
+    margin-bottom:22px;
+
+}
+
+.instagram-link{
+
+    display:inline-block;
+
+    text-decoration:none;
+
+    color:#2f2a24;
+
+    font-size:17px;
+
+    margin-bottom:22px;
+
+    transition:.25s;
+
+}
+
+.instagram-link:hover{
+
+    color:#b88c32;
+
+}
+
+.links-pages{
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    gap:12px;
+
+    flex-wrap:wrap;
+
+}
+
+.links-pages a{
+
+    text-decoration:none;
+
+    color:#6d5b42;
+
+    font-size:15px;
+
+    transition:.25s;
+
+}
+
+.links-pages a:hover{
+
+    color:#b88c32;
+
+}
+
+.links-pages span{
+
+    color:#b89c52;
+
+}
+

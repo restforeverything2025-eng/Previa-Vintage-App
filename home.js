@@ -53,8 +53,41 @@ function showHomeNewProducts() {
 
 });
 
-    html += `
+        html += `
         </div>
+
+        <section class="links-hub">
+
+            <div class="links-hub-divider"></div>
+
+            <div class="links-hub-title">
+                FOLLOW PREVIA
+            </div>
+
+                <a
+                    class="instagram-link"
+                    href="https://www.instagram.com/previa.vintage?igsh=Y3VocjhkaGkxNmty"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    Instagram
+                </a>
+
+            <div class="links-pages">
+
+                <a href="#">
+                    About PREVIA
+                </a>
+
+                <span>•</span>
+
+                <a href="#">
+                    Delivery & Payment
+                </a>
+
+            </div>
+
+        </section>
     `;
 
     container.innerHTML = html;
