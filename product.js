@@ -245,6 +245,8 @@ function showProduct(productId, source = null) {
 
 </p>
 
+    ${renderRelatedProducts(product)}
+
             <button onclick="reserveProduct('${product.name}')">
                 💬 Написати в Telegram
             </button>

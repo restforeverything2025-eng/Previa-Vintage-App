@@ -48,3 +48,30 @@ function renderProductCard(
     `;
 
 }
+
+function renderRelatedProductCard(product) {
+
+    return `
+
+        <div
+            class="related-card"
+            onclick="showProduct('${product.id}', 'related')"
+        >
+
+            <img
+                src="${product.images[0]}"
+                alt="${product.name}"
+                class="related-image"
+            >
+
+            <div class="related-title">
+
+                ${product.name}
+
+            </div>
+
+        </div>
+
+    `;
+
+}
