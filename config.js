@@ -14,3 +14,9 @@ const Config = {
 
 };
 
+/* =========================================
+   Related Products
+========================================= */
+
+const RELATED_PRODUCTS_COUNT = 9;
+

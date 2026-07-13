@@ -29,7 +29,7 @@ function getRelatedProducts(currentProduct) {
 
     }
 
-    return shuffledProducts.slice(0, 6);
+    return shuffledProducts.slice(0, RELATED_PRODUCTS_COUNT);
 
 }
 

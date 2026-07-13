@@ -216,6 +216,38 @@ function showAccessories() {
     `;
 }
 
+/* =========================================
+   Coming Soon Categories
+========================================= */
+
+function showComingSoon(categoryName) {
+
+    currentView = "category";
+
+    currentCategory = () => showComingSoon(categoryName);
+
+    document.getElementById("home-new-products").innerHTML = "";
+
+    scrollToCatalog();
+
+    document.getElementById("content").innerHTML = `
+
+        <div class="card">
+
+            <h2>${categoryName}</h2>
+
+            <p>
+
+                Розділ наповнюється новими товарами.
+
+            </p>
+
+        </div>
+
+    `;
+
+}
+
 function showSale() {
     currentView = "category";
     currentCategory = showSale;
@@ -282,3 +314,4 @@ html += `</div>`;
 content.innerHTML = html;
 
 }
+
