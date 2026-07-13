@@ -32,19 +32,15 @@ const Share = {
 
     getShareMessage(data) {
 
-   return `Знайшов цікаву вінтажну прикрасу у PREVIA.
-
-Vintage Chanel Earrings
+    return `Відкрийте для себевінтажний скарб у PREVIA.
 
 ${data.name}
 
-🏷️ Бренд: ${data.brand}
-📂 Категорія: ${data.category}
-🔖 SKU: ${data.sku}
+🏷️ Brand: ${data.brand}
+📂 Category: ${data.category}
+🔖 Product Code: ${data.sku}
 
-💰 ${data.price}
-
-🔗 ${data.url}`;
+Дізнайтеся більше ↓`;
 
 },
 

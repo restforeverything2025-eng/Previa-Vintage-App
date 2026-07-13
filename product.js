@@ -71,19 +71,21 @@ function getStatus(status) {
 
 function reserveProduct(productName) {
 
-    const message =
-        `Доброго дня!
+    const telegramUsername = Config.telegramUsername;
 
-Мене цікавить товар:
+    const appUrl =
+        `tg://resolve?domain=${telegramUsername}`;
 
-${productName}
+    const webUrl =
+        `https://t.me/${telegramUsername}`;
 
-Чи актуальний він?`;
+    window.location.href = appUrl;
 
-    const telegramUrl =
-        `https://t.me/Ad_astra_per_astera?text=${encodeURIComponent(message)}`;
+    setTimeout(() => {
 
-    window.open(telegramUrl, "_blank");
+        window.open(webUrl, "_blank");
+
+    }, 700);
 
 }
 

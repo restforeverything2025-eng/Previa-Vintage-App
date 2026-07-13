@@ -61,7 +61,7 @@ function showHomeNewProducts() {
             <div class="links-hub-divider"></div>
 
             <div class="links-hub-title">
-                FOLLOW PREVIA
+                FOLLOW
             </div>
 
                 <div class="social-links">
@@ -91,7 +91,7 @@ function showHomeNewProducts() {
             <div class="links-pages">
 
                 <a href="#">
-                    About PREVIA
+                    About Us
                 </a>
 
                 <span>•</span>

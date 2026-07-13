@@ -10,7 +10,9 @@ const Config = {
         window.location.origin +
         window.location.pathname,
 
-    currency: "€"
+    currency: "€",
+
+    telegramUsername: "Ad_astra_per_astera"
 
 };
 
