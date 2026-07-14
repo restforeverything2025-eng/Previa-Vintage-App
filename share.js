@@ -32,7 +32,7 @@ const Share = {
 
     getShareMessage(data) {
 
-    return `Відкрийте для себевінтажний скарб у PREVIA.
+    return `Відкрийте для себе вінтажний скарб у PREVIA.
 
 ${data.name}
 
@@ -80,8 +80,6 @@ ${data.name}
         await navigator.share({
 
             title: data.name,
-
-            text: this.getShareMessage(data),
 
             url: data.url
 
