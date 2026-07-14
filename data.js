@@ -1,7 +1,7 @@
 const exchangeRate = {
-  "eurToUah": 50.86,
-  "source": "NBU",
-  "updated": "2026-07-11"
+  "eurToUah": 51.8001,
+  "source": "Monobank",
+  "updated": "2026-07-15"
 };
 
 const products = [
