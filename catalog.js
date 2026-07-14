@@ -46,7 +46,7 @@ function showJewelry(brand = "ALL") {
             return true;
         }
 
-        return product.brand === brand;
+        return product.brand.trim() === brand.trim();
 
     });
 
@@ -58,7 +58,7 @@ const brands = [...new Set(
 
     products
         .filter(product => product.category === "Прикраси")
-        .map(product => product.brand)
+        .map(product => product.brand.trim())
 
 )].sort((a, b) => a.localeCompare(b));
 
@@ -130,7 +130,7 @@ function showWatches(brand = "ALL") {
 
     }
 
-    return product.brand === brand;
+    return product.brand.trim() === brand.trim();
 
 });
 
@@ -138,7 +138,7 @@ const brands = [...new Set(
 
     products
         .filter(product => product.category === "Годинники")
-        .map(product => product.brand)
+        .map(product => product.brand.trim())
 
 )].sort((a, b) => a.localeCompare(b));
 
