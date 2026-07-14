@@ -81,6 +81,8 @@ ${data.name}
 
             title: data.name,
 
+            text: this.getShareMessage(data),
+
             url: data.url
 
         });
