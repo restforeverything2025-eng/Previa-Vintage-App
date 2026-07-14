@@ -34,8 +34,8 @@ function formatPriceUAH(product) {
         product.price * exchangeRate.eurToUah
     );
 
-    return `≈ ₴ ${price.toLocaleString("uk-UA")}`;
-
+    return `≈ ₴ ${price.toLocaleString("uk-UA")}
+    за курсом ${exchangeRate.source}`;
 }
 
 function getStatus(status) {
