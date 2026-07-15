@@ -1,6 +1,6 @@
 const exchangeRate = {
-  "eurToUah": 51.1984,
-  "source": "NBU",
+  "eurToUah": 51.5305,
+  "source": "Monobank",
   "updated": "2026-07-15"
 };
 
@@ -242,7 +242,7 @@ const products = [
     "sku": "W0015",
     "category": "Годинники",
     "brand": "Cenere",
-    "name": "Cenere USA ",
+    "name": "Cenere USA",
     "currency": "EUR",
     "price": 290,
     "status": "available",
@@ -296,7 +296,7 @@ const products = [
     "sku": "W0018",
     "category": "Годинники",
     "brand": "Cenere",
-    "name": "Cenere USA ",
+    "name": "Cenere USA",
     "currency": "EUR",
     "price": 230,
     "status": "available",
@@ -313,7 +313,7 @@ const products = [
     "sku": "W0019",
     "category": "Годинники",
     "brand": "Seiko",
-    "name": "Seiko Bamboo Limited Edition ",
+    "name": "Seiko Bamboo Limited Edition",
     "currency": "EUR",
     "price": 540,
     "status": "available",
@@ -360,7 +360,7 @@ const products = [
     "sku": "W0020",
     "category": "Годинники",
     "brand": "Cartier",
-    "name": "Cartier Paris VERMEIL ",
+    "name": "Cartier Paris VERMEIL",
     "currency": "EUR",
     "price": 2600,
     "status": "reserved",
@@ -475,7 +475,7 @@ const products = [
     "id": "PV-0028",
     "sku": "J0012",
     "category": "Прикраси",
-    "brand": "Seiko ",
+    "brand": "Seiko",
     "name": "Seiko Pendant Watch",
     "currency": "EUR",
     "price": 300,
