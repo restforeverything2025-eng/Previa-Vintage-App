@@ -107,11 +107,15 @@ function showProduct(productId, source = null) {
 
     document.getElementById("home-new-products").innerHTML = "";
 
-    // scrollToCatalog();
-
     const product = products.find(
         p => p.id === productId
 );
+
+if (!product) {
+
+    return;
+
+}
 
     currentProduct = product;
 
@@ -128,8 +132,6 @@ function showProduct(productId, source = null) {
     currentImages = product.images;
 
     currentImageIndex = 0;
-
-    let currentImage = 0;
 
     const content = document.getElementById("content");
 
