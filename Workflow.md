@@ -53,7 +53,7 @@ clasp push
 
 ---
 
-# PREVIA Boutique
+# PREVIA Vintage-App
 
 ## Начало работы
 

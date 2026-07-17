@@ -6,6 +6,54 @@ Status: Development
 =========================================================
 */
 
+/* =========================================
+   Subcategory Scroll State
+========================================= */
+
+let subcategoryScroll = {
+
+    watches: 0,
+    jewelry: 0
+
+};
+
+function saveSubcategoryScroll(type) {
+
+    const menu = document.querySelector(".subcategory-menu");
+
+    if (!menu) return;
+
+    subcategoryScroll[type] = menu.scrollLeft;
+
+}
+
+function restoreSubcategoryScroll(type) {
+
+    requestAnimationFrame(() => {
+
+        const menu = document.querySelector(".subcategory-menu");
+
+        if (!menu) return;
+
+        menu.scrollLeft = subcategoryScroll[type];
+
+        menu.addEventListener("scroll", () => {
+
+            subcategoryScroll[type] = menu.scrollLeft;
+
+        });
+
+    });
+
+}
+
+function resetSubcategoryScroll() {
+
+    subcategoryScroll.watches = 0;
+    subcategoryScroll.jewelry = 0;
+
+}
+
 function isNewProduct(product) {
 
     const addedDate =
@@ -103,6 +151,9 @@ const brands = [...new Set(
     html += `</div>`;
     
     content.innerHTML = html;
+
+    restoreSubcategoryScroll("jewelry");
+    
 }
 
 function showWatches(brand = "ALL") {
@@ -185,6 +236,8 @@ const brands = [...new Set(
     html += `</div>`;
 
     content.innerHTML = html;
+
+    restoreSubcategoryScroll("watches");
 }
 
 function showAccessories() {

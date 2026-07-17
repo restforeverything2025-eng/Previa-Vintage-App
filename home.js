@@ -111,6 +111,10 @@ function showHomeNewProducts() {
 
 function goHome() {
 
+    resetSubcategoryScroll();
+
+    clearProductUrl();
+
     currentView = "home";
 
     currentCategory = null;

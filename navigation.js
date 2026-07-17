@@ -17,6 +17,24 @@ function getNavigationSource() {
 
 }
 
+/* =========================================
+   URL State
+========================================= */
+
+function clearProductUrl() {
+
+    history.replaceState(
+
+        null,
+
+        "",
+
+        window.location.pathname
+
+    );
+
+}
+
 function updateNavigation() {
 
     const backButton = document.getElementById("backBtn");
@@ -62,14 +80,17 @@ function goBack() {
                 return;
 
             case "category":
+                clearProductUrl();
                 currentCategory();
                 return;
 
             case "favorites":
+                clearProductUrl();
                 currentCategory();
                 return;
 
             default:
+                clearProductUrl();
                 currentCategory();
                 return;
 
@@ -79,10 +100,11 @@ function goBack() {
 
     if (currentView === "category") {
 
-        goHome();
-        return;
+    goHome();
 
-    }
+    return;
+
+}
 
     if (currentView === "favorites") {
 
