@@ -1,7 +1,7 @@
 const exchangeRate = {
-  "eurToUah": 51.0595,
-  "source": "NBU",
-  "updated": "2026-07-17"
+  "eurToUah": 51.5358,
+  "source": "Monobank",
+  "updated": "2026-07-18"
 };
 
 const products = [
@@ -242,7 +242,7 @@ const products = [
     "sku": "W0015",
     "category": "Годинники",
     "brand": "Cenere",
-    "name": "Cenere USA ",
+    "name": "Cenere USA",
     "currency": "EUR",
     "price": 290,
     "status": "available",
@@ -296,7 +296,7 @@ const products = [
     "sku": "W0018",
     "category": "Годинники",
     "brand": "Cenere",
-    "name": "Cenere USA ",
+    "name": "Cenere USA",
     "currency": "EUR",
     "price": 230,
     "status": "available",
@@ -313,7 +313,7 @@ const products = [
     "sku": "W0019",
     "category": "Годинники",
     "brand": "Seiko",
-    "name": "Seiko Bamboo Limited Edition ",
+    "name": "Seiko Bamboo Limited Edition",
     "currency": "EUR",
     "price": 540,
     "status": "available",
@@ -360,7 +360,7 @@ const products = [
     "sku": "W0020",
     "category": "Годинники",
     "brand": "Cartier",
-    "name": "Cartier Paris VERMEIL ",
+    "name": "Cartier Paris VERMEIL",
     "currency": "EUR",
     "price": 2600,
     "status": "reserved",
@@ -494,7 +494,7 @@ const products = [
     "id": "PV-0029",
     "sku": "W0024",
     "category": "Годинники",
-    "brand": "Seiko ",
+    "brand": "Seiko",
     "name": "Best of the Best",
     "currency": "EUR",
     "price": 1,
@@ -510,7 +510,7 @@ const products = [
     "sku": "W0025",
     "category": "Годинники",
     "brand": "Rado",
-    "name": "RADO 🤍",
+    "name": "RADO💛WATERSEALED (204.3612.2)",
     "currency": "EUR",
     "price": 490,
     "status": "available",
