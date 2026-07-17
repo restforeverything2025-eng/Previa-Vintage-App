@@ -1,7 +1,7 @@
 const exchangeRate = {
-  "eurToUah": 51.5358,
-  "source": "Monobank",
-  "updated": "2026-07-16"
+  "eurToUah": 51.0595,
+  "source": "NBU",
+  "updated": "2026-07-17"
 };
 
 const products = [
@@ -242,7 +242,7 @@ const products = [
     "sku": "W0015",
     "category": "Годинники",
     "brand": "Cenere",
-    "name": "Cenere USA",
+    "name": "Cenere USA ",
     "currency": "EUR",
     "price": 290,
     "status": "available",
@@ -296,7 +296,7 @@ const products = [
     "sku": "W0018",
     "category": "Годинники",
     "brand": "Cenere",
-    "name": "Cenere USA",
+    "name": "Cenere USA ",
     "currency": "EUR",
     "price": 230,
     "status": "available",
@@ -313,7 +313,7 @@ const products = [
     "sku": "W0019",
     "category": "Годинники",
     "brand": "Seiko",
-    "name": "Seiko Bamboo Limited Edition",
+    "name": "Seiko Bamboo Limited Edition ",
     "currency": "EUR",
     "price": 540,
     "status": "available",
@@ -360,7 +360,7 @@ const products = [
     "sku": "W0020",
     "category": "Годинники",
     "brand": "Cartier",
-    "name": "Cartier Paris VERMEIL",
+    "name": "Cartier Paris VERMEIL ",
     "currency": "EUR",
     "price": 2600,
     "status": "reserved",
@@ -494,7 +494,7 @@ const products = [
     "id": "PV-0029",
     "sku": "W0024",
     "category": "Годинники",
-    "brand": "Seiko",
+    "brand": "Seiko ",
     "name": "Best of the Best",
     "currency": "EUR",
     "price": 1,
@@ -503,6 +503,21 @@ const products = [
     "description": "Вінтаж Вінтажній 😂",
     "images": [
       "images/W0024/1.jpg"
+    ]
+  },
+  {
+    "id": "PV-0030",
+    "sku": "W0025",
+    "category": "Годинники",
+    "brand": "Rado",
+    "name": "RADO 🤍",
+    "currency": "EUR",
+    "price": 490,
+    "status": "available",
+    "dateAdded": "2026-07-17",
+    "description": "Швейцарська елегантність поза часом. Лаконічний циферблат, витончений корпус і розкішний браслет із міланським плетінням створюють образ, який залишається актуальним незалежно від модних тенденцій. Є аксесуари, які привертають увагу. А є ті, що залишають враження",
+    "images": [
+      "images/W0025/1.jpg"
     ]
   }
 ];
