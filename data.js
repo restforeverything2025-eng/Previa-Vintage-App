@@ -502,7 +502,8 @@ const products = [
     "dateAdded": "2026-07-15",
     "description": "Вінтаж Вінтажній 😂",
     "images": [
-      "images/W0024/1.jpg"
+      "images/W0024/1.jpg",
+      "images/W0024/2.jpg"
     ]
   },
   {
