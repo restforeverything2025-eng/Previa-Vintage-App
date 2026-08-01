@@ -11,3 +11,21 @@ Build a reliable CMS where the owner thinks about products, not code.
 5. Intelligence before beauty.
 6. Never bypass validation.
 7. Document architecture before expanding it.
+
+# Completed Modules
+### Dashboard v2.0
+
+Dashboard has been redesigned into a compact administrative overview.
+
+Features:
+
+- two-column layout;
+- statistics cards;
+- publication summary card;
+- modern card styling;
+- no scrolling on standard screens;
+- optimized readability.
+
+Purpose:
+
+Provide instant project status immediately after opening CMS.
