@@ -37,7 +37,7 @@ function showHomeNewProducts() {
 
     let html = `
         <h2 class="home-section-title">
-            NEW ARRIVALS
+            Recent Discoveries
         </h2>
 
         <div class="products-grid">

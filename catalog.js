@@ -43,6 +43,18 @@ function restoreSubcategoryScroll(type) {
 
         });
 
+        menu.addEventListener("wheel", (event) => {
+
+        if (Math.abs(event.deltaY) > Math.abs(event.deltaX)) {
+
+        event.preventDefault();
+
+        menu.scrollLeft += event.deltaY;
+
+    }
+
+        }, { passive: false });
+
     });
 
 }
@@ -352,7 +364,7 @@ function showNewProducts() {
     <div class="top-actions">
 
     </div>
-    <h2>NEW ARRIVALS</h2>
+    <h2>Recent Discoveries</h2>
     <div class="products-grid">
 `;
 

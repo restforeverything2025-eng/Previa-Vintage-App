@@ -251,11 +251,16 @@ if (!product) {
 
     ${renderRelatedProducts(product)}
 
-            <button onclick="reserveProduct('${product.name}')">
-                💬 Написати в Telegram
+            <button
+                class="telegram-button"
+                onclick="reserveProduct('${product.name}')"
+         >
+                ${Icons.getTelegram()}
+                Ask about this piece
             </button>
+            
 <p class="telegram-note">
-    Напишіть менеджеру та вкажіть Product Code товару.
+    Please include the Product Code in your message.
 </p>
             <br><br>
 
