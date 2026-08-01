@@ -1,7 +1,7 @@
 const exchangeRate = {
   "eurToUah": 51.8001,
   "source": "Monobank",
-  "updated": "2026-07-31"
+  "updated": "2026-08-01"
 };
 
 const products = [
@@ -476,22 +476,6 @@ const products = [
     ]
   },
   {
-    "id": "PV-0029",
-    "sku": "W0024",
-    "category": "Годинники",
-    "brand": "Seiko",
-    "name": "Best of the Best",
-    "currency": "EUR",
-    "price": 1,
-    "status": "sold",
-    "dateAdded": "2026-07-15",
-    "description": "Вінтаж Вінтажній 😂",
-    "images": [
-      "images/W0024/1.jpg",
-      "images/W0024/2.jpg"
-    ]
-  },
-  {
     "id": "PV-0030",
     "sku": "W0025",
     "category": "Годинники",
@@ -524,21 +508,6 @@ const products = [
       "images/W0026/3.jpg",
       "images/W0026/4.jpg",
       "images/W0026/5.jpg"
-    ]
-  },
-  {
-    "id": "PV-0014",
-    "sku": "W0014",
-    "category": "Годинники",
-    "brand": "Christian Dior",
-    "name": "Christian Dior",
-    "currency": "EUR",
-    "price": 430,
-    "status": "available",
-    "dateAdded": "2026-07-02",
-    "description": "Витончений вінтажний годинник Christian Dior",
-    "images": [
-      "images/W0014/1.JPG"
     ]
   }
 ];
