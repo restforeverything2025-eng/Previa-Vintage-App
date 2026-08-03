@@ -6,6 +6,14 @@ Status: Development
 =========================================================
 */
 
+/* =========================================
+   Timeline Configuration
+========================================= */
+
+const TIMELINE_START = 1970;
+
+const TIMELINE_END = 2020;
+
 function formatPrice(product) {
 
     const symbols = {
@@ -260,6 +268,39 @@ if (!product) {
         </span>
 
     </div>
+
+         <br>
+
+    ${product.era ? `
+
+<div class="era-timeline">
+
+    <span class="timeline-year">
+        ${TIMELINE_START}
+    </span>
+
+    <div class="timeline-line">
+
+        <div
+            class="timeline-dot"
+            style="left:${
+    Math.max( 
+        0,
+    Math.min(
+        100,
+        ((Number(product.era) - TIMELINE_START) /
+        (TIMELINE_END - TIMELINE_START)) * 100))}%"
+        ></div>
+
+    </div>
+
+    <span class="timeline-year">
+        ${TIMELINE_END}
+    </span>
+
+</div>
+
+` : ""}    
 
 </div>
 
