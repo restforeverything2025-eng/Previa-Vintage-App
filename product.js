@@ -81,19 +81,21 @@ function reserveProduct(productName) {
 
     const telegramUsername = Config.telegramUsername;
 
-    const appUrl =
-        `tg://resolve?domain=${telegramUsername}`;
+    const appUrl = `tg://resolve?domain=${telegramUsername}`;
 
-    const webUrl =
-        `https://t.me/${telegramUsername}`;
+    const webUrl = `https://t.me/${telegramUsername}`;
 
     window.location.href = appUrl;
 
     setTimeout(() => {
 
-        window.open(webUrl, "_blank");
+        if (document.visibilityState === "visible") {
 
-    }, 700);
+            window.location.href = webUrl;
+
+        }
+
+    }, 800);
 
 }
 

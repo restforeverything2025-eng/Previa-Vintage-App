@@ -1696,7 +1696,17 @@ body.search-mode #search-screen {
     box-shadow:
         0 5px 14px rgba(0,0,0,.18);
 
+    cursor:pointer;
+
+    user-select:none;
+
+    -webkit-tap-highlight-color:transparent;
+
+    touch-action:manipulation;
+
 }
+
+@media (hover: hover){
 
 .telegram-button:hover{
 
@@ -1712,6 +1722,8 @@ body.search-mode #search-screen {
 
     box-shadow:
         0 8px 18px rgba(0,0,0,.22);
+
+}
 
 }
 
