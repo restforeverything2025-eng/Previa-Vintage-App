@@ -197,6 +197,8 @@ if (!product) {
 
     </div>
 
+         <br>
+
     <div class="info-row">
 
         <span class="info-title">
@@ -209,7 +211,9 @@ if (!product) {
 
     </div>
 
-            <div class="info-row">
+         <br>
+
+    <div class="info-row">
 
         <span class="info-title">
             Price
@@ -229,6 +233,8 @@ if (!product) {
 
     </div>
 
+         <br>
+
     <div class="info-row">
 
         <span class="info-title">
@@ -237,6 +243,20 @@ if (!product) {
 
         <span class="info-value">
             ${getStatus(product.status)}
+        </span>
+
+    </div>
+
+         <br>
+
+    <div class="info-row">
+
+        <span class="info-title">
+            Era
+        </span>
+
+        <span class="info-value">
+             ${product.era || "—"}
         </span>
 
     </div>
