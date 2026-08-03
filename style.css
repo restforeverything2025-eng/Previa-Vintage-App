@@ -1775,18 +1775,71 @@ body.search-mode #search-screen {
 
     top:50%;
 
-    transform:translate(-50%,-50%);
+    width:8px;
 
-    width:10px;
+    height:8px;
 
-    height:10px;
+    background:#0e0d0d;
 
-    border-radius:50%;
+    border:1px solid #b88a45;
 
-    background:#d8b46a;
+    transform:translate(-50%,-50%) rotate(45deg);
 
-    border:2px solid #630000;
+    box-shadow:
+        0 0 6px rgba(106,35,40,.35);
 
-    box-shadow:0 0 0 2px rgba(215,180,106,.15);
+}
+
+.timeline-range{
+
+    position:absolute;
+
+    top:50%;
+
+    transform:translateY(-50%);
+
+    height:2px;
+
+    border-radius:999px;
+
+    background:linear-gradient(
+        180deg,
+        #980469,
+        #980469
+    );
+
+    box-shadow:
+        0 1px 4px rgba(0,0,0,.20);
+
+}
+
+.timeline-range-start,
+.timeline-range-end{
+
+    position:absolute;
+
+    top:50%;
+
+    width:8px;
+
+    height:8px;
+
+    background:#0e0d0d;
+
+    border:1px solid #b88a45;
+
+    transform:translate(-50%,-50%) rotate(45deg);
+
+}
+
+.timeline-range-start{
+
+    left:0;
+
+}
+
+.timeline-range-end{
+
+    left:100%;
 
 }

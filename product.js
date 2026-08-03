@@ -14,6 +14,94 @@ const TIMELINE_START = 1970;
 
 const TIMELINE_END = 2020;
 
+/* =========================================
+   Timeline Helpers
+========================================= */
+
+function getTimelinePosition(year) {
+
+    return Math.max(
+        0,
+        Math.min(
+            100,
+            ((Number(year) - TIMELINE_START) /
+            (TIMELINE_END - TIMELINE_START)) * 100
+        )
+    );
+
+}
+
+/* =========================================
+   Era Timeline
+========================================= */
+
+function renderEraTimeline(product) {
+
+    if (!product.eraFrom) {
+
+        return "";
+
+    }
+
+    const eraFromPercent =
+        getTimelinePosition(product.eraFrom);
+
+    const eraToPercent =
+        getTimelinePosition(product.eraTo);
+
+    const isEraRange =
+        Number(product.eraFrom) !== Number(product.eraTo);
+
+    return `
+
+<div class="era-timeline">
+
+    <span class="timeline-year">
+        ${TIMELINE_START}
+    </span>
+
+    <div class="timeline-line">
+
+        ${isEraRange ? `
+
+           <div
+               class="timeline-range"
+               style="
+                   left:${eraFromPercent}%;
+
+                   width:${eraToPercent - eraFromPercent}%;
+               "
+            >
+
+               <div class="timeline-range-start"></div>
+
+               <div class="timeline-range-end"></div>
+
+        </div>
+
+        ` : `
+
+            <div
+                class="timeline-dot"
+                style="
+                    left:${eraFromPercent}%;
+                "
+            ></div>
+
+        `}
+
+    </div>
+
+    <span class="timeline-year">
+        ${TIMELINE_END}
+    </span>
+
+</div>
+
+`;
+
+}
+
 function formatPrice(product) {
 
     const symbols = {
@@ -266,45 +354,22 @@ if (!product) {
         </span>
 
         <span class="info-value">
-             ${product.era || "—"}
+             ${
+                 product.eraFrom
+                     ? (
+                        product.eraFrom === product.eraTo
+                            ? product.eraFrom
+                            : `${product.eraFrom}–${product.eraTo}`
+    )
+    : "—"
+}
         </span>
 
     </div>
 
          <br>
 
-    ${product.era ? `
-
-<div class="era-timeline">
-
-    <span class="timeline-year">
-        ${TIMELINE_START}
-    </span>
-
-    <div class="timeline-line">
-
-        <div
-            class="timeline-dot"
-            style="left:${
-    Math.max( 
-        0,
-    Math.min(
-        100,
-        ((Number(product.era) - TIMELINE_START) /
-        (TIMELINE_END - TIMELINE_START)) * 100))}%"
-        ></div>
-
-    </div>
-
-    <span class="timeline-year">
-        ${TIMELINE_END}
-    </span>
-
-</div>
-
-` : ""}    
-
-</div>
+    ${renderEraTimeline(product)}
 
 <p class="product-description">
 
