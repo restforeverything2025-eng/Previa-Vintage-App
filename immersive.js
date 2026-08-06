@@ -48,7 +48,7 @@ function connectTelegram() {
 
     }
 
-    alert("Підключення Telegram буде доступне незабаром.");
+    TelegramBridge.connect();
 
 }
 

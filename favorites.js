@@ -23,15 +23,19 @@ const Favorites = (() => {
     let favorites = [];
 
     function init() {
-        try {
-            favorites = JSON.parse(localStorage.getItem(FAVORITES_STORAGE_KEY)) || [];
-        } catch {
-            favorites = [];
-        }
+
+    favorites =
+        StorageService.get(FAVORITES_STORAGE_KEY) || [];
+
     }
 
     function saveFavorites() {
-        localStorage.setItem(FAVORITES_STORAGE_KEY, JSON.stringify(favorites));
+
+    StorageService.set(
+        FAVORITES_STORAGE_KEY,
+        favorites
+    );
+
     }
 
     function has(id) {

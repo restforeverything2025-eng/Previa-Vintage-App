@@ -26,12 +26,29 @@ const Identity = (() => {
     }
 
     function setCurrent(identity) {
+
+    if (!Customer.isCustomer(identity)) {
+
+        throw new Error(
+            "Identity accepts only Customer objects."
+        );
+
+    }
+
     currentIdentity = identity;
+
+    }
+     
+    function clear() {
+
+    currentIdentity = null;
+
     }
 
     return {
         getCurrent,
         setCurrent,
+        clear,
         isAuthenticated
         
     };
