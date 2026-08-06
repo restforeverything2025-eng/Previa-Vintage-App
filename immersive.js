@@ -14,6 +14,14 @@ Responsibility:
 
 function showImmerse() {
 
+    if (Identity.isAuthenticated()) {
+
+        alert("Customer Panel буде доступна незабаром.");
+
+        return;
+
+    }
+
     document
         .getElementById("immerse-modal")
         .classList
@@ -31,6 +39,14 @@ function closeImmerse() {
 }
 
 function connectTelegram() {
+
+    if (Identity.isAuthenticated()) {
+
+        alert("Customer Panel буде доступна незабаром.");
+
+        return;
+
+    }
 
     alert("Підключення Telegram буде доступне незабаром.");
 

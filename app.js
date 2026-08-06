@@ -94,6 +94,10 @@ window.addEventListener("scroll", function() {
 
 Favorites.init();
 
+    console.log("Current Identity:", Identity.getCurrent());
+
+    console.log("Authenticated:", Identity.isAuthenticated());
+
     document.getElementById("backBtn").innerHTML =
     Icons.getBack();
 
