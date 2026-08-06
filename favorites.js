@@ -7,29 +7,31 @@ favorites.js
 Favorites Module
 
 Responsibility:
-- Manage favorite products
-- Store favorites in Local Storage
-- Add / Remove favorites
-- Check favorite status
+- Manage favorite products.
+- Provide the public Favorites API.
+- Persist favorites using the current Storage Provider.
+
+Current Storage Provider:
+- Browser Local Storage
 ==================================================
 */
 
 const Favorites = (() => {
 
-    const STORAGE_KEY = "previa-favorites";
+    const FAVORITES_STORAGE_KEY = "previa-favorites";
 
     let favorites = [];
 
     function init() {
         try {
-            favorites = JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
+            favorites = JSON.parse(localStorage.getItem(FAVORITES_STORAGE_KEY)) || [];
         } catch {
             favorites = [];
         }
     }
 
-    function save() {
-        localStorage.setItem(STORAGE_KEY, JSON.stringify(favorites));
+    function saveFavorites() {
+        localStorage.setItem(FAVORITES_STORAGE_KEY, JSON.stringify(favorites));
     }
 
     function has(id) {
@@ -44,7 +46,7 @@ const Favorites = (() => {
             favorites.push(id);
         }
 
-        save();
+        saveFavorites();
     }
 
     function getAll() {
@@ -54,7 +56,11 @@ const Favorites = (() => {
     function count() {
         return favorites.length;
     }
-
+/*
+==================================================
+Public API
+==================================================
+*/
     return {
         init,
         toggle,
@@ -64,7 +70,16 @@ const Favorites = (() => {
     };
 
 })();
+/*
+==================================================
+Favorites UI Helpers
 
+These helpers connect the Favorites API
+with the browser user interface.
+
+They are not part of the Favorites business API.
+==================================================
+*/
 function toggleFavorite(productId, button, event) {
 
     if (event) {
