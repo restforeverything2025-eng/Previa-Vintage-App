@@ -14,17 +14,43 @@ Responsibility:
 
 const StorageService = (() => {
 
-    const provider = LocalStorageProvider;
+    function getProvider() {
+
+        if (Identity.isAuthenticated()) {
+
+            return LocalStorageProvider;
+
+        }
+
+        return LocalStorageProvider;
+
+    }
 
     return {
 
-        get: provider.get,
+        get(key) {
 
-        set: provider.set,
+            return getProvider().get(key);
 
-        remove: provider.remove,
+        },
 
-        clear: provider.clear
+        set(key, value) {
+
+            getProvider().set(key, value);
+
+        },
+
+        remove(key) {
+
+            getProvider().remove(key);
+
+        },
+
+        clear() {
+
+            getProvider().clear();
+
+        }
 
     };
 
