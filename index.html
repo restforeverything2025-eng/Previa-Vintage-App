@@ -65,6 +65,13 @@
 
     <button
         class="home-btn"
+        onclick="showImmerse()"
+>
+        ⓘ Immerse
+    </button>
+
+    <button
+        class="home-btn"
         onclick="showFavorites()"
     >
         ♡ Favorites
@@ -186,6 +193,40 @@
 
 <div id="toast"></div>
 
+<div id="immerse-modal" class="immerse-modal hidden">
+
+    <div class="immerse-window">
+
+        <h2>PREVIA</h2>
+
+        <p>❤ Ваші вподобані товари завжди з вами</p>
+
+        <p>🔍 Персональний пошук вінтажних речей</p>
+
+        <p>🎁 Переваги для колекціонерів</p>
+
+        <button
+            class="immerse-connect-btn"
+            onclick="connectTelegram()"
+        >
+            Підключитися через Telegram
+        </button>
+        
+        <p class="immerse-coming-soon">
+            Незабаром
+        </p>
+
+        <button
+            class="immerse-close-btn"
+            onclick="closeImmerse()"
+        >
+            Закрити
+        </button>
+
+    </div>
+
+</div>
+
 <!-- =========================================
      JavaScript Modules
 ========================================= -->
@@ -205,6 +246,7 @@
 <script src="home.js"></script>
 <script src="favorites.js"></script>
 <script src="favorites-page.js"></script>
+<script src="immersive.js"></script>
 <script src="app.js"></script>
 
 </body>
