@@ -94,9 +94,42 @@ window.addEventListener("scroll", function() {
 
 Favorites.init();
 
-    console.log("Current Identity:", Identity.getCurrent());
+async function initializeIdentity() {
 
-    console.log("Authenticated:", Identity.isAuthenticated());
+    try {
+
+        const identity =
+            await TelegramBridge.connect();
+
+        console.log(
+            "Current Identity:",
+            identity
+        );
+
+        console.log(
+            "Authenticated:",
+            Identity.isAuthenticated()
+        );
+
+    } catch (error) {
+
+        console.error(
+            "Identity initialization failed:",
+            error
+        );
+
+        Identity.clear();
+
+        console.log(
+            "Authenticated:",
+            Identity.isAuthenticated()
+        );
+
+    }
+
+}
+
+initializeIdentity();
 
     document.getElementById("backBtn").innerHTML =
     Icons.getBack();
