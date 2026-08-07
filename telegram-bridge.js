@@ -17,16 +17,32 @@ const TelegramBridge = (() => {
 
     async function connect() {
 
-        const customer =
-            await CustomerClient.getOrCreateCustomer(
+        const user =
+    Telegram.WebApp.initDataUnsafe.user;
 
-                "telegram",
+if (!user) {
 
-                "demo-user",
+    throw new Error(
+        "Telegram user data is unavailable."
+    );
 
-                "Demo Customer"
+}
 
-            );
+const displayName =
+    [user.first_name, user.last_name]
+        .filter(Boolean)
+        .join(" ");
+
+const customer =
+    await CustomerClient.getOrCreateCustomer(
+
+        "telegram",
+
+        String(user.id),
+
+        displayName
+
+    );
 
         const identity =
             Customer.create({
