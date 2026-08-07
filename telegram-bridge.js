@@ -45,18 +45,21 @@ const customer =
     );
 
         const identity =
-            Customer.create({
+    Customer.create({
 
-                provider:
-                    customer.provider,
+        customerId:
+            customer.customerId,
 
-                id:
-                    customer.providerId,
+        provider:
+            customer.provider,
 
-                name:
-                    customer.displayName
+        id:
+            customer.providerId,
 
-            });
+        name:
+            customer.displayName
+
+    });
 
         Identity.setCurrent(identity);
 

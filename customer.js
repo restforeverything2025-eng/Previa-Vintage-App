@@ -17,39 +17,45 @@ const Customer = (() => {
 
     function create({
 
+    customerId,
+
+    provider,
+
+    id,
+
+    name
+
+}) {
+
+    return Object.freeze({
+
+        customerId,
+
         provider,
 
         id,
 
         name
 
-    }) {
+    });
 
-        return Object.freeze({
-
-            provider,
-
-            id,
-
-            name
-
-        });
-
-    }
+}
 
     function isCustomer(value) {
 
-        return (
+    return (
 
-            value !== null &&
-            typeof value === "object" &&
-            value.provider !== undefined &&
-            value.id !== undefined &&
-            value.name !== undefined
+        value !== null &&
+        typeof value === "object" &&
 
-        );
+        value.customerId !== undefined &&
+        value.provider !== undefined &&
+        value.id !== undefined &&
+        value.name !== undefined
 
-    }
+    );
+
+}
 
     return {
 

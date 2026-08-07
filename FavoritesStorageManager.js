@@ -39,7 +39,7 @@ const FavoritesStorageManager = (() => {
 
         }
 
-        return identity.id;
+        return identity.customerId;
 
     }
 
