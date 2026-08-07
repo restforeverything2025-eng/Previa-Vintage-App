@@ -15,23 +15,42 @@ Responsibility:
 
 const TelegramBridge = (() => {
 
-    function connect() {
+    async function connect() {
 
-    const customer = Customer.create({
+        const customer =
+            await CustomerClient.getOrCreateCustomer(
 
-    provider: "telegram",
+                "telegram",
 
-    id: "demo-user",
+                "demo-user",
 
-    name: "Demo Customer"
+                "Demo Customer"
 
-});
+            );
 
-Identity.setCurrent(customer);
+        const identity =
+            Customer.create({
 
-    console.log("Telegram connected.");
+                provider:
+                    customer.provider,
 
-}
+                id:
+                    customer.providerId,
+
+                name:
+                    customer.displayName
+
+            });
+
+        Identity.setCurrent(identity);
+
+        console.log(
+            "Telegram connected."
+        );
+
+        return identity;
+
+    }
 
     return {
         connect
