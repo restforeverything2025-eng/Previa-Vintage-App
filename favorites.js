@@ -45,12 +45,17 @@ const Favorites = (() => {
         customerId
     ) {
 
-        favorites =
+        const records =
             await provider.getAll(
-                customerId
-            );
+            customerId
+        );
 
-        return;
+        favorites =
+            records.map(
+            record => record.productId
+        );
+
+    return;
 
     }
 
