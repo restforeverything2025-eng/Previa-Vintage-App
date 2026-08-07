@@ -11,8 +11,12 @@ Responsibility:
 - Provide the public Favorites API.
 - Persist favorites using the current Storage Provider.
 
-Current Storage Provider:
-- Browser Local Storage
+Storage Provider:
+
+Selected by FavoritesStorageManager
+
+- CloudFavoritesStorage
+- LocalFavoritesStorage
 ==================================================
 */
 
@@ -22,36 +26,130 @@ const Favorites = (() => {
 
     let favorites = [];
 
-    function init() {
+    async function init() {
+
+    const provider =
+        FavoritesStorageManager.getProvider();
+
+    const customerId =
+        FavoritesStorageManager.getCustomerId();
+
+    /*
+    =========================================
+    Cloud Storage
+    =========================================
+    */
+
+    if (
+        provider === CloudFavoritesStorage &&
+        customerId
+    ) {
+
+        favorites =
+            await provider.getAll(
+                customerId
+            );
+
+        return;
+
+    }
+
+
+    /*
+    =========================================
+    Local Storage
+    =========================================
+    */
 
     favorites =
-        StorageService.get(FAVORITES_STORAGE_KEY) || [];
+        await provider.getAll();
 
-    }
-
-    function saveFavorites() {
-
-    StorageService.set(
-        FAVORITES_STORAGE_KEY,
-        favorites
-    );
-
-    }
+}
 
     function has(id) {
         return favorites.includes(id);
     }
 
-    function toggle(id) {
+    async function toggle(id) {
+
+    const provider =
+        FavoritesStorageManager.getProvider();
+
+    const customerId =
+        FavoritesStorageManager.getCustomerId();
+
+
+    /*
+    =========================================
+    Cloud Storage
+    =========================================
+    */
+
+    if (
+        provider === CloudFavoritesStorage &&
+        customerId
+    ) {
 
         if (has(id)) {
-            favorites = favorites.filter(item => item !== id);
-        } else {
+
+    await provider.remove(
+        customerId,
+        id
+    );
+
+    favorites =
+        favorites.filter(
+            item => item !== id
+        );
+
+} 
+        
+        else {
+
+            await provider.add(
+                customerId,
+                id
+            );
+
             favorites.push(id);
+
         }
 
-        saveFavorites();
+        return;
+
     }
+
+
+    /*
+    =========================================
+    Local Storage
+    =========================================
+    */
+
+    if (has(id)) {
+
+        favorites =
+            favorites.filter(
+                item => item !== id
+            );
+
+        await provider.remove(
+            null,
+            id
+        );
+
+    } else {
+
+        await provider.add(
+            null,
+            id
+        );
+
+        favorites.push(id);
+
+    }
+
+}
 
     function getAll() {
         return [...favorites];
@@ -84,7 +182,7 @@ with the browser user interface.
 They are not part of the Favorites business API.
 ==================================================
 */
-function toggleFavorite(productId, button, event) {
+async function toggleFavorite(productId, button, event) {
 
     if (event) {
 
@@ -92,7 +190,7 @@ function toggleFavorite(productId, button, event) {
 
     }
 
-    Favorites.toggle(productId);
+    await Favorites.toggle(productId);
 
     const isFavorite =
         Favorites.has(productId);

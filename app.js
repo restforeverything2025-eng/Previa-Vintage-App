@@ -89,14 +89,18 @@ window.addEventListener("scroll", function() {
 });
 
 /* =========================================
-   Application Initialization
+Application Initialization
 ========================================= */
 
-Favorites.init();
-
-async function initializeIdentity() {
+async function initializeApplication() {
 
     try {
+
+        /*
+        =========================================
+        Identity
+        =========================================
+        */
 
         const identity =
             await TelegramBridge.connect();
@@ -111,14 +115,35 @@ async function initializeIdentity() {
             Identity.isAuthenticated()
         );
 
+
+        /*
+        =========================================
+        Favorites
+        =========================================
+        */
+
+        await Favorites.init();
+
+        console.log(
+            "Favorites initialized."
+        );
+
+
     } catch (error) {
 
         console.error(
-            "Identity initialization failed:",
+            "Application initialization failed:",
             error
         );
 
         Identity.clear();
+
+        /*
+        If Identity initialization fails,
+        Favorites will use Local Storage.
+        */
+
+        await Favorites.init();
 
         console.log(
             "Authenticated:",
@@ -127,7 +152,48 @@ async function initializeIdentity() {
 
     }
 
+
+    /*
+    =========================================
+    Application UI
+    =========================================
+    */
+
+    document.getElementById("backBtn").innerHTML =
+        Icons.getBack();
+
+    document.getElementById("scrollTopBtn").innerHTML =
+        Icons.getUp();
+
+    document.getElementById("lightboxPrev").innerHTML =
+        Icons.getBack();
+
+    document.getElementById("lightboxNext").innerHTML =
+        Icons.getNext();
+
+    document.getElementById("lightboxClose").innerHTML =
+        Icons.getClose();
+
+
+    initializeHome();
+
+    const params =
+        new URLSearchParams(
+            window.location.search
+        );
+
+    const productId =
+        params.get("product");
+
+    if (productId) {
+
+        showProduct(productId);
+
+    }
+
 }
+
+initializeApplication();
 
 initializeIdentity();
 
