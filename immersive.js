@@ -14,20 +14,55 @@ Responsibility:
 ==================================================
 */
 
+
 function showImmerse() {
+
+    const modal =
+        document.getElementById("immerse-modal");
+
+    const connectButton =
+        document.querySelector(
+            ".immerse-connect-btn"
+        );
+
+    const status =
+        document.querySelector(
+            ".immerse-coming-soon"
+        );
+
 
     if (Identity.isAuthenticated()) {
 
-        alert(
-            "Customer Panel буде доступна незабаром."
-        );
+        connectButton.style.display =
+            "none";
 
-        return;
+        status.textContent =
+            "Ви вже з нами ❤️";
+
+        status.style.color =
+            "#d4af37";
+
+        status.style.fontWeight =
+            "600";
+
+    } else {
+
+        connectButton.style.display =
+            "block";
+
+        status.textContent =
+            "Незабаром";
+
+        status.style.color =
+            "";
+
+        status.style.fontWeight =
+            "";
 
     }
 
-    document
-        .getElementById("immerse-modal")
+
+    modal
         .classList
         .remove("hidden");
 
@@ -48,13 +83,12 @@ async function enterCustomerPlatform() {
 
     if (Identity.isAuthenticated()) {
 
-        alert(
-            "Customer Panel буде доступна незабаром."
-        );
+        showImmerse();
 
         return;
 
     }
+
 
     try {
 
@@ -66,13 +100,16 @@ async function enterCustomerPlatform() {
             identity
         );
 
+
         await Favorites.init();
 
         console.log(
             "Cloud Favorites initialized."
         );
 
+
         closeImmerse();
+
 
     } catch (error) {
 
@@ -90,6 +127,7 @@ function initializeImmerse() {
 
     const modal =
         document.getElementById("immerse-modal");
+
 
     modal.addEventListener(
         "click",

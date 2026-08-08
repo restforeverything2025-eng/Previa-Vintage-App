@@ -96,6 +96,39 @@ async function initializeApplication() {
 
     /*
     =========================================
+    Identity
+    =========================================
+    */
+
+    try {
+
+        const identity =
+            await TelegramBridge.connect();
+
+        console.log(
+            "Current Identity:",
+            identity
+        );
+
+        console.log(
+            "Authenticated:",
+            Identity.isAuthenticated()
+        );
+
+    } catch (error) {
+
+        console.error(
+            "Identity initialization failed:",
+            error
+        );
+
+        Identity.clear();
+
+    }
+
+
+    /*
+    =========================================
     Favorites
     =========================================
     */
@@ -159,30 +192,3 @@ async function initializeApplication() {
 }
 
 initializeApplication();
-
-    document.getElementById("backBtn").innerHTML =
-    Icons.getBack();
-
-    document.getElementById("scrollTopBtn").innerHTML =
-    Icons.getUp();
-
-    document.getElementById("lightboxPrev").innerHTML =
-    Icons.getBack();
-
-    document.getElementById("lightboxNext").innerHTML =
-    Icons.getNext();
-
-    document.getElementById("lightboxClose").innerHTML =
-    Icons.getClose();
-      
-initializeHome();
-
-const params = new URLSearchParams(window.location.search);
-
-const productId = params.get("product");
-
-if (productId) {
-
-    showProduct(productId);
-
-}
