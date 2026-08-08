@@ -193,3 +193,62 @@ Examples:
 - AI Recommendations
 
 Future modules should follow the same architectural principles without changing the existing foundation.
+
+## Customer + Cloud Favorites Integration — PASSED
+
+Статус: проверено на реальном пользовательском сценарии.
+
+### Customer
+
+- Telegram-пользователь автоматически определяется через Telegram.
+- Customer создаётся через Customer API.
+- Данные Customer сохраняются в Google Sheets → `Customers`.
+- При первом входе после очистки таблицы был создан `C000001`.
+- Повторный вход не создаёт нового Customer.
+- Идентификация выполняется по `provider + providerId`.
+- Изменение имени пользователя в Telegram не создаёт нового Customer.
+
+### Identity
+
+- TelegramBridge получает данные пользователя.
+- CustomerClient получает или создаёт Customer.
+- Identity получает данные Customer и сохраняет текущую идентичность.
+- `Identity.isAuthenticated()` корректно определяет авторизованного пользователя.
+- `FavoritesStorageManager` получает `customerId` из текущей Identity.
+
+### Cloud Favorites
+
+- Авторизованный пользователь получает `CloudFavoritesStorage`.
+- Favorites привязаны к `customerId`.
+- Добавление товара создаёт запись в Google Sheets → `Favorites`.
+- Удаление товара удаляет соответствующую запись.
+- Поддерживается несколько Favorites одновременно.
+- Favorites сохраняются после обновления и повторного открытия Boutique.
+- Favorites синхронизируются между устройствами.
+- Проверен сценарий телефон → ПК.
+- Проверен сценарий ПК → телефон.
+- Google Sheets `Favorites` используется как Single Source of Truth.
+
+### Integration Test
+
+Проверена полная цепочка:
+
+Telegram  
+→ TelegramBridge  
+→ CustomerClient  
+→ Customer  
+→ Identity  
+→ FavoritesStorageManager  
+→ CloudFavoritesStorage  
+→ Favorites  
+→ Google Sheets
+
+Результат: **PASSED**.
+
+### Current State
+
+Customer infrastructure и Cloud Favorites работают в реальном пользовательском сценарии.
+
+Customer Panel / `Immerse` имеет подготовленный пользовательский интерфейс, однако полноценная Customer Panel ещё не реализована.
+
+Следующий этап: подключение существующего Customer Panel UI к уже работающей Customer / Identity инфраструктуре.
