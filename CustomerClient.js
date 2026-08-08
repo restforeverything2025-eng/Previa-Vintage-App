@@ -20,39 +20,42 @@ const CustomerClient = (() => {
         "https://script.google.com/macros/s/AKfycbxWHGxRB3Edb5_cMZocgqswx7I_y4KKCb67RwTVYBMoqoTCvLTTXXOmsmGw9af3i2I8Fg/exec";
 
     async function getOrCreateCustomer(
-        provider,
-        providerId,
-        displayName
-    ) {
+    provider,
+    providerId,
+    displayName,
+    username
+) {
 
-        const response =
-            await fetch(API_URL, {
+    const response =
+        await fetch(API_URL, {
 
-                method: "POST",
+            method: "POST",
 
-                headers: {
-                    "Content-Type":
+            headers: {
+                "Content-Type":
                     "text/plain;charset=UTF-8"
-     },
+            },
 
-                body: JSON.stringify({
+            body: JSON.stringify({
 
-                    action:
-                        "customer.getOrCreate",
+                action:
+                    "customer.getOrCreate",
 
-                    data: {
+                data: {
 
-                        provider,
+                    provider,
 
-                        providerId,
+                    providerId,
 
-                        displayName
+                    displayName,
 
-                    }
+                    username
 
-                })
+                }
 
-            });
+            })
+
+        });
 
         if (!response.ok) {
 

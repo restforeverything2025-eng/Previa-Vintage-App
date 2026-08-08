@@ -7,6 +7,7 @@ telegram-bridge.js
 Telegram Bridge
 
 Responsibility:
+
 - Communicate with Telegram.
 - Convert Telegram data into PREVIA Identity.
 - Never contain business logic.
@@ -18,48 +19,53 @@ const TelegramBridge = (() => {
     async function connect() {
 
         const user =
-    Telegram.WebApp.initDataUnsafe.user;
+            Telegram.WebApp.initDataUnsafe.user;
 
-if (!user) {
+        if (!user) {
 
-    throw new Error(
-        "Telegram user data is unavailable."
-    );
+            throw new Error(
+                "Telegram user data is unavailable."
+            );
 
-}
+        }
 
-const displayName =
-    [user.first_name, user.last_name]
-        .filter(Boolean)
-        .join(" ");
+        const displayName =
+            [user.first_name, user.last_name]
+                .filter(Boolean)
+                .join(" ");
 
-const customer =
-    await CustomerClient.getOrCreateCustomer(
+        const username =
+            user.username || "";
 
-        "telegram",
+        const customer =
+            await CustomerClient.getOrCreateCustomer(
 
-        String(user.id),
+                "telegram",
 
-        displayName
+                String(user.id),
 
-    );
+                displayName,
+
+                username
+
+            );
 
         const identity =
-    Customer.create({
+            Customer.create({
 
-        customerId:
-            customer.customerId,
+                customerId:
+                    customer.customerId,
 
-        provider:
-            customer.provider,
+                provider:
+                    customer.provider,
 
-        id:
-            customer.providerId,
+                id:
+                    customer.providerId,
 
-        name:
-            customer.displayName
+                name:
+                    customer.displayName
 
-    });
+            });
 
         Identity.setCurrent(identity);
 
