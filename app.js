@@ -94,33 +94,13 @@ Application Initialization
 
 async function initializeApplication() {
 
+    /*
+    =========================================
+    Favorites
+    =========================================
+    */
+
     try {
-
-        /*
-        =========================================
-        Identity
-        =========================================
-        */
-
-        const identity =
-            await TelegramBridge.connect();
-
-        console.log(
-            "Current Identity:",
-            identity
-        );
-
-        console.log(
-            "Authenticated:",
-            Identity.isAuthenticated()
-        );
-
-
-        /*
-        =========================================
-        Favorites
-        =========================================
-        */
 
         await Favorites.init();
 
@@ -128,26 +108,11 @@ async function initializeApplication() {
             "Favorites initialized."
         );
 
-
     } catch (error) {
 
         console.error(
-            "Application initialization failed:",
+            "Favorites initialization failed:",
             error
-        );
-
-        Identity.clear();
-
-        /*
-        If Identity initialization fails,
-        Favorites will use Local Storage.
-        */
-
-        await Favorites.init();
-
-        console.log(
-            "Authenticated:",
-            Identity.isAuthenticated()
         );
 
     }
@@ -194,8 +159,6 @@ async function initializeApplication() {
 }
 
 initializeApplication();
-
-initializeIdentity();
 
     document.getElementById("backBtn").innerHTML =
     Icons.getBack();

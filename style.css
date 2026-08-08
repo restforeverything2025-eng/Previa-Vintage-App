@@ -1963,12 +1963,16 @@ body.search-mode #search-screen {
 
 }
 
-.immerse-coming-soon{
+.immerse-question{
 
-    margin-top:14px;
+    margin-top:24px !important;
 
-    color:#9d9d9d;
+    margin-bottom:4px !important;
 
-    font-size:.9rem;
+    color:#d4af37;
+
+    font-family:"Cormorant Garamond",serif;
+
+    font-size:1.2rem;
 
 }

@@ -1,5 +1,4 @@
 /*
-==================================================
 PREVIA
 
 immersive.js
@@ -7,8 +6,11 @@ immersive.js
 Customer Platform Entry
 
 Responsibility:
+
 - Show Immerse information.
 - Prepare Customer Platform entry point.
+- Start Customer Platform authentication only
+  after explicit customer consent.
 ==================================================
 */
 
@@ -16,7 +18,9 @@ function showImmerse() {
 
     if (Identity.isAuthenticated()) {
 
-        alert("Customer Panel буде доступна незабаром.");
+        alert(
+            "Customer Panel буде доступна незабаром."
+        );
 
         return;
 
@@ -29,6 +33,7 @@ function showImmerse() {
 
 }
 
+
 function closeImmerse() {
 
     document
@@ -38,36 +43,71 @@ function closeImmerse() {
 
 }
 
-function connectTelegram() {
+
+async function enterCustomerPlatform() {
 
     if (Identity.isAuthenticated()) {
 
-        alert("Customer Panel буде доступна незабаром.");
+        alert(
+            "Customer Panel буде доступна незабаром."
+        );
 
         return;
 
     }
 
-    TelegramBridge.connect();
+    try {
+
+        const identity =
+            await TelegramBridge.connect();
+
+        console.log(
+            "Customer Platform entered:",
+            identity
+        );
+
+        await Favorites.init();
+
+        console.log(
+            "Cloud Favorites initialized."
+        );
+
+        closeImmerse();
+
+    } catch (error) {
+
+        console.error(
+            "Customer Platform entry failed:",
+            error
+        );
+
+    }
 
 }
+
 
 function initializeImmerse() {
 
     const modal =
         document.getElementById("immerse-modal");
 
-    modal.addEventListener("click", function(event){
+    modal.addEventListener(
+        "click",
+        function(event) {
 
-        if(event.target === modal){
+            if (event.target === modal) {
 
-            closeImmerse();
+                closeImmerse();
+
+            }
 
         }
+    );
 
-    });
+}
 
-}document.addEventListener(
+
+document.addEventListener(
     "DOMContentLoaded",
     initializeImmerse
 );
