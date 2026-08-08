@@ -96,39 +96,6 @@ async function initializeApplication() {
 
     /*
     =========================================
-    Identity
-    =========================================
-    */
-
-    try {
-
-        const identity =
-            await TelegramBridge.connect();
-
-        console.log(
-            "Current Identity:",
-            identity
-        );
-
-        console.log(
-            "Authenticated:",
-            Identity.isAuthenticated()
-        );
-
-    } catch (error) {
-
-        console.error(
-            "Identity initialization failed:",
-            error
-        );
-
-        Identity.clear();
-
-    }
-
-
-    /*
-    =========================================
     Favorites
     =========================================
     */
