@@ -18,48 +18,47 @@ Responsibility:
 function showImmerse() {
 
     const modal =
-        document.getElementById("immerse-modal");
+    document.getElementById("immerse-modal");
 
     const connectButton =
-        document.querySelector(
-            ".immerse-connect-btn"
-        );
+    document.querySelector(
+        ".immerse-connect-btn"
+    );
 
-    const status =
-        document.querySelector(
-            ".immerse-coming-soon"
-        );
+    const closeButton =
+    document.querySelector(
+        ".immerse-close-btn"
+    );
+
+    const question =
+    document.querySelector(
+        ".immerse-question"
+    );
 
 
     if (Identity.isAuthenticated()) {
 
-        connectButton.style.display =
-            "none";
+    question.textContent =
+        "Ви вже з нами ❤️";
 
-        status.textContent =
-            "Ви вже з нами ❤️";
+    connectButton.style.display =
+        "none";
 
-        status.style.color =
-            "#d4af37";
+    closeButton.textContent =
+        "OK";
 
-        status.style.fontWeight =
-            "600";
+} else {
 
-    } else {
+    question.textContent =
+        "Погрузитися?";
 
-        connectButton.style.display =
-            "block";
+    connectButton.style.display =
+        "block";
 
-        status.textContent =
-            "Незабаром";
+    closeButton.textContent =
+        "НІ";
 
-        status.style.color =
-            "";
-
-        status.style.fontWeight =
-            "";
-
-    }
+}
 
 
     modal
@@ -77,7 +76,6 @@ function closeImmerse() {
         .add("hidden");
 
 }
-
 
 async function enterCustomerPlatform() {
 
