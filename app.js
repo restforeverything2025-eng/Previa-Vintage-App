@@ -127,10 +127,7 @@ try {
         error
     );
 
-    alert(
-    "Identity restoration failed:\n" +
-    error.message
-);
+    Identity.clear();
 
     }
 
