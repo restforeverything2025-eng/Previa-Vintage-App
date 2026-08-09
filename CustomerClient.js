@@ -82,9 +82,68 @@ const CustomerClient = (() => {
 
     }
 
+    async function findCustomer(
+    provider,
+    providerId
+) {
+
+    const response =
+        await fetch(API_URL, {
+
+            method: "POST",
+
+            headers: {
+                "Content-Type":
+                    "text/plain;charset=UTF-8"
+            },
+
+            body: JSON.stringify({
+
+                action:
+                    "customer.find",
+
+                data: {
+
+                    provider,
+
+                    providerId
+
+                }
+
+            })
+
+        });
+
+    if (!response.ok) {
+
+        throw new Error(
+            "Customer API request failed: " +
+            response.status
+        );
+
+    }
+
+    const result =
+        await response.json();
+
+    if (!result.success) {
+
+        throw new Error(
+            result.error ||
+            "Customer API returned an error."
+        );
+
+    }
+
+    return result.customer;
+
+    }
+
     return {
 
-        getOrCreateCustomer
+    findCustomer,
+
+    getOrCreateCustomer
 
     };
 

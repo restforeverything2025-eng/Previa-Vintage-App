@@ -95,6 +95,43 @@ Application Initialization
 async function initializeApplication() {
 
     /*
+=========================================
+Identity Restoration
+=========================================
+*/
+
+try {
+
+    const identity =
+        await TelegramBridge.restore();
+
+    if (identity) {
+
+        console.log(
+            "Existing Identity restored:",
+            identity
+        );
+
+    } else {
+
+        console.log(
+            "No existing Customer found."
+        );
+
+    }
+
+    } catch (error) {
+
+    console.error(
+        "Identity restoration failed:",
+        error
+    );
+
+    Identity.clear();
+
+    }
+
+    /*
     =========================================
     Favorites
     =========================================
