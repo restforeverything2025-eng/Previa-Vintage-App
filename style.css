@@ -2196,3 +2196,94 @@ body.light-theme .footer{
     background:#e7dfd2;
 
 }
+
+/* =========================================
+   PREVIA Daily Info
+========================================= */
+
+.daily-info{
+
+    flex:1;
+
+    min-width:0;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:18px;
+
+    padding-right:18px;
+
+    font-family:'Cormorant Garamond', serif;
+
+    font-size:16px;
+
+    line-height:1.25;
+
+}
+
+.daily-date{
+
+    flex-shrink:0;
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    justify-content:center;
+
+    min-width:52px;
+
+    color:#770849;
+
+    line-height:1;
+
+}
+
+.daily-day{
+
+    font-size:22px;
+
+    font-weight:600;
+
+}
+
+.daily-month{
+
+    margin-top:4px;
+
+    font-size:13px;
+
+    font-weight:500;
+
+    letter-spacing:.4px;
+
+}
+
+body:not(.light-theme) .daily-date{
+
+    color:#c7aa6a;
+
+}
+
+.daily-text{
+
+    flex:1;
+
+    min-width:0;
+
+    color:#770849;
+
+    text-align:center;
+
+}
+
+body:not(.light-theme) .daily-date,
+body:not(.light-theme) .daily-text{
+
+    color:#c7aa6a;
+
+}

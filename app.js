@@ -101,6 +101,7 @@ Identity Restoration
 */
 
 Theme.init();
+DailyInfo.init();
 
 try {
 
