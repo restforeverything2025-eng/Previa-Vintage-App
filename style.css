@@ -72,11 +72,36 @@ h2{
     scroll-behavior:smooth;
 
 }
-.categories::-webkit-scrollbar{
+@media (hover: hover) and (pointer: fine){
 
-    display:none;
+    .categories::-webkit-scrollbar{
+
+        height:8px;
+
+    }
+
+    .categories::-webkit-scrollbar-track{
+
+        background:transparent;
+
+    }
+
+    .categories::-webkit-scrollbar-thumb{
+
+        background:rgba(99,0,0,.55);
+
+        border-radius:20px;
+
+    }
+
+    .categories::-webkit-scrollbar-thumb:hover{
+
+        background:rgba(99,0,0,.75);
+
+    }
 
 }
+
 .categories .card{
 
     position:relative;
@@ -762,19 +787,24 @@ button:hover{
 
 }
 
-.home-btn:hover{
+@media (hover: hover) and (pointer: fine){
 
-    background:#3a342c;
+    .home-btn:hover{
 
-    color:#e6c98b;
+        background:#3a342c;
 
-    border-color:#e6c98b;
+        color:#e6c98b;
 
-    transform:translateY(-2px);
+        border-color:#e6c98b;
 
-    box-shadow:0 6px 14px rgba(0,0,0,.20);
-    
+        transform:translateY(-2px);
+
+        box-shadow:0 6px 14px rgba(0,0,0,.20);
+
+    }
+
 }
+
 .home-section-title{
 
     text-align:center;

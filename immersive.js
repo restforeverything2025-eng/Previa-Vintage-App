@@ -50,7 +50,7 @@ function showImmerse() {
 } else {
 
     question.textContent =
-        "Погрузитися?";
+        "Поринути?";
 
     connectButton.style.display =
         "block";
