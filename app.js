@@ -100,6 +100,8 @@ Identity Restoration
 =========================================
 */
 
+Theme.init();
+
 try {
 
     const identity =

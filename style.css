@@ -1,8 +1,10 @@
 body{
+
     margin:0;
     padding:0;
-    background:#f7f5f2;
+    background:#242321;
     font-family:Arial, sans-serif;
+
 }
 
 .container{
@@ -767,6 +769,8 @@ button:hover{
     padding:0 16px;
 
     box-sizing:border-box;
+
+    white-space:nowrap;
 
     box-shadow:
         0 3px 8px rgba(0,0,0,0.18);
@@ -2004,5 +2008,191 @@ body.search-mode #search-screen {
     font-family:"Cormorant Garamond",serif;
 
     font-size:1.2rem;
+
+}
+
+/* =========================================
+   PREVIA Theme Switcher
+========================================= */
+
+.theme-bar{
+
+    display:flex;
+
+    justify-content:flex-end;
+
+    align-items:center;
+
+    min-height:52px;
+
+    padding:26px 46px 4px 32px;
+
+    box-sizing:border-box;
+
+}
+
+.theme-toggle{
+
+    width:38px;
+
+    height:38px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    padding:0;
+
+    border:1px solid #c9a25b;
+
+    border-radius:50%;
+
+    background:#181717;
+
+    color:#e6c98b;
+
+    font-size:18px;
+
+    line-height:1;
+
+    cursor:pointer;
+
+    box-shadow:
+        0 3px 8px rgba(0,0,0,.18);
+
+    transition:
+        transform .2s ease,
+        background .2s ease,
+        color .2s ease,
+        box-shadow .2s ease;
+
+}
+
+.theme-toggle:hover{
+
+    transform:scale(1.08);
+
+    background:#3a342c;
+
+    color:#f2d08a;
+
+    box-shadow:
+        0 5px 12px rgba(0,0,0,.22);
+
+}
+
+.theme-toggle:active{
+
+    transform:scale(.94);
+
+}
+
+/* =========================================
+   PREVIA Light Theme
+========================================= */
+
+body.light-theme{
+
+    background:#f3efe7;
+
+    color:#2a2723;
+
+}
+
+body.light-theme .header{
+
+    background:#f3efe7;
+
+}
+
+body.light-theme .theme-toggle{
+
+    background:#f3efe7;
+
+    color:#630000;
+
+}
+
+body.light-theme .theme-toggle:hover{
+
+    background:#e7dfd2;
+
+    color:#7a0000;
+
+}
+
+body.light-theme .search-container{
+
+    background:#f3efe7;
+
+}
+
+body.light-theme .search-input{
+
+    background:#fffdf9;
+
+    color:#2a2723;
+
+    border-color:#b89c52;
+
+}
+
+body.light-theme .search-input::placeholder{
+
+    color:#777066;
+
+}
+
+body.light-theme .subcategory-btn{
+
+    background:#630000;
+
+    color:#e6c98b;
+
+}
+
+body.light-theme .subcategory-btn.active{
+
+    background:#2a2723;
+
+    color:#f2d08a;
+
+}
+
+body.light-theme .product-card{
+
+    background:#fffdf9;
+
+    color:#2a2723;
+
+}
+
+body.light-theme .product-card h3{
+
+    color:#2a2723;
+
+}
+
+body.light-theme .product-card p{
+
+    color:#625c54;
+
+}
+
+body.light-theme .categories .card{
+
+    background:linear-gradient(
+        145deg,
+        #7a0000,
+        #630000
+    );
+
+}
+
+body.light-theme .footer{
+
+    background:#e7dfd2;
 
 }
