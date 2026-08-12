@@ -743,7 +743,7 @@ const products = [
     "brand": "Gucci",
     "name": "Gucci 11/12 Change Bezel",
     "currency": "EUR",
-    "price": 777,
+    "price": 1750,
     "status": "available",
     "dateAdded": "2026-08-04",
     "eraFrom": 1980,
