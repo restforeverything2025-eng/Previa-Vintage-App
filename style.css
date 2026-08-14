@@ -1693,6 +1693,46 @@ body.search-mode #search-screen {
 
 }
 
+.product-action-row{
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:stretch;
+
+    gap:12px;
+
+    margin:0 auto;
+
+    max-width:460px;
+
+}
+
+.product-action-button{
+
+    flex:1 1 0;
+
+    min-width:0;
+
+    margin:0;
+
+    padding:14px 18px;
+
+}
+
+.product-action-button.secondary{
+
+    background:linear-gradient(
+        180deg,
+        #423d3d,
+        #682e2e
+    );
+
+    color:#f5d9a5;
+
+}
+
 .telegram-button{
 
     display:flex;

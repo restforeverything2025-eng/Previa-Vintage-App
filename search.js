@@ -120,6 +120,7 @@ renderProductCard(product) {
                 src="${product.images[0]}"
                 class="search-product-image"
                 alt="${product.name}"
+                loading="lazy"
             >
 
             <div class="search-product-info">

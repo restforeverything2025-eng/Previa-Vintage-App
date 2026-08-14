@@ -14,6 +14,8 @@ const TIMELINE_START = 1970;
 
 const TIMELINE_END = 2020;
 
+const TELEGRAM_MANAGER_URL = "https://t.me/manager_placeholder";
+
 /* =========================================
    Timeline Helpers
 ========================================= */
@@ -379,22 +381,43 @@ if (!product) {
 
     ${renderRelatedProducts(product)}
 
-            <button
-    class="telegram-button"
-    onclick='OrderModal.open(${JSON.stringify(product)})'
->
-    ${Icons.getTelegram()}
-    ЗАМОВИТИ
-</button>
-            
-<p class="telegram-note">
-    Please include the Product Code in your message.
-</p>
+            <div class="product-action-row">
+                <button
+                    class="telegram-button product-action-button"
+                    type="button"
+                >
+                    ЗАМОВИТИ
+                </button>
+
+                <button
+                    class="telegram-button product-action-button secondary"
+                    type="button"
+                >
+                    ЗАПИТАТИ
+                </button>
+            </div>
+
             <br><br>
 
         </div>
 
     `;
+
+    const orderButton = content.querySelector(".product-action-button:first-of-type");
+
+    if (orderButton) {
+        orderButton.addEventListener("click", () => {
+            OrderModal.open(product);
+        });
+    }
+
+    const askButton = content.querySelector(".product-action-button.secondary");
+
+    if (askButton) {
+        askButton.addEventListener("click", () => {
+            window.open(TELEGRAM_MANAGER_URL, "_blank", "noopener,noreferrer");
+        });
+    }
 
     content.scrollIntoView({
     behavior: "smooth",
