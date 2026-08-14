@@ -380,12 +380,12 @@ if (!product) {
     ${renderRelatedProducts(product)}
 
             <button
-                class="telegram-button"
-                onclick="reserveProduct('${product.name}')"
-         >
-                ${Icons.getTelegram()}
-                Ask about this piece
-            </button>
+    class="telegram-button"
+    onclick='OrderModal.open(${JSON.stringify(product)})'
+>
+    ${Icons.getTelegram()}
+    ЗАМОВИТИ
+</button>
             
 <p class="telegram-note">
     Please include the Product Code in your message.
