@@ -30,6 +30,7 @@ function renderProductCard(
             src="${product.images[0]}"
             alt="${product.name}"
             class="catalog-image"
+            loading="lazy"
         >
 </div>
 
@@ -62,6 +63,7 @@ function renderRelatedProductCard(product) {
                 src="${product.images[0]}"
                 alt="${product.name}"
                 class="related-image"
+                loading="lazy"
             >
 
             <div class="related-title">
