@@ -139,36 +139,7 @@
       "updated": "2026-08-11T19:28:33.000Z"
     }
   ],
-  "W0008": [
-    {
-      "id": "1ZePbU-ImUI6wvbVzly6ipr1G5Bbtws1u",
-      "name": "1.webp",
-      "size": 183070,
-      "mimeType": "image/webp",
-      "updated": "2026-08-17T18:46:51.000Z"
-    },
-    {
-      "id": "1UU8pPXFc8YkpV1HOJzJ8UjqC_ln_aAfY",
-      "name": "2.webp",
-      "size": 160558,
-      "mimeType": "image/webp",
-      "updated": "2026-08-17T18:46:51.000Z"
-    },
-    {
-      "id": "1EyvWNggwwYAdIHCdDsL0pt622wkp1H9w",
-      "name": "3.webp",
-      "size": 62210,
-      "mimeType": "image/webp",
-      "updated": "2026-08-17T18:46:52.000Z"
-    },
-    {
-      "id": "1_QK4Va6CdNXyhnOzgU0e583pOka4fFal",
-      "name": "4.webp",
-      "size": 152462,
-      "mimeType": "image/webp",
-      "updated": "2026-08-17T18:46:50.000Z"
-    }
-  ],
+  "W0008": [],
   "W0009": [
     {
       "id": "1Wya7FlLuJsqv577daldkbczDUUL9sy-Y",
