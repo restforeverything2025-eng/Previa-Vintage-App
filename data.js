@@ -1,7 +1,7 @@
 const exchangeRate = {
-  "eurToUah": 52.2493,
+  "eurToUah": 52.3013,
   "source": "Monobank",
-  "updated": "2026-08-17"
+  "updated": "2026-08-18"
 };
 
 const products = [
@@ -151,8 +151,7 @@ const products = [
     "images": [
       "images/W0008/1.webp",
       "images/W0008/2.webp",
-      "images/W0008/3.webp",
-      "images/W0008/4.webp"
+      "images/W0008/3.webp"
     ]
   },
   {
