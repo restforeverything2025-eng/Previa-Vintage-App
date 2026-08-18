@@ -73,7 +73,15 @@ const products = [
     "eraFrom": "",
     "eraTo": "",
     "description": "Елегантний золотий годинник Nina Ricci Paris - прямокутний корпус з білим циферблатом римськими цифрами, на широкому золотому браслеті в комплекті зі змінними ремінцями (червоний крокодил, чорний)",
-    "images": []
+    "images": [
+      "images/W0004/1.webp",
+      "images/W0004/2.webp",
+      "images/W0004/3.webp",
+      "images/W0004/4.webp",
+      "images/W0004/5.webp",
+      "images/W0004/6.webp",
+      "images/W0004/7.webp"
+    ]
   },
   {
     "id": "PV-0005",
