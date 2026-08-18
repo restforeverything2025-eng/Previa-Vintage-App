@@ -755,7 +755,8 @@ const products = [
       "images/W0035/1.webp",
       "images/W0035/2.webp",
       "images/W0035/3.webp",
-      "images/W0035/4.webp"
+      "images/W0035/4.webp",
+      "images/W0035/5.webp"
     ]
   },
   {
