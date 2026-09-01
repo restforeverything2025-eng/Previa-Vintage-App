@@ -1,7 +1,7 @@
 const exchangeRate = {
-  "eurToUah": 52.2903,
+  "eurToUah": 52.0508,
   "source": "Monobank",
-  "updated": "2026-08-30"
+  "updated": "2026-09-01"
 };
 
 const products = [
@@ -336,8 +336,8 @@ const products = [
     "brand": "Seiko",
     "name": "Seiko Bamboo Limited Edition",
     "currency": "EUR",
-    "price": 540,
-    "status": "available",
+    "price": 450,
+    "status": "sold",
     "dateAdded": "2026-07-03",
     "eraFrom": "",
     "eraTo": "",
@@ -390,7 +390,7 @@ const products = [
     "name": "Cartier Paris VERMEIL",
     "currency": "EUR",
     "price": 2600,
-    "status": "reserved",
+    "status": "sold",
     "dateAdded": "2026-07-05",
     "eraFrom": "",
     "eraTo": "",
@@ -922,6 +922,24 @@ const products = [
       "images/J0013/1.webp",
       "images/J0013/2.webp",
       "images/J0013/3.webp"
+    ]
+  },
+  {
+    "id": "PV-0049",
+    "sku": "W0043",
+    "category": "Годинники",
+    "brand": "Seiko",
+    "name": "Seiko Ultra Slim",
+    "currency": "EUR",
+    "price": 330,
+    "status": "available",
+    "dateAdded": "2026-09-01",
+    "eraFrom": 1990,
+    "eraTo": 2000,
+    "description": "Цей витончений вінтажний годинник — справжнє втілення жіночності та естетики «тихої розкоші». Головна візуальна особливість моделі — елегантний восьмикутний корпус у золотому відтінку, який плавно переходить у класичний ланковий браслет, створюючи цілісний та гармонійний силует. Мінімалістичний світлий циферблат не перевантажений деталями: він має лише дві витончені стрілки та прикрашений єдиним акцентним кристалом на позначці 12 годин. Годинник має чудовий вигляд на зап'ясті та ідеально підходить для стилізації — він гармонійно поєднується з тонкими золотими ланцюжками, дозволяючи створювати трендові багатошарові образи.",
+    "images": [
+      "images/W0043/1.webp",
+      "images/W0043/2.webp"
     ]
   }
 ];
