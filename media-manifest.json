@@ -1371,5 +1371,21 @@
       "mimeType": "image/webp",
       "updated": "2026-08-30T13:11:54.826Z"
     }
+  ],
+  "W0043": [
+    {
+      "id": "1QvnM712NatsjfaCoG-LJsNsaT8Qbl23O",
+      "name": "1.webp",
+      "size": 28756,
+      "mimeType": "image/webp",
+      "updated": "2026-09-01T12:27:08.047Z"
+    },
+    {
+      "id": "1iTMlgO4Hxx13lE_5OSjgn00Ly1XZcVBR",
+      "name": "2.webp",
+      "size": 42522,
+      "mimeType": "image/webp",
+      "updated": "2026-09-01T12:27:06.549Z"
+    }
   ]
 }
