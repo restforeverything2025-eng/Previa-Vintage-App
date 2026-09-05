@@ -2876,3 +2876,61 @@ body.order-modal-open {
 .order-step.hidden {
     display: none;
 }
+
+/* =========================================
+   Order Contact Preferences
+========================================= */
+
+.order-contact-preferences {
+
+    margin-top: 4px;
+
+    margin-bottom: 8px;
+
+}
+
+.order-contact-title {
+
+    margin-bottom: 6px;
+
+}
+
+.order-contact-options {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 18px;
+
+}
+
+.order-contact-option {
+
+    display: inline-flex !important;
+
+    flex-direction: row !important;
+
+    align-items: center;
+
+    gap: 6px;
+
+    margin: 0 !important;
+
+    cursor: pointer;
+
+}
+
+.order-contact-option input[type="checkbox"] {
+
+    width: 14px !important;
+
+    height: 14px !important;
+
+    margin: 0 !important;
+
+    padding: 0 !important;
+
+    flex: 0 0 auto;
+
+}

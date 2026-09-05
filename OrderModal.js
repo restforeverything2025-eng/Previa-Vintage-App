@@ -94,7 +94,7 @@ const OrderModal = (() => {
 
 
                     <div
-                        class="order-add-product hidden"
+                        class="order-add-product"
                     >
 
                         <input
@@ -117,15 +117,6 @@ const OrderModal = (() => {
                         ></div>
 
                     </div>
-
-
-                    <button
-                        type="button"
-                        class="order-add-btn"
-                    >
-                        + ДОДАТИ ЩЕ
-                    </button>
-
 
                     <button
                         type="button"
@@ -163,19 +154,57 @@ const OrderModal = (() => {
                             >
                         </label>
 
+                    <label>
+    Телефон
 
-                        <label>
-                            Телефон
+    <input
+        type="tel"
+        name="phone"
+        autocomplete="tel"
+        placeholder="+380..."
+        required
+    >
+</label>
 
-                            <input
-                                type="tel"
-                                name="phone"
-                                autocomplete="tel"
-                                placeholder="+380..."
-                                required
-                            >
-                        </label>
 
+<div class="order-contact-preferences">
+
+    <div class="order-contact-title">
+        Зв'язатися зі мною через
+    </div>
+
+    <div class="order-contact-options">
+
+        <label class="order-contact-option">
+            <input
+                type="checkbox"
+                name="contact_preferences"
+                value="telegram"
+            >
+            <span>Telegram</span>
+        </label>
+
+        <label class="order-contact-option">
+            <input
+                type="checkbox"
+                name="contact_preferences"
+                value="viber"
+            >
+            <span>Viber</span>
+        </label>
+
+        <label class="order-contact-option">
+            <input
+                type="checkbox"
+                name="contact_preferences"
+                value="call"
+            >
+            <span>Подзвонити</span>
+        </label>
+
+    </div>
+
+</div>
 
                         <label>
                             Email
@@ -199,6 +228,10 @@ const OrderModal = (() => {
 
                                 <option value="">
                                     Оберіть спосіб
+                                </option>
+
+                                <option value="nova_poshta_prepayment">
+                                    Передплата - Нова Пошта
                                 </option>
 
                                 <option value="fop_details">
@@ -337,17 +370,6 @@ const OrderModal = (() => {
 
             }
         );
-
-
-        modal
-            .querySelector(
-                ".order-add-btn"
-            )
-            .addEventListener(
-                "click",
-                showAddProduct
-            );
-
 
         modal
             .querySelector(
@@ -623,29 +645,6 @@ const OrderModal = (() => {
 
                 }
             );
-
-
-        const addButton =
-            modal.querySelector(
-                ".order-add-btn"
-            );
-
-
-        if (
-            items.length >= MAX_ITEMS
-        ) {
-
-            addButton.classList.add(
-                "hidden"
-            );
-
-        } else {
-
-            addButton.classList.remove(
-                "hidden"
-            );
-
-        }
 
     }
 
@@ -1017,56 +1016,21 @@ function findProductBySku(productCode) {
         const formData =
             new FormData(form);
 
-
         const orderDraft = {
+          items: items.map(product => ({
+          sku: product.sku || "",
+          title: product.name || "",
+          price: Number(product.price || 0),
+          quantity: 1
+        })),
 
-            items:
-
-                items.map(
-                    product => ({
-
-                        sku:
-                            product.sku || "",
-
-                        productName:
-                            product.name || "",
-
-                        brand:
-                            product.brand || "",
-
-                        price:
-                            Number(
-                                product.price || 0
-                            ),
-
-                        currency:
-                            product.currency || ""
-
-                    })
-                ),
-
-            customer_name:
-                formData.get(
-                    "customer_name"
-                ),
-
-            phone:
-                formData.get(
-                    "phone"
-                ),
-
-            email:
-                formData.get(
-                    "email"
-                ),
-
-            payment_method:
-                formData.get(
-                    "payment_method"
-                )
-
-        };
-
+       provider: "web",
+       customer_name: formData.get("customer_name"),
+       phone: formData.get("phone"),
+       contact_preferences: formData.getAll("contact_preferences"),
+       email: formData.get("email"),
+       payment_method: formData.get("payment_method")
+     };
 
         console.log(
             "PREVIA Order Builder:",
