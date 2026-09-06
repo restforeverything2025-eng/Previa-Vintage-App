@@ -7,9 +7,21 @@ function renderProductCard(
     product,
     source = "category",
     showStatus = true
- )
-  
+)
 {
+
+    const cartButton = product.status === "available"
+        ? `
+            <button
+                class="cart-add-button"
+                type="button"
+                data-cart-product="${product.id}"
+                onclick="event.stopPropagation(); Cart.add('${product.id}')"
+            >
+                ${Cart.has(product.id) ? "✓ У КОШИКУ" : "ДОДАТИ В КОШИК"}
+            </button>
+        `
+        : "";
 
     return `
         <div
@@ -22,7 +34,7 @@ function renderProductCard(
             onclick="toggleFavorite('${product.id}', this, event)"
         >
             ${Icons.getHeart()}
-</div>
+        </div>
 
         <div class="catalog-image-wrapper">
 
@@ -44,6 +56,8 @@ function renderProductCard(
                 ? `<p>${getStatus(product.status)}</p>`
                 : ""
             }
+
+            ${cartButton}
 
         </div>
     `;
