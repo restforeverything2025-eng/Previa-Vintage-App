@@ -350,13 +350,22 @@ const Cart = (() => {
                 font-size: 22px;
             }
 
-            .cart-summary[hidden] {
-                display: none !important;
+            .cart-total-row {
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 2px;
+                min-width: 80px;
             }
 
             .cart-total {
+                display: block;
                 color: #630000;
                 font-weight: 600;
+            }
+
+            .cart-summary[hidden] {
+                display: none !important;
             }
 
             .cart-add-button {
@@ -377,9 +386,11 @@ const Cart = (() => {
                 box-sizing: border-box;
             }
 
-            .cart-add-button.in-cart {
+            .cart-add-button.in-cart,
+            .product-action-button.in-cart {
                 background: #f2eee5;
                 color: #630000;
+                border-color: #b89c52;
                 cursor: default;
             }
 
