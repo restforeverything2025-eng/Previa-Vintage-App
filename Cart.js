@@ -114,6 +114,39 @@ const Cart = (() => {
         document.body.classList.add("cart-open");
     }
 
+    function checkout() {
+
+    const items = getItems();
+
+    if (!items.length) {
+
+        if (typeof showToast === "function") {
+            showToast("Кошик порожній.");
+        }
+
+        return;
+
+    }
+
+    if (
+        typeof OrderModal === "undefined" ||
+        typeof OrderModal.openCart !== "function"
+    ) {
+
+        console.error(
+            "Cart.checkout(): OrderModal.openCart() is not available."
+        );
+
+        return;
+
+    }
+
+    close();
+
+    OrderModal.openCart(items);
+
+}
+
     function close() {
         const modal = document.getElementById("cart-modal");
         if (!modal) return;
@@ -366,6 +399,7 @@ const Cart = (() => {
         getCount,
         getTotal,
         open,
+        checkout,
         close,
         render,
         refreshUI

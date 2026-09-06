@@ -32,6 +32,7 @@ const OrderModal = (() => {
 
     let currentStep = 1;
 
+    let openedFromCart = false;
 
     /*
     =========================================
@@ -414,13 +415,31 @@ const OrderModal = (() => {
 
 
         modal
-            .querySelector(
-                ".order-back-btn"
-            )
-            .addEventListener(
-                "click",
-                goToProductsStep
-            );
+    .querySelector(
+        ".order-back-btn"
+    )
+    .addEventListener(
+        "click",
+        () => {
+
+            if (openedFromCart) {
+
+                close();
+
+                if (
+                    typeof Cart !== "undefined"
+                ) {
+                    Cart.open();
+                }
+
+                return;
+
+            }
+
+            goToProductsStep();
+
+        }
+    );
 
 
         modal
@@ -471,6 +490,7 @@ const OrderModal = (() => {
             product
         ];
 
+        openedFromCart = false;
 
         currentStep = 1;
 
@@ -491,6 +511,39 @@ const OrderModal = (() => {
 
     }
 
+    function openCart(cartItems) {
+
+    createModal();
+
+    if (!Array.isArray(cartItems) || !cartItems.length) {
+
+        console.warn(
+            "OrderModal.openCart(): cart is empty."
+        );
+
+        return;
+
+    }
+
+    items = cartItems.slice(0, MAX_ITEMS);
+
+    openedFromCart = true;
+
+    currentStep = 2;
+
+    resetForm();
+
+    render();
+
+    modal.classList.remove(
+        "hidden"
+    );
+
+    document.body.classList.add(
+        "order-modal-open"
+    );
+
+}
 
     /*
     =========================================
@@ -1037,6 +1090,12 @@ function findProductBySku(productCode) {
             orderDraft
         );
 
+        if (
+    typeof Cart !== "undefined" &&
+    typeof Cart.clear === "function"
+) {
+    Cart.clear();
+}
 
         currentStep = 3;
 
@@ -1180,6 +1239,8 @@ function formatProductCode(sku) {
     return {
 
         open,
+
+        openCart,
 
         close
 

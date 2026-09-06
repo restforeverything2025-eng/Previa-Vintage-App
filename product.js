@@ -382,34 +382,30 @@ if (!product) {
     ${renderRelatedProducts(product)}
 
             <div class="product-action-row">
-                <button
-                    class="telegram-button product-action-button"
-                    type="button"
-                >
-                    ЗАМОВИТИ
-                </button>
 
-                <button
-                    class="telegram-button product-action-button secondary"
-                    type="button"
-                >
-                    ЗАПИТАТИ
-                </button>
-            </div>
+    <button
+        class="telegram-button product-action-button"
+        type="button"
+        data-cart-product="${product.id}"
+        onclick="Cart.add('${product.id}')"
+    >
+        ${Cart.has(product.id) ? "✓ У КОШИКУ" : "ДОДАТИ В КОШИК"}
+    </button>
+
+    <button
+        class="telegram-button product-action-button secondary"
+        type="button"
+    >
+        ЗАПИТАТИ
+    </button>
+
+</div>
 
             <br><br>
 
         </div>
 
     `;
-
-    const orderButton = content.querySelector(".product-action-button:first-of-type");
-
-    if (orderButton) {
-        orderButton.addEventListener("click", () => {
-            OrderModal.open(product);
-        });
-    }
 
     const askButton = content.querySelector(".product-action-button.secondary");
 

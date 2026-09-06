@@ -272,10 +272,22 @@
 
         <div id="cart-items"></div>
 
-        <div id="cart-summary" class="cart-summary" hidden>
-            <span>Разом</span>
-            <span class="cart-total" id="cart-total"></span>
-        </div>
+        <div class="cart-summary" id="cart-summary" hidden>
+
+    <div class="cart-total-row">
+        <span>Разом</span>
+        <span class="cart-total" id="cart-total"></span>
+    </div>
+
+    <button
+        type="button"
+        class="cart-checkout-button"
+        onclick="Cart.checkout()"
+    >
+        ОФОРМИТИ ЗАМОВЛЕННЯ
+    </button>
+
+       </div>
     </div>
 </div>
 

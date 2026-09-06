@@ -3003,3 +3003,29 @@ body.order-modal-open {
     line-height: 1;
     box-sizing: border-box;
 }
+
+.cart-total-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 16px;
+}
+
+.cart-checkout-button {
+    width: 100%;
+    min-height: 48px;
+    border: 1px solid #b89c52;
+    border-radius: 10px;
+    background: #242321;
+    color: #c9a25b;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    cursor: pointer;
+}
+
+.cart-checkout-button:hover {
+    background: #33302c;
+    color: #e6c98b;
+}
