@@ -18,7 +18,7 @@ function renderProductCard(
                 data-cart-product="${product.id}"
                 onclick="event.stopPropagation(); Cart.add('${product.id}')"
             >
-                ${Cart.has(product.id) ? "✓ У КОШИКУ" : "ДОДАТИ В КОШИК"}
+                ${Cart.has(product.id) ? "У КОШИКУ" : "ДОДАТИ В КОШИК"}
             </button>
         `
         : "";
