@@ -95,11 +95,11 @@ const Cart = (() => {
 
     function formatTotal() {
         const items = getItems();
-        if (!items.length) return "€0";
+        if (!items.length) return "0 €";
 
         const currencies = new Set(items.map(item => item.currency));
         if (currencies.size === 1 && currencies.has("EUR")) {
-            return `€${getTotal()}`;
+            return `${getTotal()} €`;
         }
 
         return items.map(item => formatPrice(item)).join(" + ");
@@ -216,7 +216,7 @@ const Cart = (() => {
             const id = buttonEl.dataset.cartProduct;
             const inCart = has(id);
             buttonEl.classList.toggle("in-cart", inCart);
-            buttonEl.textContent = inCart ? "✓ У КОШИКУ" : "ДОДАТИ В КОШИК";
+            buttonEl.textContent = inCart ? "У КОШИКУ" : "ДОДАТИ В КОШИК";
             buttonEl.disabled = inCart;
         });
     }
@@ -361,17 +361,20 @@ const Cart = (() => {
 
             .cart-add-button {
                 display: block;
-                width: calc(100% - 24px);
-                margin: 10px auto 0;
-                padding: 9px 10px;
+                width: calc(100% - 32px);
+                height: 34px;
+                margin: 8px auto 0;
+                padding: 0 10px;
                 border: 1px solid #b89c52;
                 border-radius: 7px;
                 background: #630000;
                 color: #fff;
                 font-family: 'Cormorant Garamond', serif;
-                font-size: 15px;
-                letter-spacing: .4px;
+                font-size: 14px;
+                line-height: 1;
+                letter-spacing: .3px;
                 cursor: pointer;
+                box-sizing: border-box;
             }
 
             .cart-add-button.in-cart {
