@@ -189,10 +189,17 @@ const Cart = (() => {
     }
 
     function init() {
-        injectStyles();
-        refreshUI();
-        render();
+    injectStyles();
+
+    const cartIcon = document.getElementById("cart-icon");
+
+    if (cartIcon && typeof Icons !== "undefined") {
+        cartIcon.innerHTML = Icons.getCart();
     }
+
+    refreshUI();
+    render();
+}
 
     function injectStyles() {
         if (document.getElementById("previa-cart-styles")) return;
@@ -201,38 +208,6 @@ const Cart = (() => {
         style.id = "previa-cart-styles";
         style.textContent = `
             body.cart-open { overflow: hidden; }
-
-            .cart-nav-button {
-                position: relative;
-                min-width: 140px;
-                border: 1px solid #b89c52;
-                background: #333;
-                color: #fff;
-                border-radius: 8px;
-                padding: 10px 16px;
-                font-family: 'Cormorant Garamond', serif;
-                font-size: 18px;
-                cursor: pointer;
-            }
-
-            .cart-count {
-                display: inline-flex;
-                align-items: center;
-                justify-content: center;
-                min-width: 20px;
-                height: 20px;
-                margin-left: 5px;
-                padding: 0 5px;
-                border-radius: 10px;
-                background: #b89c52;
-                color: #242321;
-                font-family: Arial, sans-serif;
-                font-size: 12px;
-                font-weight: 700;
-                box-sizing: border-box;
-            }
-
-            .cart-nav-button:not(.has-items) .cart-count { display: none; }
 
             .cart-modal {
                 position: fixed;
@@ -340,6 +315,10 @@ const Cart = (() => {
                 padding-top: 18px;
                 font-family: 'Cormorant Garamond', serif;
                 font-size: 22px;
+            }
+
+            .cart-summary[hidden] {
+                display: none !important;
             }
 
             .cart-total {
