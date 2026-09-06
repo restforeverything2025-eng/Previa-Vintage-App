@@ -28,3 +28,23 @@ const Config = {
 ========================================= */
 
 const RELATED_PRODUCTS_COUNT = 9;
+
+/* =========================================
+   Core Order Integration Modules
+========================================= */
+
+const orderClientScript =
+document.createElement("script");
+
+orderClientScript.src = "OrderClient.js";
+orderClientScript.async = false;
+
+document.head.appendChild(orderClientScript);
+
+const orderIntegrationScript =
+document.createElement("script");
+
+orderIntegrationScript.src = "OrderIntegration.js";
+orderIntegrationScript.async = false;
+
+document.head.appendChild(orderIntegrationScript);
