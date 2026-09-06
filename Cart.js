@@ -387,7 +387,7 @@ const Cart = (() => {
             }
 
             .cart-add-button.in-cart,
-            .product-action-button.in-cart {
+            .telegram-button.product-action-button.in-cart {
                 background: #f2eee5;
                 color: #630000;
                 border-color: #b89c52;

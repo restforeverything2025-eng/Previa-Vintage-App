@@ -114,9 +114,9 @@ function formatPrice(product) {
 
     };
 
-    return (
-        symbols[product.currency] || product.currency
-    ) + product.price;
+    return product.price + " " + (
+    symbols[product.currency] || product.currency
+    );
 
 }
 

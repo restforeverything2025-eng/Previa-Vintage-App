@@ -74,7 +74,7 @@ const OrderModal = (() => {
                 <div class="order-header">
 
                     <div class="order-eyebrow">
-                        PREVIA ORDER
+                        ОФОРМЛЕННЯ ЗАМОВЛЕННЯ
                     </div>
 
                 </div>
