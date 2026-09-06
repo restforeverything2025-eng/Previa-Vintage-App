@@ -209,25 +209,25 @@ function showProduct(productId, source = null) {
 
     const product = products.find(
         p => p.id === productId
-);
+    );
 
-if (!product) {
+    if (!product) {
 
-    return;
+        return;
 
-}
+    }
 
     currentProduct = product;
 
     history.replaceState(
 
-    null,
+        null,
 
-    "",
+        "",
 
-    `${window.location.pathname}?product=${product.id}`
+        `${window.location.pathname}?product=${product.id}`
 
-);
+    );
 
     currentImages = product.images;
 
@@ -389,7 +389,7 @@ if (!product) {
         data-cart-product="${product.id}"
         onclick="Cart.add('${product.id}')"
     >
-        ${Cart.has(product.id) ? "✓ У КОШИКУ" : "ДОДАТИ В КОШИК"}
+        ${Cart.has(product.id) ? "У КОШИКУ" : "ДОДАТИ В КОШИК"}
     </button>
 
     <button
@@ -416,8 +416,7 @@ if (!product) {
     }
 
     content.scrollIntoView({
-    behavior: "smooth",
-    block: "start"
-});
+        behavior: "smooth",
+        block: "start"
+    });
 }
-
