@@ -12,7 +12,14 @@ const Config = {
 
     currency: "€",
 
-    telegramUsername: "Ad_astra_per_astera"
+    telegramUsername: "Ad_astra_per_astera",
+
+    /*
+    Public Core endpoint configuration.
+    Never place a secret or signing key in the frontend.
+    The production URL will be supplied here when Core is deployed.
+    */
+    coreOrderApiUrl: ""
 
 };
 
@@ -21,4 +28,3 @@ const Config = {
 ========================================= */
 
 const RELATED_PRODUCTS_COUNT = 9;
-
