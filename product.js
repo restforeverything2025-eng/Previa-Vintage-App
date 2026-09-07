@@ -114,9 +114,9 @@ function formatPrice(product) {
 
     };
 
-    return (
-        symbols[product.currency] || product.currency
-    ) + product.price;
+    return product.price + " " + (
+    symbols[product.currency] || product.currency
+    );
 
 }
 
@@ -209,25 +209,25 @@ function showProduct(productId, source = null) {
 
     const product = products.find(
         p => p.id === productId
-);
+    );
 
-if (!product) {
+    if (!product) {
 
-    return;
+        return;
 
-}
+    }
 
     currentProduct = product;
 
     history.replaceState(
 
-    null,
+        null,
 
-    "",
+        "",
 
-    `${window.location.pathname}?product=${product.id}`
+        `${window.location.pathname}?product=${product.id}`
 
-);
+    );
 
     currentImages = product.images;
 
@@ -382,34 +382,30 @@ if (!product) {
     ${renderRelatedProducts(product)}
 
             <div class="product-action-row">
-                <button
-                    class="telegram-button product-action-button"
-                    type="button"
-                >
-                    ЗАМОВИТИ
-                </button>
 
-                <button
-                    class="telegram-button product-action-button secondary"
-                    type="button"
-                >
-                    ЗАПИТАТИ
-                </button>
-            </div>
+    <button
+        class="telegram-button product-action-button"
+        type="button"
+        data-cart-product="${product.id}"
+        onclick="Cart.add('${product.id}')"
+    >
+        ${Cart.has(product.id) ? "У КОШИКУ" : "ДОДАТИ В КОШИК"}
+    </button>
+
+    <button
+        class="telegram-button product-action-button secondary"
+        type="button"
+    >
+        ЗАПИТАТИ
+    </button>
+
+</div>
 
             <br><br>
 
         </div>
 
     `;
-
-    const orderButton = content.querySelector(".product-action-button:first-of-type");
-
-    if (orderButton) {
-        orderButton.addEventListener("click", () => {
-            OrderModal.open(product);
-        });
-    }
 
     const askButton = content.querySelector(".product-action-button.secondary");
 
@@ -420,8 +416,7 @@ if (!product) {
     }
 
     content.scrollIntoView({
-    behavior: "smooth",
-    block: "start"
-});
+        behavior: "smooth",
+        block: "start"
+    });
 }
-
