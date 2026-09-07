@@ -19,7 +19,7 @@ const Config = {
     Never place a secret or signing key in the frontend.
     The production URL will be supplied here when Core is deployed.
     */
-    coreOrderApiUrl: ""
+    coreOrderApiUrl: "https://previa-core.onrender.com"
 
 };
 
