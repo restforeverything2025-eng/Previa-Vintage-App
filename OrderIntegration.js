@@ -12,6 +12,7 @@ Responsibility:
 - Send it through OrderClient to PREVIA Core.
 - Clear Cart only after Core confirms success.
 - Keep the same idempotency key when a retry is needed.
+- Reflect successful reservation in the current App session.
 
 Does NOT:
 - Contain API secrets.
@@ -146,6 +147,43 @@ Does NOT:
 
     }
 
+    function markOrderItemsReserved(items) {
+
+        if (!Array.isArray(items) || typeof products === "undefined") {
+            return;
+        }
+
+        const reservedSkus = new Set(
+            items
+                .map(item => String(item?.sku || "").trim())
+                .filter(Boolean)
+        );
+
+        if (!reservedSkus.size) {
+            return;
+        }
+
+        products.forEach(product => {
+            if (reservedSkus.has(String(product?.sku || "").trim())) {
+                product.status = "reserved";
+            }
+        });
+
+        if (
+            typeof Cart !== "undefined" &&
+            typeof Cart.refreshUI === "function"
+        ) {
+            Cart.refreshUI();
+        }
+
+        if (typeof currentProduct !== "undefined" && currentProduct) {
+            if (reservedSkus.has(String(currentProduct.sku || "").trim())) {
+                currentProduct.status = "reserved";
+            }
+        }
+
+    }
+
     async function handleSubmit(event) {
 
         const form = event.target;
@@ -186,6 +224,8 @@ Does NOT:
             const result =
                 await OrderClient.createOrder(draft);
 
+            markOrderItemsReserved(draft.items);
+
             if (
                 typeof Cart !== "undefined" &&
                 typeof Cart.clear === "function"
@@ -217,9 +257,11 @@ Does NOT:
             const message =
                 error?.code === "IDEMPOTENCY_CONFLICT"
                     ? "Цей запит уже використано для іншого замовлення. Почніть оформлення ще раз."
-                    : error?.code === "AUTHENTICATION_ERROR"
-                        ? "Не вдалося підтвердити Telegram. Відкрийте PREVIA з Telegram та спробуйте ще раз."
-                        : "Не вдалося оформити замовлення. Спробуйте ще раз трохи пізніше.";
+                    : error?.code === "PRODUCT_NOT_AVAILABLE"
+                        ? "Одна або декілька позицій вже заброньовані або продані. Оновіть каталог та спробуйте ще раз."
+                        : error?.code === "AUTHENTICATION_ERROR"
+                            ? "Не вдалося підтвердити Telegram. Відкрийте PREVIA з Telegram та спробуйте ще раз."
+                            : "Не вдалося оформити замовлення. Спробуйте ще раз трохи пізніше.";
 
             setError(modal, message);
 
