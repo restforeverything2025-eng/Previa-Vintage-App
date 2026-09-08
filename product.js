@@ -383,6 +383,7 @@ function showProduct(productId, source = null) {
 
             <div class="product-action-row">
 
+    ${product.status === "available" ? `
     <button
         class="telegram-button product-action-button"
         type="button"
@@ -391,6 +392,16 @@ function showProduct(productId, source = null) {
     >
         ${Cart.has(product.id) ? "У КОШИКУ" : "ДОДАТИ В КОШИК"}
     </button>
+    ` : `
+    <button
+        class="telegram-button product-action-button"
+        type="button"
+        disabled
+        aria-disabled="true"
+    >
+        ${product.status === "reserved" ? "ЗАБРОНЬОВАНО" : "ПРОДАНО"}
+    </button>
+    `}
 
     <button
         class="telegram-button product-action-button secondary"
