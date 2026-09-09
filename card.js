@@ -53,7 +53,7 @@ function renderProductCard(
             </p>
 
             ${showStatus
-                ? `<p>${getStatus(product.status)}</p>`
+                ? `<p data-product-status="${product.id}">${getStatus(product.status)}</p>`
                 : ""
             }
 

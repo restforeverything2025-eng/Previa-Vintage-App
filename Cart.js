@@ -214,10 +214,19 @@ const Cart = (() => {
 
         document.querySelectorAll("[data-cart-product]").forEach(buttonEl => {
             const id = buttonEl.dataset.cartProduct;
+            const product = products.find(item => item.id === id);
             const inCart = has(id);
+            const unavailable = product && product.status !== "available";
+
             buttonEl.classList.toggle("in-cart", inCart);
-            buttonEl.textContent = inCart ? "У КОШИКУ" : "ДОДАТИ В КОШИК";
-            buttonEl.disabled = inCart;
+            buttonEl.textContent = unavailable
+                ? product.status === "reserved"
+                    ? "ЗАБРОНЬОВАНО"
+                    : "ПРОДАНО"
+                : inCart
+                    ? "У КОШИКУ"
+                    : "ДОДАТИ В КОШИК";
+            buttonEl.disabled = unavailable || inCart;
         });
     }
 
