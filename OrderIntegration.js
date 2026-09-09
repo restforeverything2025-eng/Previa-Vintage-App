@@ -27,16 +27,9 @@ Does NOT:
     let submitting = false;
 
     function getVisibleOrderModal() {
-
-        const modal =
-            document.getElementById("order-modal");
-
-        if (!modal || modal.classList.contains("hidden")) {
-            return null;
-        }
-
+        const modal = document.getElementById("order-modal");
+        if (!modal || modal.classList.contains("hidden")) return null;
         return modal;
-
     }
 
     function getSubmitButton(modal) {
@@ -44,114 +37,59 @@ Does NOT:
     }
 
     function setSubmitting(modal, value) {
-
         submitting = value;
-
         const button = getSubmitButton(modal);
-
-        if (!button) {
-            return;
-        }
-
+        if (!button) return;
         button.disabled = value;
-        button.textContent = value
-            ? "ОБРОБКА..."
-            : "ЗАМОВИТИ";
-
+        button.textContent = value ? "ОБРОБКА..." : "ЗАМОВИТИ";
     }
 
     function setError(modal, message) {
-
-        let element =
-            modal.querySelector(".order-submit-message");
-
+        let element = modal.querySelector(".order-submit-message");
         if (!element) {
-
             element = document.createElement("div");
             element.className = "order-submit-message";
             element.setAttribute("role", "alert");
             element.setAttribute("aria-live", "polite");
-
-            const form =
-                modal.querySelector("#order-form");
-
-            if (form) {
-                form.appendChild(element);
-            }
-
+            const form = modal.querySelector("#order-form");
+            if (form) form.appendChild(element);
         }
-
         element.textContent = message;
-
     }
 
     function clearError(modal) {
-
-        const element =
-            modal.querySelector(".order-submit-message");
-
-        if (element) {
-            element.textContent = "";
-        }
-
+        const element = modal.querySelector(".order-submit-message");
+        if (element) element.textContent = "";
     }
 
     function showSuccess(modal) {
-
-        const steps =
-            modal.querySelectorAll(".order-step");
-
-        steps.forEach(step => {
-            step.classList.toggle(
-                "hidden",
-                Number(step.dataset.step) !== 3
-            );
+        modal.querySelectorAll(".order-step").forEach(step => {
+            step.classList.toggle("hidden", Number(step.dataset.step) !== 3);
         });
-
     }
 
     function buildDraft(form) {
-
         const formData = new FormData(form);
-
-        const products =
-            typeof Cart !== "undefined" &&
-            typeof Cart.getItems === "function"
+        const cartProducts =
+            typeof Cart !== "undefined" && typeof Cart.getItems === "function"
                 ? Cart.getItems()
                 : [];
 
         return {
-
-            customer_name:
-                formData.get("customer_name"),
-
-            phone:
-                formData.get("phone"),
-
-            contact_preferences:
-                formData.getAll("contact_preferences"),
-
-            email:
-                formData.get("email"),
-
-            payment_method:
-                formData.get("payment_method"),
-
-            items:
-                products.map(product => ({
-                    sku: product.sku || "",
-                    quantity: 1
-                }))
-
+            customer_name: formData.get("customer_name"),
+            phone: formData.get("phone"),
+            contact_preferences: formData.getAll("contact_preferences"),
+            email: formData.get("email"),
+            payment_method: formData.get("payment_method"),
+            items: cartProducts.map(product => ({
+                sku: product.sku || "",
+                quantity: 1
+            }))
         };
-
     }
 
     function markOrderItemsReserved(items) {
-
-        if (!Array.isArray(items) || typeof products === "undefined") {
-            return;
-        }
+        if (!Array.isArray(items) || typeof products === "undefined") return;
 
         const reservedSkus = new Set(
             items
@@ -159,9 +97,7 @@ Does NOT:
                 .filter(Boolean)
         );
 
-        if (!reservedSkus.size) {
-            return;
-        }
+        if (!reservedSkus.size) return;
 
         products.forEach(product => {
             if (reservedSkus.has(String(product?.sku || "").trim())) {
@@ -169,46 +105,43 @@ Does NOT:
             }
         });
 
-        if (
-            typeof Cart !== "undefined" &&
-            typeof Cart.refreshUI === "function"
-        ) {
-            Cart.refreshUI();
-        }
-
         if (typeof currentProduct !== "undefined" && currentProduct) {
             if (reservedSkus.has(String(currentProduct.sku || "").trim())) {
                 currentProduct.status = "reserved";
             }
         }
 
+        // Update every already-rendered product status badge in the current view.
+        reservedSkus.forEach(sku => {
+            const product = products.find(
+                item => String(item?.sku || "").trim() === sku
+            );
+            if (!product) return;
+
+            document
+                .querySelectorAll(`[data-product-status="${product.id}"]`)
+                .forEach(element => {
+                    element.innerHTML = getStatus(product.status);
+                });
+        });
+
+        if (typeof Cart !== "undefined" && typeof Cart.refreshUI === "function") {
+            Cart.refreshUI();
+        }
     }
 
     async function handleSubmit(event) {
-
         const form = event.target;
-
-        if (!form || form.id !== "order-form") {
-            return;
-        }
+        if (!form || form.id !== "order-form") return;
 
         const modal = getVisibleOrderModal();
+        if (!modal) return;
 
-        if (!modal) {
-            return;
-        }
-
-        /*
-        This listener runs in capture phase, before the prototype
-        OrderModal submit handler. It becomes the real checkout path.
-        */
         event.preventDefault();
         event.stopPropagation();
         event.stopImmediatePropagation();
 
-        if (submitting) {
-            return;
-        }
+        if (submitting) return;
 
         if (!form.checkValidity()) {
             form.reportValidity();
@@ -219,40 +152,25 @@ Does NOT:
         setSubmitting(modal, true);
 
         try {
-
             const draft = buildDraft(form);
-            const result =
-                await OrderClient.createOrder(draft);
+            const result = await OrderClient.createOrder(draft);
 
             markOrderItemsReserved(draft.items);
 
-            if (
-                typeof Cart !== "undefined" &&
-                typeof Cart.clear === "function"
-            ) {
+            if (typeof Cart !== "undefined" && typeof Cart.clear === "function") {
                 Cart.clear();
             }
 
             showSuccess(modal);
 
-            if (
-                typeof OrderClient.resetCheckoutAttempt ===
-                "function"
-            ) {
+            if (typeof OrderClient.resetCheckoutAttempt === "function") {
                 OrderClient.resetCheckoutAttempt();
             }
 
-            console.log(
-                "PREVIA Order created:",
-                result
-            );
+            console.log("PREVIA Order created:", result);
 
         } catch (error) {
-
-            console.error(
-                "PREVIA Order submission failed:",
-                error
-            );
+            console.error("PREVIA Order submission failed:", error);
 
             const message =
                 error?.code === "IDEMPOTENCY_CONFLICT"
@@ -268,13 +186,8 @@ Does NOT:
         } finally {
             setSubmitting(modal, false);
         }
-
     }
 
-    document.addEventListener(
-        "submit",
-        handleSubmit,
-        true
-    );
+    document.addEventListener("submit", handleSubmit, true);
 
 })();
