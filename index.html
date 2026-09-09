@@ -1,88 +1,328 @@
 <!DOCTYPE html>
-<html lang="uk">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <meta name="theme-color" content="#630000">
-    <title>PREVIA — Vintage</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PREVIA — Vintage Watches & Jewellery</title>
+    <!-- SEO -->
+
+    <meta name="description" content="PREVIA Vintage — curated vintage watches & jewellery.">
+
+    <!-- Open Graph -->
+
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="PREVIA">
+    <meta property="og:title" content="PREVIA">
+    <meta property="og:description" content="Vintage Watches & Jewellery">
+    <meta property="og:url" content="https://previa-vintage.shop">
+    <meta property="og:image" content="https://previa-vintage.shop/images/share-banner.jpg">
+
+    <!-- Twitter -->
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="PREVIA">
+    <meta name="twitter:description" content="Vintage Watches & Jewellery">
+    <meta name="twitter:image" content="https://previa-vintage.shop/images/share-banner.jpg">
     <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    
 </head>
 <body>
 
-<!-- =========================================
-     PREVIA APP
-========================================= -->
+<div class="theme-bar">
 
-<!-- existing page markup -->
+    <div class="daily-info" id="daily-info">
 
-<div id="app">
+    <span
+        class="daily-date"
+        id="daily-date"
+    ></span>
 
-<div id="categories">
+    <span
+        class="daily-text"
+        id="daily-text"
+    ></span>
 
-<div class="card" id="watches-count" onclick="showWatches()"></div>
-<div class="card" id="jewelry-count" onclick="showJewelry()"></div>
-<div class="card" id="new-count" onclick="showNewProducts()"></div>
+</div>
+
+    <button
+        class="theme-toggle"
+        id="theme-toggle"
+        type="button"
+        aria-label="Змінити тему"
+    ></button>
+
+</div>
+
+    <div class="container">
+<img
+    src="images/banner.jpg"
+    alt="Previa Vintage"
+    class="banner-image"
+>
+        <div class="subtitle-row">
+
+    <p class="subtitle">Vintage Watches & Jewellery</p>
+
+    <button
+        class="cart-nav-button"
+        id="cart-nav-button"
+        type="button"
+        onclick="Cart.open()"
+        aria-label="Кошик"
+    >
+        <span id="cart-icon"></span>
+
+        <span
+            class="cart-count"
+            id="cart-count"
+            hidden
+        >0</span>
+
+    </button>
+
+</div>
+
+<div class="gold-divider"></div>
+        
+        </div>
+    <div id="search-container">
+    <input
+        type="text"
+        id="searchInput"
+        placeholder="🔍 Пошук товару..."
+        onfocus="Search.enterSearchMode()"
+        oninput="Search.handleInput(this.value)"
+    >
+</div>    
+
+<div id="main-screen">
+
+<div class="home-container">
+
+    <button
+        class="home-btn"
+        onclick="goHome()"
+    >
+        ⌘ Home
+    </button>
+
+    <button
+        class="home-btn"
+        onclick="showImmerse()"
+>
+        ⓘ Immerse
+    </button>
+
+    <button
+        class="home-btn"
+        onclick="showFavorites()"
+    >
+        ♡ Favorites
+    </button>
+
+</div>
+
+      <div class="categories" id="categories">
+
+      <div class="card" id="new-count" onclick="showNewProducts()">
+         NEW
+</div>
+
+      <div class="card" id="watches-count" onclick="showWatches()">
+        WATCHES
+</div>
+
+      <div class="card" id="jewelry-count" onclick="showJewelry()">
+        JEWELRY
+</div>
+
+      <div class="card" onclick="showAccessories()">
+
+      <div class="category-title">BAGS</div>
+
+</div>
 
 <div class="card" onclick="showComingSoon('GLASSES')">
+
     <div class="category-title">GLASSES</div>
+
 </div>
 
 <div class="card" onclick="showComingSoon('APPAREL')">
+
     <div class="category-title">APPAREL</div>
+
 </div>
 
 <div class="card" onclick="showComingSoon('ARTWORK')">
+
     <div class="category-title">ART</div>
+
 </div>
 
 <div class="card" onclick="showComingSoon('DECOR')">
+
     <div class="category-title">DECOR</div>
+
 </div>
 
-<div class="card" onclick="showSale()">
-    <div class="category-title">SALE</div>
+      <div class="card" onclick="showSale()">
+
+      <div class="category-title">SALE</div>
+
 </div>
 
 </div>
 
 <div id="home-new-products"></div>
+
 <div id="content"></div>
 
 </div>
 
 <div id="search-screen">
-    <div id="search-message">Пошук за назвою, брендом або SKU.</div>
+
+    <div id="search-message">
+
+        Пошук за назвою, брендом або SKU.
+
+    </div>
+
     <div id="search-suggestions"></div>
+
     <div id="search-results"></div>
+
 </div>
 
-<button id="scrollTopBtn" onclick="scrollToTop()"></button>
+<button id="scrollTopBtn" onclick="scrollToTop()">
+</button>
 
-<button id="backBtn" onclick="handleBackButton">←</button>
+<button id="backBtn" onclick="handleBackButton()">
+    ←
+</button>
 
-<div id="lightbox" class="lightbox" onclick="closeLightbox()">
-    <span id="lightboxClose" class="close-lightbox" onclick="event.stopPropagation(); closeLightbox()"></span>
-    <img id="lightbox-image" class="lightbox-image" src="" alt="" onclick="event.stopPropagation()">
-    <button id="lightboxPrev" class="lightbox-prev" onclick="event.stopPropagation(); previousImage()"></button>
-    <button id="lightboxNext" class="lightbox-next" onclick="event.stopPropagation(); nextImage()"></button>
+<div
+    id="lightbox"
+    class="lightbox"
+    onclick="closeLightbox()">
+
+    <span
+    id="lightboxClose"
+    class="close-lightbox"
+    onclick="event.stopPropagation(); closeLightbox()">
+    </span>
+
+    <img
+        id="lightbox-image"
+        class="lightbox-image"
+        src=""
+        alt=""
+        onclick="event.stopPropagation()"
+    >
+
+    <button
+    id="lightboxPrev"
+    class="lightbox-prev"
+    onclick="event.stopPropagation(); previousImage()">
+</button>
+
+<button
+    id="lightboxNext"
+    class="lightbox-next"
+    onclick="event.stopPropagation(); nextImage()">
+</button>
+
 </div>
 
 <div id="toast"></div>
 
-<div id="cart-modal" class="cart-modal" onclick="if (event.target === this) Cart.close()">
-    <div class="cart-window" role="dialog" aria-modal="true" aria-labelledby="cart-title">
+<div
+    id="cart-modal"
+    class="cart-modal"
+    onclick="if (event.target === this) Cart.close()"
+>
+    <div
+        class="cart-window"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="cart-title"
+    >
         <div class="cart-header">
             <h2 id="cart-title">КОШИК</h2>
-            <button class="cart-close" type="button" onclick="Cart.close()">×</button>
+
+            <button
+                class="cart-close"
+                type="button"
+                onclick="Cart.close()"
+                aria-label="Закрити"
+            >
+                ×
+            </button>
         </div>
-        <div id="cart-empty">Кошик порожній.</div>
+
+        <div id="cart-empty" class="cart-empty">
+            Кошик поки порожній.
+        </div>
+
         <div id="cart-items"></div>
-        <div id="cart-summary" class="cart-summary" hidden>
-            <div>Разом</div>
-            <div id="cart-total" class="cart-total"></div>
-            <button type="button" onclick="Cart.checkout()">ОФОРМИТИ</button>
-        </div>
+
+        <div class="cart-summary" id="cart-summary" hidden>
+
+    <div class="cart-total-row">
+        <span>Разом</span>
+        <span class="cart-total" id="cart-total"></span>
     </div>
+
+    <button
+        type="button"
+        class="cart-checkout-button"
+        onclick="Cart.checkout()"
+    >
+        ОФОРМИТИ ЗАМОВЛЕННЯ
+    </button>
+
+       </div>
+    </div>
+</div>
+
+<div id="immerse-modal" class="immerse-modal hidden">
+
+    <div class="immerse-window">
+
+    <h2>PREVIA</h2>
+
+    <p>❤ Ваші вподобані товари завжди з вами</p>
+
+    <p>🔍 Персональний пошук вінтажних речей</p>
+
+    <p>🎁 Переваги для колекціонерів</p>
+
+    <p class="immerse-question">
+        Поринути?
+    </p>
+
+    <button
+        class="immerse-connect-btn"
+        onclick="enterCustomerPlatform()"
+    >
+        ТАК
+    </button>
+
+    <button
+        class="immerse-close-btn"
+        onclick="closeImmerse()"
+    >
+        НІ
+    </button>
+
+</div>
+
 </div>
 
 <!-- =========================================
@@ -97,7 +337,6 @@
 <script src="gallery.js"></script>
 <script src="product.js"></script>
 <script src="OrderModal.js"></script>
-<!-- OrderClient + OrderIntegration are the real checkout path. -->
 <script src="OrderClient.js"></script>
 <script src="OrderIntegration.js"></script>
 <script src="related.js"></script>
