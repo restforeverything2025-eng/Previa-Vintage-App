@@ -48,7 +48,7 @@ function showHomeNewProducts() {
     html += renderProductCard(
         product,
         "home",
-        false
+        true
     );
 
 });
