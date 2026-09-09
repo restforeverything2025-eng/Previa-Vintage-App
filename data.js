@@ -1,7 +1,7 @@
 const exchangeRate = {
-  "eurToUah": 52.0508,
+  "eurToUah": 52.2493,
   "source": "Monobank",
-  "updated": "2026-09-01"
+  "updated": "2026-09-09"
 };
 
 const products = [
@@ -390,7 +390,7 @@ const products = [
     "name": "Cartier Paris VERMEIL",
     "currency": "EUR",
     "price": 2600,
-    "status": "sold",
+    "status": "available",
     "dateAdded": "2026-07-05",
     "eraFrom": "",
     "eraTo": "",
