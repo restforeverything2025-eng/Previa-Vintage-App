@@ -1,10 +1,8 @@
-/*
-=========================================================
-PREVIA Product
+/* =========================================================
+   PREVIA Product
 Version: 1.0
 Status: Development
-=========================================================
-*/
+========================================================= */
 
 /* =========================================
    Timeline Configuration
@@ -241,40 +239,24 @@ function showProduct(productId, source = null) {
 
             <h2>${product.name}</h2>
 
-<div
-    class="favorite-button ${Favorites.has(product.id) ? "active" : ""}"
-    onclick="toggleFavorite('${product.id}', this, event)"
->
+<div class="favorite-button ${Favorites.has(product.id) ? "active" : ""}" onclick="toggleFavorite('${product.id}', this, event)">
    ${Icons.getHeart()}
 </div>
 
-<div
-    class="share-button"
-    onclick="Share.shareProduct(currentProduct)"
->
+<div class="share-button" onclick="Share.shareProduct(currentProduct)">
     ${Icons.getShare()}
 </div>
 
 <div class="product-gallery">
 
-    <img
-        id="main-product-image"
-        src="${product.images[0]}"
-        alt="${product.name}"
-        class="product-image"
-        onclick="openCurrentImage()"
-    >
+    <img id="main-product-image" src="${product.images[0]}" alt="${product.name}" class="product-image" onclick="openCurrentImage()">
 
     ${product.images.length > 1 ? `
 
 <div class="gallery-thumbnails">
 
     ${product.images.map(image => `
-        <img
-            src="${image}"
-            class="gallery-thumb"
-            onclick="changeMainImage('${image}')"
-        >
+        <img src="${image}" class="gallery-thumb" onclick="changeMainImage('${image}')">
     `).join("")}
 
 </div>
@@ -286,75 +268,41 @@ function showProduct(productId, source = null) {
             <div class="product-info">
 
     <div class="info-row">
-
-        <span class="info-title">
-            Brand
-        </span>
-
-        <span class="info-value">
-            ${product.brand}
-        </span>
-
+        <span class="info-title">Brand</span>
+        <span class="info-value">${product.brand}</span>
     </div>
 
          <br>
 
     <div class="info-row">
-
-        <span class="info-title">
-            Product Code
-        </span>
-
-        <span class="info-value">
-            ${product.sku.substring(0,1)}-${product.sku.substring(1)}
-        </span>
-
+        <span class="info-title">Product Code</span>
+        <span class="info-value">${product.sku.substring(0,1)}-${product.sku.substring(1)}</span>
     </div>
 
          <br>
 
     <div class="info-row">
-
-        <span class="info-title">
-            Price
-        </span>
-
+        <span class="info-title">Price</span>
         <span class="info-value">
-
         ${formatPrice(product)}
-
         <br>
-
-        <span class="product-price-uah">
-            ${formatPriceUAH(product)}
+        <span class="product-price-uah">${formatPriceUAH(product)}</span>
         </span>
-
-        </span>
-
     </div>
 
          <br>
 
     <div class="info-row">
-
-        <span class="info-title">
-            Status
-        </span>
-
-        <span class="info-value">
+        <span class="info-title">Status</span>
+        <span class="info-value" data-product-status="${product.id}">
             ${getStatus(product.status)}
         </span>
-
     </div>
 
          <br>
 
     <div class="info-row">
-
-        <span class="info-title">
-            Era
-        </span>
-
+        <span class="info-title">Era</span>
         <span class="info-value">
              ${
                  product.eraFrom
@@ -366,47 +314,29 @@ function showProduct(productId, source = null) {
     : "—"
 }
         </span>
-
     </div>
 
          <br>
 
     ${renderEraTimeline(product)}
 
-<p class="product-description">
-
-    ${product.description}
-
-</p>
+<p class="product-description">${product.description}</p>
 
     ${renderRelatedProducts(product)}
 
             <div class="product-action-row">
 
     ${product.status === "available" ? `
-    <button
-        class="telegram-button product-action-button"
-        type="button"
-        data-cart-product="${product.id}"
-        onclick="Cart.add('${product.id}')"
-    >
+    <button class="telegram-button product-action-button" type="button" data-cart-product="${product.id}" onclick="Cart.add('${product.id}')">
         ${Cart.has(product.id) ? "У КОШИКУ" : "ДОДАТИ В КОШИК"}
     </button>
     ` : `
-    <button
-        class="telegram-button product-action-button"
-        type="button"
-        disabled
-        aria-disabled="true"
-    >
+    <button class="telegram-button product-action-button" type="button" disabled aria-disabled="true">
         ${product.status === "reserved" ? "ЗАБРОНЬОВАНО" : "ПРОДАНО"}
     </button>
     `}
 
-    <button
-        class="telegram-button product-action-button secondary"
-        type="button"
-    >
+    <button class="telegram-button product-action-button secondary" type="button">
         ЗАПИТАТИ
     </button>
 
