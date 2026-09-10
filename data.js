@@ -1,7 +1,7 @@
 const exchangeRate = {
-  "eurToUah": 52.3204,
+  "eurToUah": 52.0698,
   "source": "Monobank",
-  "updated": "2026-09-09"
+  "updated": "2026-09-10"
 };
 
 const products = [
@@ -318,7 +318,7 @@ const products = [
     "name": "Cenere USA",
     "currency": "EUR",
     "price": 0,
-    "status": "sold",
+    "status": "available",
     "dateAdded": "2026-07-02",
     "eraFrom": "",
     "eraTo": "",
