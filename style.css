@@ -1966,6 +1966,22 @@ body.search-mode #search-screen {
 
 }
 
+#about-modal .immerse-window {
+    max-height: 85vh;
+    box-sizing: border-box;
+}
+
+#about-modal .immerse-window {
+    display: flex;
+    flex-direction: column;
+}
+
+#about-modal .about-content {
+    flex: 1;
+    min-height: 0;
+    overflow-y: auto;
+}
+
 .immerse-window h2{
 
     margin-top:0;
