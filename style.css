@@ -3395,3 +3395,8 @@ body.order-modal-open {
         font-size: 15px;
     }
 }
+
+.creator-signature {
+    margin-top: 12px;
+    color: #6d5b42;
+}

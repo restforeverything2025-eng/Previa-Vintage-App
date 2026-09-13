@@ -90,16 +90,25 @@ function showHomeNewProducts() {
 
             <div class="links-pages">
 
-                <a href="#">
-                    About Us
-                </a>
+    <a
+        href="#"
+        onclick="showAbout(); return false;"
+    >
+        About Us
+    </a>
 
-                <span>•</span>
+    <span>•</span>
 
-                <a href="#">
-                    Delivery & Payment
-                </a>
+    <a href="#">
+        Delivery & Payment
+    </a>
 
+</div>
+
+            <div class="gold-divider"></div>
+
+            <div class="creator-signature">
+                Created with care by UriiUS
             </div>
 
         </section>
@@ -143,4 +152,22 @@ function initializeHome() {
 
     showHomeNewProducts();
 
+}
+
+function showAbout() {
+
+    const modal = document.getElementById("about-modal");
+
+    if (modal) {
+        modal.classList.remove("hidden");
+    }
+}
+
+function closeAbout() {
+
+    const modal = document.getElementById("about-modal");
+
+    if (modal) {
+        modal.classList.add("hidden");
+    }
 }
