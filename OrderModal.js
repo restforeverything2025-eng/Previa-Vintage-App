@@ -145,7 +145,7 @@ const OrderModal = (() => {
                     >
 
                         <label>
-                            Ваше ім'я
+                            Ваше прізвище та ім'я
 
                             <input
                                 type="text"
@@ -227,7 +227,7 @@ const OrderModal = (() => {
                                 required
                             >
 
-                                <option value="">
+                                <option value="" disabled selected hidden>
                                     Оберіть спосіб
                                 </option>
 
