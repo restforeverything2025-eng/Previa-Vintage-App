@@ -199,7 +199,9 @@ function showProduct(productId, source = null) {
 
     if (source === "search") {
 
-        Search.clearSearch();
+    Search.exitSearchMode();
+
+    document.getElementById("searchInput").value = "";
 
     }
 

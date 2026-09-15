@@ -92,6 +92,7 @@
         
         </div>
     <div id="search-container">
+
     <input
         type="text"
         id="searchInput"
@@ -99,7 +100,17 @@
         onfocus="Search.enterSearchMode()"
         oninput="Search.handleInput(this.value)"
     >
-</div>    
+
+    <button
+        type="button"
+        id="search-clear"
+        aria-label="Очистити пошук"
+        hidden
+    >
+        ×
+    </button>
+
+</div>
 
 <div id="main-screen">
 

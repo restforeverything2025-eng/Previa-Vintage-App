@@ -12,12 +12,20 @@ class SearchManager {
 
     constructor() {
 
-        this.state = "HOME";
-        this.searchTimer = null;
+    this.state = "HOME";
+    this.searchTimer = null;
 
-        console.log("SearchManager initialized");
+    const clearButton = document.getElementById("search-clear");
 
+    if (clearButton) {
+        clearButton.addEventListener("click", () => {
+            this.clearSearch();
+        });
     }
+
+    console.log("SearchManager initialized");
+
+}
 
 setMessage(text) {
 
@@ -85,9 +93,15 @@ clearSearch() {
 
     const suggestions = document.getElementById("search-suggestions");
 
+    const clearButton = document.getElementById("search-clear");
+
     if (input) {
         input.value = "";
     }
+
+    if (clearButton) {
+    clearButton.hidden = true;
+   }
 
     if (results) {
         results.innerHTML = "";
@@ -97,13 +111,9 @@ clearSearch() {
         suggestions.innerHTML = "";
     }
 
-    this.setMessage("Пошук за назвою, брендом або SKU.");
+    this.setMessage("Почніть вводити назву, бренд або SKU.");
 
-    document.body.classList.remove("search-mode");
-
-    this.state = "HOME";
-
-    currentView = getNavigationSource();
+    this.state = "SEARCH";
 
 }
 
@@ -151,6 +161,12 @@ handleInput(value) {
 
     if (this.searchTimer) {
         clearTimeout(this.searchTimer);
+    }
+
+    const clearButton = document.getElementById("search-clear");
+
+    if (clearButton) {
+        clearButton.hidden = value.length === 0;
     }
 
     if (value.length === 0) {
@@ -276,19 +292,25 @@ removeDuplicates(results) {
 
 enterSearchMode() {
 
-        this.state = "SEARCH";
+    this.state = "SEARCH";
 
-        setNavigationSource(currentView);
+    setNavigationSource(currentView);
 
-        currentView = "search";
+    currentView = "search";
 
-        document.body.classList.add("search-mode");
+    document.body.classList.add("search-mode");
 
-        this.setMessage("Почніть вводити назву, бренд або SKU.");
+    this.resetSearchView();
 
-        console.log("Search Mode");
+    const clearButton = document.getElementById("search-clear");
 
+    if (clearButton) {
+        clearButton.hidden = true;
     }
+
+    console.log("Search Mode");
+
+}
 
 exitSearchMode() {
 

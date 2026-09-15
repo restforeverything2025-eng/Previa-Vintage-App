@@ -57,13 +57,15 @@ function handleBackButton() {
 
     if (currentView === "search") {
 
-        Search.clearSearch();
+    Search.clearSearch();
 
-        goHome();
+    Search.exitSearchMode();
 
-        return;
+    goHome();
 
-    }
+    return;
+
+}
 
     goBack();
 
