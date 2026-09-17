@@ -1089,7 +1089,7 @@ const products = [
     "name": "R. Serbin Runway Shell & Pearl Clips",
     "currency": "EUR",
     "price": 390,
-    "status": "available",
+    "status": "reserved",
     "dateAdded": "2026-09-11",
     "eraFrom": 1980,
     "eraTo": 1990,
