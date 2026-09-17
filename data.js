@@ -1144,7 +1144,7 @@ const products = [
     "name": "Sonia Rykiel Paris (Clip-on earrings)",
     "currency": "EUR",
     "price": 200,
-    "status": "available",
+    "status": "reserved",
     "dateAdded": "2026-09-15",
     "eraFrom": 1980,
     "eraTo": 1990,
