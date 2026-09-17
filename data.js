@@ -1108,7 +1108,7 @@ const products = [
     "name": "Елегантний Roger Rodin «Favorit»",
     "currency": "EUR",
     "price": 390,
-    "status": "available",
+    "status": "reserved",
     "dateAdded": "2026-09-15",
     "eraFrom": 1990,
     "eraTo": 2000,
