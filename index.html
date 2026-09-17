@@ -153,7 +153,7 @@
         JEWELRY
 </div>
 
-      <div class="card" onclick="showAccessories()">
+<div class="card" onclick="showAccessories()">
 
       <div class="category-title">BAGS</div>
 
@@ -434,7 +434,12 @@
      JavaScript Modules
 ========================================= -->
 
-<script src="data.js"></script>
+<script>
+    const catalogVersion = Math.floor(Date.now() / 60000);
+    document.write(
+        '<script src="data.js?v=' + catalogVersion + '"><\/script>'
+    );
+</script>
 <script src="Cart.js"></script>
 <script src="config.js"></script>
 <script src="search.js"></script>
