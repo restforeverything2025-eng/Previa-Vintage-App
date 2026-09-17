@@ -1,5 +1,5 @@
 const exchangeRate = {
-  "eurToUah": 51.8001,
+  "eurToUah": 51.7491,
   "source": "Monobank",
   "updated": "2026-09-17"
 };
