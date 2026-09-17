@@ -1,7 +1,7 @@
 const exchangeRate = {
   "eurToUah": 51.7491,
   "source": "Monobank",
-  "updated": "2026-09-17"
+  "updated": "2026-09-18"
 };
 
 const products = [
@@ -13,7 +13,7 @@ const products = [
     "name": "Підвіска з синім каменем",
     "currency": "EUR",
     "price": 140,
-    "status": "available",
+    "status": "reserved",
     "dateAdded": "2026-06-24",
     "eraFrom": "",
     "eraTo": "",
@@ -30,7 +30,7 @@ const products = [
     "name": "Кришталеве серце",
     "currency": "EUR",
     "price": 140,
-    "status": "available",
+    "status": "reserved",
     "dateAdded": "2026-06-24",
     "eraFrom": "",
     "eraTo": "",
@@ -49,7 +49,7 @@ const products = [
     "name": "Серце з шармами",
     "currency": "EUR",
     "price": 140,
-    "status": "available",
+    "status": "reserved",
     "dateAdded": "2026-06-24",
     "eraFrom": "",
     "eraTo": "",
