@@ -23,10 +23,11 @@ const Config = {
     coreFavoritesApiUrl: "https://previa-core.onrender.com/api/favorites",
 
     /*
-    Telegram Login Widget configuration for the standalone Web app.
-    The bot username is public; no bot token or signing secret belongs here.
+    Telegram Login OIDC configuration for the standalone Web app.
+    The Client ID is public and is safe to expose in frontend code.
+    Never place the Telegram Client Secret or bot token here.
     */
-    telegramLoginBotUsername: "PreviaVintageStoreBot"
+    telegramOidcClientId: "8970735353"
 
 };
 
