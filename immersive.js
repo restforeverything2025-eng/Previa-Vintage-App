@@ -177,18 +177,23 @@ async function openTelegramLogin() {
         );
     }
 
+    const clientId =
+        Number(Config.telegramOidcClientId);
+
+    if (!Number.isSafeInteger(clientId) || clientId <= 0) {
+        throw new Error(
+            "Telegram OIDC Client ID is invalid."
+        );
+    }
+
     Telegram.Login.init(
         {
-            client_id: Number(
-                Config.telegramOidcClientId
-            )
+            client_id: clientId
         },
         window.handleTelegramLogin
     );
 
-    Telegram.Login.open(
-        window.handleTelegramLogin
-    );
+    Telegram.Login.open();
 
 }
 
