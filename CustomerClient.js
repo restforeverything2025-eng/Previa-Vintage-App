@@ -69,22 +69,44 @@ const CustomerClient = (() => {
 
     }
 
-    async function getOrCreateCustomerTelegramOidc(idToken) {
+    async function getOrCreateCustomerTelegramOidc(
+        idToken,
+        nonce = null
+    ) {
+
+        const authentication = {
+            telegram_id_token: idToken
+        };
+
+        if (typeof nonce === "string" && nonce.trim()) {
+            authentication.telegram_oidc_nonce = nonce;
+        }
 
         const result = await request(
             "customer.getOrCreate",
-            { telegram_id_token: idToken }
+            authentication
         );
 
         return result.customer;
 
     }
 
-    async function findCustomerTelegramOidc(idToken) {
+    async function findCustomerTelegramOidc(
+        idToken,
+        nonce = null
+    ) {
+
+        const authentication = {
+            telegram_id_token: idToken
+        };
+
+        if (typeof nonce === "string" && nonce.trim()) {
+            authentication.telegram_oidc_nonce = nonce;
+        }
 
         const result = await request(
             "customer.find",
-            { telegram_id_token: idToken }
+            authentication
         );
 
         return result.customer;

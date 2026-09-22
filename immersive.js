@@ -162,6 +162,48 @@ function loadTelegramLoginLibrary() {
 
 }
 
+function prepareTelegramOidcLogin() {
+
+    if (
+        !Config.telegramOidcNonceStorageKey ||
+        typeof sessionStorage === "undefined"
+    ) {
+        throw new Error(
+            "Telegram OIDC nonce storage is unavailable."
+        );
+    }
+
+    let nonce;
+
+    if (
+        typeof crypto !== "undefined" &&
+        typeof crypto.randomUUID === "function"
+    ) {
+        nonce = crypto.randomUUID();
+    } else if (
+        typeof crypto !== "undefined" &&
+        typeof crypto.getRandomValues === "function"
+    ) {
+        const bytes = new Uint8Array(32);
+        crypto.getRandomValues(bytes);
+        nonce = Array.from(bytes, byte =>
+            byte.toString(16).padStart(2, "0")
+        ).join("");
+    } else {
+        throw new Error(
+            "Secure random generator is unavailable."
+        );
+    }
+
+    sessionStorage.setItem(
+        Config.telegramOidcNonceStorageKey,
+        nonce
+    );
+
+    return nonce;
+
+}
+
 async function openTelegramLogin() {
 
     await loadTelegramLoginLibrary();
@@ -169,8 +211,7 @@ async function openTelegramLogin() {
     if (
         typeof Telegram === "undefined" ||
         !Telegram.Login ||
-        typeof Telegram.Login.open !== "function" ||
-        typeof Telegram.Login.init !== "function"
+        typeof Telegram.Login.auth !== "function"
     ) {
         throw new Error(
             "Telegram Login library is unavailable."
@@ -186,14 +227,19 @@ async function openTelegramLogin() {
         );
     }
 
-    Telegram.Login.init(
+    const nonce =
+        prepareTelegramOidcLogin();
+
+    Telegram.Login.auth(
         {
-            client_id: clientId
+            client_id: clientId,
+            scope: ["profile"],
+            nonce,
+            redirect_uri:
+                Config.telegramOidcRedirectUri
         },
         window.handleTelegramLogin
     );
-
-    Telegram.Login.open();
 
 }
 

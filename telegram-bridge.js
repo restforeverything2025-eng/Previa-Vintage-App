@@ -120,6 +120,49 @@ const TelegramBridge = (() => {
 
     }
 
+    function restoreWebOidcNonce() {
+
+        try {
+            const key =
+                Config.telegramOidcNonceStorageKey;
+
+            if (!key) {
+                return null;
+            }
+
+            const nonce =
+                sessionStorage.getItem(key);
+
+            if (
+                typeof nonce !== "string" ||
+                !nonce.trim()
+            ) {
+                return null;
+            }
+
+            return nonce;
+
+        } catch {
+            return null;
+        }
+
+    }
+
+    function clearWebOidcNonce() {
+
+        try {
+            const key =
+                Config.telegramOidcNonceStorageKey;
+
+            if (key) {
+                sessionStorage.removeItem(key);
+            }
+        } catch {
+            // Ignore storage failures.
+        }
+
+    }
+
     function isMiniApp() {
         const webApp = getMiniApp();
         return Boolean(webApp && webApp.initData);
@@ -205,11 +248,15 @@ const TelegramBridge = (() => {
             return null;
         }
 
+        const nonce =
+            restoreWebOidcNonce();
+
         try {
 
             const customer =
                 await CustomerClient.findCustomerTelegramOidc(
-                    idToken
+                    idToken,
+                    nonce
                 );
 
             if (!customer) {
@@ -223,6 +270,8 @@ const TelegramBridge = (() => {
             console.log(
                 "Existing Web Customer restored."
             );
+
+            clearWebOidcNonce();
 
             return identity;
 
@@ -238,29 +287,43 @@ const TelegramBridge = (() => {
                 // Ignore storage failures.
             }
 
+            clearWebOidcNonce();
+
             throw error;
 
         }
 
     }
 
-    async function connectWeb(idToken) {
+    async function connectWeb(idToken, nonce = null) {
 
-        const customer =
-            await CustomerClient.getOrCreateCustomerTelegramOidc(
-                idToken
+        const effectiveNonce =
+            typeof nonce === "string" && nonce.trim()
+                ? nonce
+                : restoreWebOidcNonce();
+
+        try {
+
+            const customer =
+                await CustomerClient.getOrCreateCustomerTelegramOidc(
+                    idToken,
+                    effectiveNonce
+                );
+
+            setWebOidcAuthentication(idToken);
+
+            const identity =
+                setIdentityFromCustomer(customer);
+
+            console.log(
+                "Telegram Web OIDC login connected."
             );
 
-        setWebOidcAuthentication(idToken);
+            return identity;
 
-        const identity =
-            setIdentityFromCustomer(customer);
-
-        console.log(
-            "Telegram Web OIDC login connected."
-        );
-
-        return identity;
+        } finally {
+            clearWebOidcNonce();
+        }
 
     }
 
@@ -307,6 +370,8 @@ const TelegramBridge = (() => {
         } catch {
             // Ignore storage failures.
         }
+
+        clearWebOidcNonce();
 
     }
 
@@ -363,7 +428,13 @@ window.handleTelegramLogin = async function(result) {
 
     try {
 
-        await TelegramBridge.connectWeb(result.id_token);
+        const nonce =
+            restoreWebOidcNonce();
+
+        await TelegramBridge.connectWeb(
+            result.id_token,
+            nonce
+        );
         await Favorites.init();
 
         if (typeof showImmerse === "function") {

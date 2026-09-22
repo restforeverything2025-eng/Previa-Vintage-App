@@ -27,7 +27,18 @@ const Config = {
     The Client ID is public and is safe to expose in frontend code.
     Never place the Telegram Client Secret or bot token here.
     */
-    telegramOidcClientId: "8970735353"
+    telegramOidcClientId: "8970735353",
+
+    /*
+    Canonical production URI used by PREVIA for the Telegram Login
+    popup/OIDC integration. It must be registered in @BotFather.
+    */
+    telegramOidcRedirectUri: "https://previa-vintage.shop/",
+
+    /*
+    Short-lived browser state for the Telegram Login nonce.
+    */
+    telegramOidcNonceStorageKey: "previa-telegram-oidc-nonce"
 
 };
 
