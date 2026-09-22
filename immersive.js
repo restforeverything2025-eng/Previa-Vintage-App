@@ -47,6 +47,7 @@ function showImmerse() {
 
         if (loginContainer) {
             loginContainer.classList.add("hidden");
+            loginContainer.style.display = "none";
         }
 
         closeButton.textContent =
@@ -62,6 +63,7 @@ function showImmerse() {
 
         if (loginContainer) {
             loginContainer.classList.add("hidden");
+            loginContainer.style.display = "none";
             loginContainer.innerHTML = "";
         }
 
@@ -96,6 +98,7 @@ function renderTelegramLoginWidget() {
 
     container.innerHTML = "";
     container.classList.remove("hidden");
+    container.style.display = "block";
 
     const script =
         document.createElement("script");
@@ -109,7 +112,6 @@ function renderTelegramLoginWidget() {
 
     script.dataset.size = "large";
     script.dataset.onauth = "handleTelegramLogin(user)";
-    script.dataset.requestAccess = "write";
 
     container.appendChild(script);
 
