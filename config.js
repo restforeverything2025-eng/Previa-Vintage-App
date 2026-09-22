@@ -26,7 +26,7 @@ const Config = {
     Telegram Login Widget configuration for the standalone Web app.
     The bot username is public; no bot token or signing secret belongs here.
     */
-    telegramLoginBotUsername: "Ad_astra_per_astera"
+    telegramLoginBotUsername: "PreviaVintageStoreBot"
 
 };
 
