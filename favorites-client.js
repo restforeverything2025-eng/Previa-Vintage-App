@@ -7,8 +7,8 @@ Favorites Client
 
 Responsibility:
 
-- Communicate with PREVIA CMS Favorites API.
-- Send Favorites requests to Backend.
+- Communicate with PREVIA Core Favorites API.
+- Send authenticated Favorites requests to Core.
 - Return Favorites data to Frontend.
 - Do not contain business logic.
 ==================================================
@@ -17,10 +17,9 @@ Responsibility:
 const FavoritesClient = (() => {
 
     const API_URL =
-        "https://script.google.com/macros/s/AKfycbxWHGxRB3Edb5_cMZocgqswx7I_y4KKCb67RwTVYBMoqoTCvLTTXXOmsmGw9af3i2I8Fg/exec";
+        Config.coreFavoritesApiUrl;
 
-
-    async function request(action, data) {
+    async function request(action, authentication, data = {}) {
 
         const response =
             await fetch(API_URL, {
@@ -29,19 +28,16 @@ const FavoritesClient = (() => {
 
                 headers: {
                     "Content-Type":
-                        "text/plain;charset=UTF-8"
+                        "application/json;charset=UTF-8"
                 },
 
                 body: JSON.stringify({
-
                     action,
-
-                    data
-
+                    ...authentication,
+                    ...data
                 })
 
             });
-
 
         if (!response.ok) {
 
@@ -52,96 +48,87 @@ const FavoritesClient = (() => {
 
         }
 
-
         const result =
             await response.json();
 
-
         if (!result.success) {
 
-            throw new Error(
+            const error = new Error(
+                result.message ||
                 result.error ||
                 "Favorites API returned an error."
             );
 
-        }
+            error.code = result.code;
+            error.retryable = result.retryable;
 
+            throw error;
+
+        }
 
         return result;
 
     }
 
+    function authenticationFromIdentity() {
 
-    async function getFavorites(customerId) {
+        const authentication =
+            TelegramBridge.getAuthentication();
+
+        if (!authentication) {
+
+            throw new Error(
+                "Telegram authentication is required for cloud favorites."
+            );
+
+        }
+
+        return authentication;
+
+    }
+
+    async function getFavorites() {
 
         const result =
             await request(
-
                 "favorites.get",
-
-                {
-                    customerId
-                }
-
+                authenticationFromIdentity()
             );
 
         return result.favorites;
 
     }
 
-
-    async function addFavorite(
-        customerId,
-        productId
-    ) {
+    async function addFavorite(productId) {
 
         const result =
             await request(
-
                 "favorites.add",
-
-                {
-                    customerId,
-                    productId
-                }
-
+                authenticationFromIdentity(),
+                { productId }
             );
 
         return result.favorite;
 
     }
 
-
-    async function removeFavorite(
-        customerId,
-        productId
-    ) {
+    async function removeFavorite(productId) {
 
         const result =
             await request(
-
                 "favorites.remove",
-
-                {
-                    customerId,
-                    productId
-                }
-
+                authenticationFromIdentity(),
+                { productId }
             );
 
         return result.removed;
 
     }
 
-
     return {
-
         getFavorites,
-
         addFavorite,
-
         removeFavorite
-
     };
 
 })();
