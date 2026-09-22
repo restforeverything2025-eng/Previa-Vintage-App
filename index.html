@@ -139,117 +139,13 @@
 
 </div>
 
-      <div class="categories" id="categories">
+<!-- =========================================
+     Catalog
+========================================= -->
 
-      <div class="card" id="new-count" onclick="showNewProducts()">
-         NEW
-</div>
+<div id="catalog"></div>
 
-      <div class="card" id="watches-count" onclick="showWatches()">
-        WATCHES
-</div>
-
-      <div class="card" id="jewelry-count" onclick="showJewelry()">
-        JEWELRY
-</div>
-
-      <div class="card" onclick="showAccessories()">
-
-      <div class="category-title">BAGS</div>
-
-</div>
-
-<div class="card" onclick="showComingSoon('GLASSES')">
-
-    <div class="category-title">GLASSES</div>
-
-</div>
-
-<div class="card" onclick="showComingSoon('APPAREL')">
-
-    <div class="category-title">APPAREL</div>
-
-</div>
-
-<div class="card" onclick="showComingSoon('ARTWORK')">
-
-    <div class="category-title">ART</div>
-
-</div>
-
-<div class="card" onclick="showComingSoon('DECOR')">
-
-    <div class="category-title">DECOR</div>
-
-</div>
-
-      <div class="card" onclick="showSale()">
-
-      <div class="category-title">SALE</div>
-
-</div>
-
-</div>
-
-<div id="home-new-products"></div>
-
-<div id="content"></div>
-
-</div>
-
-<div id="search-screen">
-
-    <div id="search-message">
-
-        Пошук за назвою, брендом або SKU.
-
-    </div>
-
-    <div id="search-suggestions"></div>
-
-    <div id="search-results"></div>
-
-</div>
-
-<button id="scrollTopBtn" onclick="scrollToTop()">
-</button>
-
-<button id="backBtn" onclick="handleBackButton()">
-    ←
-</button>
-
-<div
-    id="lightbox"
-    class="lightbox"
-    onclick="closeLightbox()">
-
-    <span
-    id="lightboxClose"
-    class="close-lightbox"
-    onclick="event.stopPropagation(); closeLightbox()">
-    </span>
-
-    <img
-        id="lightbox-image"
-        class="lightbox-image"
-        src=""
-        alt=""
-        onclick="event.stopPropagation()"
-    >
-
-    <button
-    id="lightboxPrev"
-    class="lightbox-prev"
-    onclick="event.stopPropagation(); previousImage()">
-</button>
-
-<button
-    id="lightboxNext"
-    class="lightbox-next"
-    onclick="event.stopPropagation(); nextImage()">
-</button>
-
-</div>
+<div id="product-screen" class="hidden"></div>
 
 <div id="toast"></div>
 
@@ -317,6 +213,8 @@
     <p class="immerse-question">
         Поринути?
     </p>
+
+    <div id="telegram-login-container" class="telegram-login-container hidden"></div>
 
     <button
         class="immerse-connect-btn"
@@ -417,62 +315,3 @@
         </p>
 
     </div>
-
-        <button
-            type="button"
-            class="immerse-close-btn"
-            onclick="closeAbout()"
-        >
-            ЗАКРИТИ
-        </button>
-
-    </div>
-
-</div>
-
-<!-- =========================================
-     JavaScript Modules
-========================================= -->
-
-<script>
-    const catalogVersion = Math.floor(Date.now() / 60000);
-    document.write(
-        '<script src="data.js?v=' + catalogVersion + '"><\/script>'
-    );
-</script>
-<script src="Cart.js"></script>
-<script src="config.js"></script>
-<script src="search.js"></script>
-<script src="navigation.js"></script>
-<script src="gallery.js"></script>
-<script src="product.js"></script>
-<script src="OrderModal.js"></script>
-<script src="OrderIntegration.js"></script>
-<script src="related.js"></script>
-<script src="card.js"></script>
-<script src="icons.js"></script>
-<script src="share.js"></script>
-<script src="toast.js"></script>
-<script src="catalog.js"></script>
-<script src="home.js"></script>
-<script src="FavoritesStorage.js"></script>
-<script src="LocalFavoritesStorage.js"></script>
-<script src="CloudFavoritesStorage.js"></script>
-<script src="FavoritesStorageManager.js"></script>
-<script src="favorites-client.js"></script>
-<script src="favorites.js"></script>
-<script src="identity.js"></script>
-<script src="customer.js"></script>
-<script src="CustomerClient.js"></script>
-<script src="telegram-bridge.js"></script>
-<script src="storage-local.js"></script>
-<script src="storage-service.js"></script>
-<script src="favorites-page.js"></script>
-<script src="immersive.js"></script>
-<script src="theme.js"></script>
-<script src="daily-facts.js"></script>
-<script src="daily-info.js"></script>
-<script src="app.js"></script>
-
-</body>
-</html>
