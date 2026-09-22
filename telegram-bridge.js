@@ -8,47 +8,35 @@ Telegram Bridge
 
 Responsibility:
 
-- Communicate with Telegram.
-- Convert Telegram data into PREVIA Identity.
+- Communicate with Telegram authentication surfaces.
+- Convert verified Telegram data into PREVIA Identity.
 - Never contain business logic.
 ==================================================
 */
 
 const TelegramBridge = (() => {
 
-    async function connect() {
+    const WEB_LOGIN_STORAGE_KEY =
+        "previa-telegram-login";
 
-        const user =
-            Telegram.WebApp.initDataUnsafe.user;
+    let authentication = null;
 
-        if (!user) {
+    function getMiniApp() {
 
-            throw new Error(
-                "Telegram user data is unavailable."
-            );
+        if (
+            typeof Telegram === "undefined" ||
+            !Telegram.WebApp
+        ) {
+
+            return null;
 
         }
 
-        const displayName =
-            [user.first_name, user.last_name]
-                .filter(Boolean)
-                .join(" ");
+        return Telegram.WebApp;
 
-        const username =
-            user.username || "";
+    }
 
-        const customer =
-            await CustomerClient.getOrCreateCustomer(
-
-                "telegram",
-
-                String(user.id),
-
-                displayName,
-
-                username
-
-            );
+    function setIdentityFromCustomer(customer) {
 
         const identity =
             Customer.create({
@@ -69,8 +57,118 @@ const TelegramBridge = (() => {
 
         Identity.setCurrent(identity);
 
+        return identity;
+
+    }
+
+    function setWebLoginAuthentication(loginData) {
+
+        if (
+            !loginData ||
+            loginData.id === undefined ||
+            !loginData.hash ||
+            !loginData.auth_date
+        ) {
+
+            throw new Error(
+                "Telegram Login data is invalid."
+            );
+
+        }
+
+        authentication = {
+            telegram_login: {
+                ...loginData
+            }
+        };
+
+        try {
+            sessionStorage.setItem(
+                WEB_LOGIN_STORAGE_KEY,
+                JSON.stringify(loginData)
+            );
+        } catch {
+            // Session persistence is optional; in-memory auth remains active.
+        }
+
+        return authentication;
+
+    }
+
+    function restoreWebLoginAuthentication() {
+
+        if (authentication) {
+            return authentication.telegram_login || null;
+        }
+
+        try {
+            const raw =
+                sessionStorage.getItem(WEB_LOGIN_STORAGE_KEY);
+
+            if (!raw) {
+                return null;
+            }
+
+            const loginData = JSON.parse(raw);
+
+            if (!loginData || typeof loginData !== "object") {
+                return null;
+            }
+
+            authentication = {
+                telegram_login: loginData
+            };
+
+            return loginData;
+
+        } catch {
+            return null;
+        }
+
+    }
+
+    function isMiniApp() {
+        const webApp = getMiniApp();
+        return Boolean(webApp && webApp.initData);
+    }
+
+    async function connect() {
+
+        const webApp = getMiniApp();
+
+        if (!webApp || !webApp.initData) {
+
+            throw new Error(
+                "Telegram Mini App authentication is unavailable."
+            );
+
+        }
+
+        const user =
+            webApp.initDataUnsafe.user;
+
+        if (!user) {
+
+            throw new Error(
+                "Telegram user data is unavailable."
+            );
+
+        }
+
+        const customer =
+            await CustomerClient.getOrCreateCustomerMiniApp(
+                webApp.initData
+            );
+
+        authentication = {
+            telegram_init_data: webApp.initData
+        };
+
+        const identity =
+            setIdentityFromCustomer(customer);
+
         console.log(
-            "Telegram connected."
+            "Telegram Mini App connected."
         );
 
         return identity;
@@ -79,62 +177,175 @@ const TelegramBridge = (() => {
 
     async function restore() {
 
-    const user =
-        Telegram.WebApp.initDataUnsafe.user;
+        const webApp = getMiniApp();
 
-    if (!user) {
+        if (webApp && webApp.initData) {
 
-        throw new Error(
-            "Telegram user data is unavailable."
+            const customer =
+                await CustomerClient.findCustomerMiniApp(
+                    webApp.initData
+                );
+
+            if (!customer) {
+                return null;
+            }
+
+            authentication = {
+                telegram_init_data: webApp.initData
+            };
+
+            const identity =
+                setIdentityFromCustomer(customer);
+
+            console.log(
+                "Existing Telegram Mini App Customer restored."
+            );
+
+            return identity;
+
+        }
+
+        const loginData =
+            restoreWebLoginAuthentication();
+
+        if (!loginData) {
+            return null;
+        }
+
+        const customer =
+            await CustomerClient.findCustomerTelegramLogin(
+                loginData
+            );
+
+        if (!customer) {
+            authentication = null;
+            return null;
+        }
+
+        const identity =
+            setIdentityFromCustomer(customer);
+
+        console.log(
+            "Existing Web Customer restored."
         );
+
+        return identity;
 
     }
 
-    const customer =
-        await CustomerClient.findCustomer(
+    async function connectWeb(loginData) {
 
-            "telegram",
+        const customer =
+            await CustomerClient.getOrCreateCustomerTelegramLogin(
+                loginData
+            );
 
-            String(user.id)
+        setWebLoginAuthentication(loginData);
 
+        const identity =
+            setIdentityFromCustomer(customer);
+
+        console.log(
+            "Telegram Web login connected."
         );
 
-    if (!customer) {
+        return identity;
+
+    }
+
+    function getAuthentication() {
+
+        if (authentication) {
+            return authentication;
+        }
+
+        const loginData =
+            restoreWebLoginAuthentication();
+
+        if (loginData) {
+            return {
+                telegram_login: loginData
+            };
+        }
+
+        const webApp = getMiniApp();
+
+        if (webApp && webApp.initData) {
+            return {
+                telegram_init_data: webApp.initData
+            };
+        }
 
         return null;
 
     }
 
-    const identity =
-        Customer.create({
+    function isTelegramMiniApp() {
+        return isMiniApp();
+    }
 
-            customerId:
-                customer.customerId,
+    function clear() {
 
-            provider:
-                customer.provider,
+        authentication = null;
+        Identity.clear();
 
-            id:
-                customer.providerId,
-
-            name:
-                customer.displayName
-
-        });
-
-    Identity.setCurrent(identity);
-
-    console.log(
-        "Existing Customer restored."
-    );
-
-    return identity;
+        try {
+            sessionStorage.removeItem(
+                WEB_LOGIN_STORAGE_KEY
+            );
+        } catch {
+            // Ignore storage failures.
+        }
 
     }
 
     return {
-    connect,
-    restore
+        connect,
+        connectWeb,
+        restore,
+        getAuthentication,
+        isTelegramMiniApp,
+        clear
     };
 
 })();
+
+/*
+Global callback required by the Telegram Login Widget.
+The widget invokes this function after successful authentication.
+*/
+window.handleTelegramLogin = async function(loginData) {
+
+    try {
+
+        await TelegramBridge.connectWeb(loginData);
+        await Favorites.init();
+
+        if (typeof showImmerse === "function") {
+            showImmerse();
+        }
+
+        if (typeof closeImmerse === "function") {
+            closeImmerse();
+        }
+
+        console.log(
+            "Telegram Web authentication completed."
+        );
+
+    } catch (error) {
+
+        console.error(
+            "Telegram Web authentication failed:",
+            error
+        );
+
+        if (typeof showToast === "function") {
+            showToast(
+                "Не вдалося підключити Telegram. Спробуйте ще раз."
+            );
+        }
+
+    }
+
+};

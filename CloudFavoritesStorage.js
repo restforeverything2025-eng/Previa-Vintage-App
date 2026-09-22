@@ -16,33 +16,29 @@ This is the authenticated Favorites storage implementation.
 
 const CloudFavoritesStorage = (() => {
 
-    async function getAll(customerId) {
+    async function getAll() {
 
-        return FavoritesClient.getFavorites(
-            customerId
-        );
+        return FavoritesClient.getFavorites();
 
     }
 
     async function add(
-        customerId,
+        _customerId,
         productId
     ) {
 
         return FavoritesClient.addFavorite(
-            customerId,
             productId
         );
 
     }
 
     async function remove(
-        customerId,
+        _customerId,
         productId
     ) {
 
         return FavoritesClient.removeFavorite(
-            customerId,
             productId
         );
 
