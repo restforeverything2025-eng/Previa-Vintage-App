@@ -17,9 +17,16 @@ const Config = {
     /*
     Public Core endpoint configuration.
     Never place a secret or signing key in the frontend.
-    The production URL will be supplied here when Core is deployed.
     */
-    coreOrderApiUrl: "https://previa-core.onrender.com/api/orders"
+    coreOrderApiUrl: "https://previa-core.onrender.com/api/orders",
+    coreCustomerApiUrl: "https://previa-core.onrender.com/api/customer",
+    coreFavoritesApiUrl: "https://previa-core.onrender.com/api/favorites",
+
+    /*
+    Telegram Login Widget configuration for the standalone Web app.
+    The bot username is public; no bot token or signing secret belongs here.
+    */
+    telegramLoginBotUsername: "Ad_astra_per_astera"
 
 };
 
