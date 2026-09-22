@@ -69,22 +69,22 @@ const CustomerClient = (() => {
 
     }
 
-    async function getOrCreateCustomerTelegramLogin(loginData) {
+    async function getOrCreateCustomerTelegramOidc(idToken) {
 
         const result = await request(
             "customer.getOrCreate",
-            { telegram_login: loginData }
+            { telegram_id_token: idToken }
         );
 
         return result.customer;
 
     }
 
-    async function findCustomerTelegramLogin(loginData) {
+    async function findCustomerTelegramOidc(idToken) {
 
         const result = await request(
             "customer.find",
-            { telegram_login: loginData }
+            { telegram_id_token: idToken }
         );
 
         return result.customer;
@@ -114,8 +114,8 @@ const CustomerClient = (() => {
     }
 
     return {
-        getOrCreateCustomerTelegramLogin,
-        findCustomerTelegramLogin,
+        getOrCreateCustomerTelegramOidc,
+        findCustomerTelegramOidc,
         getOrCreateCustomerMiniApp,
         findCustomerMiniApp
     };
