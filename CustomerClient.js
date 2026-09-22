@@ -7,8 +7,8 @@ CustomerClient.js
 Customer Client
 
 Responsibility:
-- Communicate with PREVIA CMS Customer API.
-- Send Customer requests to the Backend.
+- Communicate with PREVIA Core Customer API.
+- Send authenticated Customer requests to Core.
 - Return Customer data to the Frontend.
 - Do not contain business logic.
 ==================================================
@@ -17,45 +17,26 @@ Responsibility:
 const CustomerClient = (() => {
 
     const API_URL =
-        "https://script.google.com/macros/s/AKfycbxWHGxRB3Edb5_cMZocgqswx7I_y4KKCb67RwTVYBMoqoTCvLTTXXOmsmGw9af3i2I8Fg/exec";
+        Config.coreCustomerApiUrl;
 
-    async function getOrCreateCustomer(
-    provider,
-    providerId,
-    displayName,
-    username
-) {
+    async function request(action, authentication) {
 
-    const response =
-        await fetch(API_URL, {
+        const response =
+            await fetch(API_URL, {
 
-            method: "POST",
+                method: "POST",
 
-            headers: {
-                "Content-Type":
-                    "text/plain;charset=UTF-8"
-            },
+                headers: {
+                    "Content-Type":
+                        "application/json;charset=UTF-8"
+                },
 
-            body: JSON.stringify({
+                body: JSON.stringify({
+                    action,
+                    ...authentication
+                })
 
-                action:
-                    "customer.getOrCreate",
-
-                data: {
-
-                    provider,
-
-                    providerId,
-
-                    displayName,
-
-                    username
-
-                }
-
-            })
-
-        });
+            });
 
         if (!response.ok) {
 
@@ -71,80 +52,72 @@ const CustomerClient = (() => {
 
         if (!result.success) {
 
-            throw new Error(
+            const error = new Error(
+                result.message ||
                 result.error ||
                 "Customer API returned an error."
             );
 
+            error.code = result.code;
+            error.retryable = result.retryable;
+
+            throw error;
+
         }
+
+        return result;
+
+    }
+
+    async function getOrCreateCustomerTelegramLogin(loginData) {
+
+        const result = await request(
+            "customer.getOrCreate",
+            { telegram_login: loginData }
+        );
 
         return result.customer;
 
     }
 
-    async function findCustomer(
-    provider,
-    providerId
-) {
+    async function findCustomerTelegramLogin(loginData) {
 
-    const response =
-        await fetch(API_URL, {
-
-            method: "POST",
-
-            headers: {
-                "Content-Type":
-                    "text/plain;charset=UTF-8"
-            },
-
-            body: JSON.stringify({
-
-                action:
-                    "customer.find",
-
-                data: {
-
-                    provider,
-
-                    providerId
-
-                }
-
-            })
-
-        });
-
-    if (!response.ok) {
-
-        throw new Error(
-            "Customer API request failed: " +
-            response.status
+        const result = await request(
+            "customer.find",
+            { telegram_login: loginData }
         );
+
+        return result.customer;
 
     }
 
-    const result =
-        await response.json();
+    async function getOrCreateCustomerMiniApp(initData) {
 
-    if (!result.success) {
-
-        throw new Error(
-            result.error ||
-            "Customer API returned an error."
+        const result = await request(
+            "customer.getOrCreate",
+            { telegram_init_data: initData }
         );
+
+        return result.customer;
 
     }
 
-    return result.customer;
+    async function findCustomerMiniApp(initData) {
+
+        const result = await request(
+            "customer.find",
+            { telegram_init_data: initData }
+        );
+
+        return result.customer;
 
     }
 
     return {
-
-    findCustomer,
-
-    getOrCreateCustomer
-
+        getOrCreateCustomerTelegramLogin,
+        findCustomerTelegramLogin,
+        getOrCreateCustomerMiniApp,
+        findCustomerMiniApp
     };
 
 })();
