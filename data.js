@@ -1,7 +1,7 @@
 const exchangeRate = {
-  "eurToUah": 51.7491,
+  "eurToUah": 51.8001,
   "source": "Monobank",
-  "updated": "2026-09-18"
+  "updated": "2026-09-22"
 };
 
 const products = [
@@ -13,7 +13,7 @@ const products = [
     "name": "Підвіска з синім каменем",
     "currency": "EUR",
     "price": 140,
-    "status": "reserved",
+    "status": "available",
     "dateAdded": "2026-06-24",
     "eraFrom": "",
     "eraTo": "",
@@ -30,7 +30,7 @@ const products = [
     "name": "Кришталеве серце",
     "currency": "EUR",
     "price": 140,
-    "status": "reserved",
+    "status": "available",
     "dateAdded": "2026-06-24",
     "eraFrom": "",
     "eraTo": "",
@@ -49,7 +49,7 @@ const products = [
     "name": "Серце з шармами",
     "currency": "EUR",
     "price": 140,
-    "status": "reserved",
+    "status": "available",
     "dateAdded": "2026-06-24",
     "eraFrom": "",
     "eraTo": "",
@@ -1089,7 +1089,7 @@ const products = [
     "name": "R. Serbin Runway Shell & Pearl Clips",
     "currency": "EUR",
     "price": 390,
-    "status": "reserved",
+    "status": "available",
     "dateAdded": "2026-09-11",
     "eraFrom": 1980,
     "eraTo": 1990,
@@ -1108,7 +1108,7 @@ const products = [
     "name": "Елегантний Roger Rodin «Favorit»",
     "currency": "EUR",
     "price": 390,
-    "status": "reserved",
+    "status": "available",
     "dateAdded": "2026-09-15",
     "eraFrom": 1990,
     "eraTo": 2000,
