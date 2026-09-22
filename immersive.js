@@ -14,6 +14,8 @@ Responsibility:
 ==================================================
 */
 
+let telegramLoginLibraryPromise = null;
+
 function showImmerse() {
 
     const modal =
@@ -87,33 +89,106 @@ function closeImmerse() {
 
 }
 
-function renderTelegramLoginWidget() {
+function loadTelegramLoginLibrary() {
 
-    const container =
-        document.getElementById("telegram-login-container");
-
-    if (!container) {
-        throw new Error("Telegram login container is unavailable.");
+    if (
+        typeof Telegram !== "undefined" &&
+        Telegram.Login &&
+        typeof Telegram.Login.init === "function"
+    ) {
+        return Promise.resolve();
     }
 
-    container.innerHTML = "";
-    container.classList.remove("hidden");
-    container.style.display = "block";
+    if (telegramLoginLibraryPromise) {
+        return telegramLoginLibraryPromise;
+    }
 
-    const script =
-        document.createElement("script");
+    telegramLoginLibraryPromise = new Promise(
+        (resolve, reject) => {
 
-    script.async = true;
-    script.src =
-        "https://telegram.org/js/telegram-widget.js?22";
+            const existingScript =
+                document.querySelector(
+                    'script[data-previa-telegram-login="true"]'
+                );
 
-    script.dataset.telegramLogin =
-        Config.telegramLoginBotUsername;
+            if (existingScript) {
 
-    script.dataset.size = "large";
-    script.dataset.onauth = "handleTelegramLogin(user)";
+                existingScript.addEventListener(
+                    "load",
+                    () => resolve()
+                );
 
-    container.appendChild(script);
+                existingScript.addEventListener(
+                    "error",
+                    () => reject(
+                        new Error(
+                            "Telegram Login library failed to load."
+                        )
+                    )
+                );
+
+                return;
+
+            }
+
+            const script =
+                document.createElement("script");
+
+            script.async = true;
+            script.src =
+                "https://telegram.org/js/telegram-login.js";
+            script.dataset.previaTelegramLogin = "true";
+
+            script.addEventListener(
+                "load",
+                () => resolve()
+            );
+
+            script.addEventListener(
+                "error",
+                () => reject(
+                    new Error(
+                        "Telegram Login library failed to load."
+                    )
+                )
+            );
+
+            document.head.appendChild(script);
+
+        }
+    );
+
+    return telegramLoginLibraryPromise;
+
+}
+
+async function openTelegramLogin() {
+
+    await loadTelegramLoginLibrary();
+
+    if (
+        typeof Telegram === "undefined" ||
+        !Telegram.Login ||
+        typeof Telegram.Login.open !== "function" ||
+        typeof Telegram.Login.init !== "function"
+    ) {
+        throw new Error(
+            "Telegram Login library is unavailable."
+        );
+    }
+
+    Telegram.Login.init(
+        {
+            client_id: Number(
+                Config.telegramOidcClientId
+            )
+        },
+        window.handleTelegramLogin
+    );
+
+    Telegram.Login.open(
+        window.handleTelegramLogin
+    );
 
 }
 
@@ -162,14 +237,20 @@ async function enterCustomerPlatform() {
 
     try {
 
-        renderTelegramLoginWidget();
+        await openTelegramLogin();
 
     } catch (error) {
 
         console.error(
-            "Telegram Login Widget initialization failed:",
+            "Telegram OIDC Login initialization failed:",
             error
         );
+
+        if (typeof showToast === "function") {
+            showToast(
+                "Не вдалося відкрити Telegram. Спробуйте ще раз."
+            );
+        }
 
     }
 
