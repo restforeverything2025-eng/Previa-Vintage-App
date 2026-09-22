@@ -323,13 +323,47 @@ const TelegramBridge = (() => {
 
 /*
 Global callback required by the Telegram OIDC Login Library.
-The library invokes this function with the returned ID token.
+The library invokes this function with an authentication result object.
 */
-window.handleTelegramLogin = async function(idToken) {
+window.handleTelegramLogin = async function(result) {
+
+    if (!result || result.error) {
+
+        console.error(
+            "Telegram Web OIDC authentication failed:",
+            result?.error || "Empty authentication result."
+        );
+
+        if (typeof showToast === "function") {
+            showToast(
+                "Не вдалося підключити Telegram. Спробуйте ще раз."
+            );
+        }
+
+        return;
+
+    }
+
+    if (typeof result.id_token !== "string" || !result.id_token.trim()) {
+
+        console.error(
+            "Telegram Web OIDC authentication failed:",
+            "ID token is missing."
+        );
+
+        if (typeof showToast === "function") {
+            showToast(
+                "Telegram не повернув дані авторизації. Спробуйте ще раз."
+            );
+        }
+
+        return;
+
+    }
 
     try {
 
-        await TelegramBridge.connectWeb(idToken);
+        await TelegramBridge.connectWeb(result.id_token);
         await Favorites.init();
 
         if (typeof showImmerse === "function") {
