@@ -150,8 +150,7 @@ function loadTelegramLoginLibrary() {
                     new Error(
                         "Telegram Login library failed to load."
                     )
-                )
-            );
+                );
 
             document.head.appendChild(script);
 
@@ -234,9 +233,7 @@ async function openTelegramLogin() {
         {
             client_id: clientId,
             scope: ["profile"],
-            nonce,
-            redirect_uri:
-                Config.telegramOidcRedirectUri
+            nonce
         },
         window.handleTelegramLogin
     );
