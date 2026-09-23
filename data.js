@@ -1,7 +1,7 @@
 const exchangeRate = {
-  "eurToUah": 51.8001,
+  "eurToUah": 51.7706,
   "source": "Monobank",
-  "updated": "2026-09-22"
+  "updated": "2026-09-23"
 };
 
 const products = [
@@ -13,7 +13,7 @@ const products = [
     "name": "Підвіска з синім каменем",
     "currency": "EUR",
     "price": 140,
-    "status": "available",
+    "status": "reserved",
     "dateAdded": "2026-06-24",
     "eraFrom": "",
     "eraTo": "",
