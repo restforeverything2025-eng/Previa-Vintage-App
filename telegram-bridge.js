@@ -428,12 +428,8 @@ window.handleTelegramLogin = async function(result) {
 
     try {
 
-        const nonce =
-            restoreWebOidcNonce();
-
         await TelegramBridge.connectWeb(
-            result.id_token,
-            nonce
+            result.id_token
         );
         await Favorites.init();
 
