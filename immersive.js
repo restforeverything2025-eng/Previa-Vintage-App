@@ -150,7 +150,8 @@ function loadTelegramLoginLibrary() {
                     new Error(
                         "Telegram Login library failed to load."
                     )
-                );
+                )
+            );
 
             document.head.appendChild(script);
 
