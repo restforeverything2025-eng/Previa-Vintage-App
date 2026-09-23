@@ -1,5 +1,5 @@
 const exchangeRate = {
-  "eurToUah": 51.7706,
+  "eurToUah": 51.5305,
   "source": "Monobank",
   "updated": "2026-09-23"
 };
@@ -30,7 +30,7 @@ const products = [
     "name": "Кришталеве серце",
     "currency": "EUR",
     "price": 140,
-    "status": "available",
+    "status": "reserved",
     "dateAdded": "2026-06-24",
     "eraFrom": "",
     "eraTo": "",
