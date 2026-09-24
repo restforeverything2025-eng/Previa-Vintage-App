@@ -87,7 +87,7 @@ const CustomerClient = (() => {
             authentication
         );
 
-        return result.customer;
+        return result;
 
     }
 
@@ -109,35 +109,49 @@ const CustomerClient = (() => {
             authentication
         );
 
-        return result.customer;
+        return result;
+
+    }
+
+    async function findCustomerWebSession(sessionToken) {
+
+        const result = await request(
+            "customer.find",
+            { telegram_session_token: sessionToken }
+        );
+
+        return result;
 
     }
 
     async function getOrCreateCustomerMiniApp(initData) {
 
-        const result = await request(
-            "customer.getOrCreate",
-            { telegram_init_data: initData }
-        );
+        const result =
+            await request(
+                "customer.getOrCreate",
+                { telegram_init_data: initData }
+            );
 
-        return result.customer;
+        return result;
 
     }
 
     async function findCustomerMiniApp(initData) {
 
-        const result = await request(
-            "customer.find",
-            { telegram_init_data: initData }
-        );
+        const result =
+            await request(
+                "customer.find",
+                { telegram_init_data: initData }
+            );
 
-        return result.customer;
+        return result;
 
     }
 
     return {
         getOrCreateCustomerTelegramOidc,
         findCustomerTelegramOidc,
+        findCustomerWebSession,
         getOrCreateCustomerMiniApp,
         findCustomerMiniApp
     };

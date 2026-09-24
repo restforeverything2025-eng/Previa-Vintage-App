@@ -19,6 +19,9 @@ const TelegramBridge = (() => {
     const WEB_OIDC_STORAGE_KEY =
         "previa-telegram-oidc";
 
+    const WEB_SESSION_STORAGE_KEY =
+        "previa-telegram-session";
+
     let authentication = null;
 
     function getMiniApp() {
@@ -61,6 +64,80 @@ const TelegramBridge = (() => {
 
     }
 
+    function setWebSessionAuthentication(sessionToken) {
+
+        if (
+            typeof sessionToken !== "string" ||
+            !sessionToken.trim()
+        ) {
+
+            throw new Error(
+                "Telegram web session token is invalid."
+            );
+
+        }
+
+        authentication = {
+            telegram_session_token: sessionToken
+        };
+
+        try {
+            sessionStorage.setItem(
+                WEB_SESSION_STORAGE_KEY,
+                sessionToken
+            );
+        } catch {
+            // Session persistence is optional; in-memory auth remains active.
+        }
+
+        return authentication;
+
+    }
+
+    function restoreWebSessionAuthentication() {
+
+        if (
+            authentication &&
+            authentication.telegram_session_token
+        ) {
+            return authentication.telegram_session_token;
+        }
+
+        try {
+            const sessionToken =
+                sessionStorage.getItem(WEB_SESSION_STORAGE_KEY);
+
+            if (
+                typeof sessionToken !== "string" ||
+                !sessionToken.trim()
+            ) {
+                return null;
+            }
+
+            authentication = {
+                telegram_session_token: sessionToken
+            };
+
+            return sessionToken;
+
+        } catch {
+            return null;
+        }
+
+    }
+
+    function clearWebSessionAuthentication() {
+
+        try {
+            sessionStorage.removeItem(
+                WEB_SESSION_STORAGE_KEY
+            );
+        } catch {
+            // Ignore storage failures.
+        }
+
+    }
+
     function setWebOidcAuthentication(idToken) {
 
         if (
@@ -93,8 +170,11 @@ const TelegramBridge = (() => {
 
     function restoreWebOidcAuthentication() {
 
-        if (authentication) {
-            return authentication.telegram_id_token || null;
+        if (
+            authentication &&
+            authentication.telegram_id_token
+        ) {
+            return authentication.telegram_id_token;
         }
 
         try {
@@ -107,10 +187,6 @@ const TelegramBridge = (() => {
             ) {
                 return null;
             }
-
-            authentication = {
-                telegram_id_token: idToken
-            };
 
             return idToken;
 
@@ -191,7 +267,7 @@ const TelegramBridge = (() => {
 
         }
 
-        const customer =
+        const result =
             await CustomerClient.getOrCreateCustomerMiniApp(
                 webApp.initData
             );
@@ -201,7 +277,7 @@ const TelegramBridge = (() => {
         };
 
         const identity =
-            setIdentityFromCustomer(customer);
+            setIdentityFromCustomer(result.customer);
 
         console.log(
             "Telegram Mini App connected."
@@ -217,10 +293,12 @@ const TelegramBridge = (() => {
 
         if (webApp && webApp.initData) {
 
-            const customer =
+            const result =
                 await CustomerClient.findCustomerMiniApp(
                     webApp.initData
                 );
+
+            const customer = result.customer;
 
             if (!customer) {
                 return null;
@@ -241,6 +319,40 @@ const TelegramBridge = (() => {
 
         }
 
+        const sessionToken =
+            restoreWebSessionAuthentication();
+
+        if (sessionToken) {
+            try {
+                const result =
+                    await CustomerClient.findCustomerWebSession(
+                        sessionToken
+                    );
+
+                if (result.customer) {
+                    setWebSessionAuthentication(
+                        result.sessionToken || sessionToken
+                    );
+
+                    const identity =
+                        setIdentityFromCustomer(result.customer);
+
+                    console.log(
+                        "Existing Web Customer restored from session."
+                    );
+
+                    return identity;
+                }
+            } catch (error) {
+                clearWebSessionAuthentication();
+                authentication = null;
+                console.warn(
+                    "Web session restoration failed; falling back to Telegram OIDC.",
+                    error
+                );
+            }
+        }
+
         const idToken =
             restoreWebOidcAuthentication();
 
@@ -253,16 +365,22 @@ const TelegramBridge = (() => {
 
         try {
 
-            const customer =
+            const result =
                 await CustomerClient.findCustomerTelegramOidc(
                     idToken,
                     nonce
                 );
 
+            const customer = result.customer;
+
             if (!customer) {
                 authentication = null;
                 return null;
             }
+
+            setWebSessionAuthentication(
+                result.sessionToken
+            );
 
             const identity =
                 setIdentityFromCustomer(customer);
@@ -287,6 +405,7 @@ const TelegramBridge = (() => {
                 // Ignore storage failures.
             }
 
+            clearWebSessionAuthentication();
             clearWebOidcNonce();
 
             throw error;
@@ -304,16 +423,18 @@ const TelegramBridge = (() => {
 
         try {
 
-            const customer =
+            const result =
                 await CustomerClient.getOrCreateCustomerTelegramOidc(
                     idToken,
                     effectiveNonce
                 );
 
-            setWebOidcAuthentication(idToken);
+            setWebSessionAuthentication(
+                result.sessionToken
+            );
 
             const identity =
-                setIdentityFromCustomer(customer);
+                setIdentityFromCustomer(result.customer);
 
             console.log(
                 "Telegram Web OIDC login connected."
@@ -331,6 +452,15 @@ const TelegramBridge = (() => {
 
         if (authentication) {
             return authentication;
+        }
+
+        const sessionToken =
+            restoreWebSessionAuthentication();
+
+        if (sessionToken) {
+            return {
+                telegram_session_token: sessionToken
+            };
         }
 
         const idToken =
@@ -371,6 +501,7 @@ const TelegramBridge = (() => {
             // Ignore storage failures.
         }
 
+        clearWebSessionAuthentication();
         clearWebOidcNonce();
 
     }
