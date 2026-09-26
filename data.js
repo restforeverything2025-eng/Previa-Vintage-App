@@ -1,7 +1,7 @@
 const exchangeRate = {
   "eurToUah": 51.5305,
   "source": "Monobank",
-  "updated": "2026-09-23"
+  "updated": "2026-09-27"
 };
 
 const products = [
@@ -1055,7 +1055,7 @@ const products = [
     "name": "Годинник-кулон Seiko (Cal. 1400)",
     "currency": "EUR",
     "price": 290,
-    "status": "available",
+    "status": "reserved",
     "dateAdded": "2026-09-11",
     "eraFrom": 1980,
     "eraTo": 1980,
