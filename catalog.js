@@ -13,7 +13,11 @@ Status: Development
 let subcategoryScroll = {
 
     watches: 0,
-    jewelry: 0
+    jewelry: 0,
+    bags: 0,
+    glasses: 0,
+    apparel: 0,
+    decor: 0
 
 };
 
@@ -63,6 +67,10 @@ function resetSubcategoryScroll() {
 
     subcategoryScroll.watches = 0;
     subcategoryScroll.jewelry = 0;
+    subcategoryScroll.bags = 0;
+    subcategoryScroll.glasses = 0;
+    subcategoryScroll.apparel = 0;
+    subcategoryScroll.decor = 0;
 
 }
 
@@ -252,64 +260,359 @@ const brands = [...new Set(
     restoreSubcategoryScroll("watches");
 }
 
-function showAccessories() {
+function showBags(brand = "ALL") {
+
     currentView = "category";
-    currentCategory = showAccessories;
+
+    currentCategory = () => showBags(brand);
+
     document.getElementById(
-    "home-new-products"
-).innerHTML = "";
+        "home-new-products"
+    ).innerHTML = "";
+
     scrollToCatalog();
 
-    document.getElementById("search-container").style.display = "none";
-
+    document.getElementById("search-container").style.display = "block";
     document.getElementById("categories").style.display = "none";
 
-    document.getElementById("content").innerHTML = `
+    const content = document.getElementById("content");
 
-        <div class="top-actions">
+    const bags = products.filter(product => {
+
+        if (product.category !== "Сумки") {
+
+            return false;
+
+        }
+
+        if (brand === "ALL") {
+
+            return true;
+
+        }
+
+        return product.brand.trim() === brand.trim();
+
+    });
+
+    const brands = [...new Set(
+
+        products
+            .filter(product => product.category === "Сумки")
+            .map(product => product.brand.trim())
+
+    )].sort((a, b) => a.localeCompare(b));
+
+    let html = `
+    <div class="top-actions">
+
+        <div class="subcategory-menu">
+
+            <div
+                class="subcategory-btn all-btn ${brand === 'ALL' ? 'active' : ''}"
+                onclick="showBags('ALL')"
+            >
+                ALL
+            </div>
+
+            ${brands.map(item => `
+
+                <div
+                    class="subcategory-btn ${brand === item ? 'active' : ''}"
+                    onclick="showBags('${item}')"
+                >
+                    ${item}
+                </div>
+
+            `).join("")}
 
         </div>
 
-        <div class="card">
+    </div>
 
-            <h2>BAGS</h2>
+    <h2>BAGS</h2>
 
-            <p>Розділ наповнюється новими товарами.</p>
-
-        </div>
-
+    <div class="products-grid">
     `;
+
+    bags.forEach(product => {
+
+        html += renderProductCard(product);
+
+    });
+
+    html += `</div>`;
+
+    content.innerHTML = html;
+
+    restoreSubcategoryScroll("bags");
+
 }
 
-/* =========================================
-   Coming Soon Categories
-========================================= */
-
-function showComingSoon(categoryName) {
+function showGlasses(brand = "ALL") {
 
     currentView = "category";
 
-    currentCategory = () => showComingSoon(categoryName);
+    currentCategory = () => showGlasses(brand);
 
-    document.getElementById("home-new-products").innerHTML = "";
+    document.getElementById(
+        "home-new-products"
+    ).innerHTML = "";
 
     scrollToCatalog();
 
-    document.getElementById("content").innerHTML = `
+    document.getElementById("search-container").style.display = "block";
+    document.getElementById("categories").style.display = "none";
 
-        <div class="card">
+    const content = document.getElementById("content");
 
-            <h2>${categoryName}</h2>
+    const glasses = products.filter(product => {
 
-            <p>
+        if (product.category !== "Окуляри") {
 
-                Розділ наповнюється новими товарами.
+            return false;
 
-            </p>
+        }
+
+        if (brand === "ALL") {
+
+            return true;
+
+        }
+
+        return product.brand.trim() === brand.trim();
+
+    });
+
+    const brands = [...new Set(
+
+        products
+            .filter(product => product.category === "Окуляри")
+            .map(product => product.brand.trim())
+
+    )].sort((a, b) => a.localeCompare(b));
+
+    let html = `
+    <div class="top-actions">
+
+        <div class="subcategory-menu">
+
+            <div
+                class="subcategory-btn all-btn ${brand === 'ALL' ? 'active' : ''}"
+                onclick="showGlasses('ALL')"
+            >
+                ALL
+            </div>
+
+            ${brands.map(item => `
+
+                <div
+                    class="subcategory-btn ${brand === item ? 'active' : ''}"
+                    onclick="showGlasses('${item}')"
+                >
+                    ${item}
+                </div>
+
+            `).join("")}
 
         </div>
 
+    </div>
+
+    <h2>GLASSES</h2>
+
+    <div class="products-grid">
     `;
+
+    glasses.forEach(product => {
+
+        html += renderProductCard(product);
+
+    });
+
+    html += `</div>`;
+
+    content.innerHTML = html;
+
+    restoreSubcategoryScroll("glasses");
+
+}
+
+function showApparel(brand = "ALL") {
+
+    currentView = "category";
+
+    currentCategory = () => showApparel(brand);
+
+    document.getElementById(
+        "home-new-products"
+    ).innerHTML = "";
+
+    scrollToCatalog();
+
+    document.getElementById("search-container").style.display = "block";
+    document.getElementById("categories").style.display = "none";
+
+    const content = document.getElementById("content");
+
+    const apparel = products.filter(product => {
+
+        if (product.category !== "Одяг") {
+
+            return false;
+
+        }
+
+        if (brand === "ALL") {
+
+            return true;
+
+        }
+
+        return product.brand.trim() === brand.trim();
+
+    });
+
+    const brands = [...new Set(
+
+        products
+            .filter(product => product.category === "Одяг")
+            .map(product => product.brand.trim())
+
+    )].sort((a, b) => a.localeCompare(b));
+
+    let html = `
+    <div class="top-actions">
+
+        <div class="subcategory-menu">
+
+            <div
+                class="subcategory-btn all-btn ${brand === 'ALL' ? 'active' : ''}"
+                onclick="showApparel('ALL')"
+            >
+                ALL
+            </div>
+
+            ${brands.map(item => `
+
+                <div
+                    class="subcategory-btn ${brand === item ? 'active' : ''}"
+                    onclick="showApparel('${item}')"
+                >
+                    ${item}
+                </div>
+
+            `).join("")}
+
+        </div>
+
+    </div>
+
+    <h2>APPAREL</h2>
+
+    <div class="products-grid">
+    `;
+
+    apparel.forEach(product => {
+
+        html += renderProductCard(product);
+
+    });
+
+    html += `</div>`;
+
+    content.innerHTML = html;
+
+    restoreSubcategoryScroll("apparel");
+
+}
+
+function showDecor(brand = "ALL") {
+
+    currentView = "category";
+
+    currentCategory = () => showDecor(brand);
+
+    document.getElementById(
+        "home-new-products"
+    ).innerHTML = "";
+
+    scrollToCatalog();
+
+    document.getElementById("search-container").style.display = "block";
+    document.getElementById("categories").style.display = "none";
+
+    const content = document.getElementById("content");
+
+    const decor = products.filter(product => {
+
+        if (product.category !== "Декор") {
+
+            return false;
+
+        }
+
+        if (brand === "ALL") {
+
+            return true;
+
+        }
+
+        return product.brand.trim() === brand.trim();
+
+    });
+
+    const brands = [...new Set(
+
+        products
+            .filter(product => product.category === "Декор")
+            .map(product => product.brand.trim())
+
+    )].sort((a, b) => a.localeCompare(b));
+
+    let html = `
+    <div class="top-actions">
+
+        <div class="subcategory-menu">
+
+            <div
+                class="subcategory-btn all-btn ${brand === 'ALL' ? 'active' : ''}"
+                onclick="showDecor('ALL')"
+            >
+                ALL
+            </div>
+
+            ${brands.map(item => `
+
+                <div
+                    class="subcategory-btn ${brand === item ? 'active' : ''}"
+                    onclick="showDecor('${item}')"
+                >
+                    ${item}
+                </div>
+
+            `).join("")}
+
+        </div>
+
+    </div>
+
+    <h2>DECOR</h2>
+
+    <div class="products-grid">
+    `;
+
+    decor.forEach(product => {
+
+        html += renderProductCard(product);
+
+    });
+
+    html += `</div>`;
+
+    content.innerHTML = html;
+
+    restoreSubcategoryScroll("decor");
 
 }
 
