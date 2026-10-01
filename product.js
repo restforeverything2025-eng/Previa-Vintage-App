@@ -12,7 +12,7 @@ const TIMELINE_START = 1970;
 
 const TIMELINE_END = 2020;
 
-const TELEGRAM_MANAGER_URL = "https://t.me/manager_placeholder";
+const TELEGRAM_MANAGER_URL = "https://t.me/PREVIA_Get_info";
 
 /* =========================================
    Timeline Helpers
