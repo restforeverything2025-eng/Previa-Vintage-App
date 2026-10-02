@@ -196,8 +196,8 @@ h2{
 
     position:absolute;
 
-    top:12px;
-    left:12px;
+    top:6px;
+    left:6px;
 
     display:flex;
     align-items:center;
@@ -205,14 +205,14 @@ h2{
 
     padding:8px 11px;
 
-    background:rgba(244, 117, 110, 0.94);
+    background:#f2ede090;
 
     border-radius:9px;
 
     font-size:16px;
-    font-weight:700;
+    font-weight:800;
 
-    color:#2f2a24;
+    color:#4C5409;
 
     z-index:2;
 
@@ -438,12 +438,24 @@ button:hover{
 
 }
 
+.sale-price-main{
+
+    display:flex;
+
+    align-items:baseline;
+
+    justify-content:center;
+
+    gap:14px;
+
+}
+
 .old-price{
 
     font-size:18px;
     font-weight:600;
 
-    color:#777777;
+    color:#630000;
 
     text-decoration:line-through;
 
