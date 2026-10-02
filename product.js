@@ -118,6 +118,20 @@ function formatPrice(product) {
 
 }
 
+function formatOldPrice(product) {
+
+    const symbols = {
+        EUR: "€",
+        USD: "$",
+        UAH: "₴"
+    };
+
+    return product.oldPrice + " " + (
+        symbols[product.currency] || product.currency
+    );
+
+}
+
 function formatPriceUAH(product) {
 
     if (product.currency !== "EUR") {

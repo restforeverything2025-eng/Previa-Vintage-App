@@ -38,6 +38,16 @@ function renderProductCard(
 
         <div class="catalog-image-wrapper">
 
+        ${product.sale
+            ? `
+                <div class="sale-badge">
+                    ${Icons.getDiscount()}
+                    <span>−${product.salePercent}%</span>
+                </div>
+            `
+            : ""
+        }
+
         <img
             src="${product.images[0]}"
             alt="${product.name}"
@@ -48,9 +58,26 @@ function renderProductCard(
 
             <h3>${product.name}</h3>
 
-            <p class="product-price">
-                ${formatPrice(product)}
-            </p>
+            ${product.sale
+                ? `
+                    <div class="sale-price-main">
+
+                         <span class="old-price">
+                             ${formatOldPrice(product)}
+                         </span>
+
+                         <span class="current-price">
+                             ${formatPrice(product)}
+                         </span>
+
+                    </div>
+                  `
+                : `
+                    <p class="product-price">
+                            ${formatPrice(product)}
+                    </p>
+                  `
+            }
 
             ${showStatus
                 ? `<p data-product-status="${product.id}">${getStatus(product.status)}</p>`

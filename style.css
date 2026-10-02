@@ -165,6 +165,7 @@ h2{
 .catalog-image-wrapper{
 
     margin-top:36px;
+    position:relative;
 
 }
 
@@ -189,6 +190,41 @@ h2{
     box-shadow:0 6px 20px rgba(0,0,0,0.06);
 
     transition:0.3s;
+}
+
+.sale-badge{
+
+    position:absolute;
+
+    top:12px;
+    left:12px;
+
+    display:flex;
+    align-items:center;
+    gap:6px;
+
+    padding:8px 11px;
+
+    background:rgba(244, 117, 110, 0.94);
+
+    border-radius:9px;
+
+    font-size:16px;
+    font-weight:700;
+
+    color:#2f2a24;
+
+    z-index:2;
+
+}
+
+.sale-badge svg{
+
+    width:24px;
+    height:24px;
+
+    flex-shrink:0;
+
 }
 
 .favorite-button{
@@ -391,6 +427,34 @@ button:hover{
     font-size:15px;
 
     font-weight:500;
+
+}
+
+.sale-price{
+
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+
+}
+
+.old-price{
+
+    font-size:18px;
+    font-weight:600;
+
+    color:#777777;
+
+    text-decoration:line-through;
+
+}
+
+.current-price{
+
+    font-size:24px;
+    font-weight:700;
+
+    color:#2f2a24;
 
 }
 
