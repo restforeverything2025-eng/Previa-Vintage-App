@@ -1647,19 +1647,27 @@ body.search-mode #search-screen {
 
 }
 
-.instagram-link:hover{
-
-    transform:scale(1.08);
-
-    box-shadow:0 6px 16px rgba(0,0,0,.25);
-
-}
-
 .instagram-link svg{
 
     width:20px;
 
     height:20px;
+
+    fill:currentColor;
+
+}
+
+body:not(.light-theme) .instagram-link{
+
+    color:#f2f2f2;
+
+}
+
+.instagram-link:hover{
+
+    transform:scale(1.08);
+
+    box-shadow:0 6px 16px rgba(0,0,0,.25);
 
 }
 

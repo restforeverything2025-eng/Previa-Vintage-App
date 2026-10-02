@@ -617,32 +617,45 @@ function showDecor(brand = "ALL") {
 }
 
 function showSale() {
+
     currentView = "category";
     currentCategory = showSale;
+
     document.getElementById(
-    "home-new-products"
-).innerHTML = "";
+        "home-new-products"
+    ).innerHTML = "";
+
     scrollToCatalog();
 
     document.getElementById("search-container").style.display = "none";
-
     document.getElementById("categories").style.display = "none";
 
-    document.getElementById("content").innerHTML = `
+    const content = document.getElementById("content");
 
+    const saleProducts = products.filter(
+        product => product.sale === true
+    );
+
+    let html = `
         <div class="top-actions">
-
         </div>
 
-        <div class="card">
+        <h2>SALE</h2>
 
-            <h2>SALE</h2>
-
-            <p>Акційні пропозиції скоро з'являться.</p>
-
-        </div>
-
+        <div class="products-grid">
     `;
+
+    saleProducts.forEach(product => {
+
+        html += renderProductCard(product);
+
+    });
+
+    html += `
+        </div>
+    `;
+
+    content.innerHTML = html;
 }
 
 function showNewProducts() {
