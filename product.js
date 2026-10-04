@@ -255,7 +255,13 @@ function showProduct(productId, source = null) {
 
             <h2>${product.name}</h2>
 
-<div class="favorite-button ${Favorites.has(product.id) ? "active" : ""}" onclick="toggleFavorite('${product.id}', this, event)">
+<div
+    class="favorite-button ${Favorites.has(product.id) ? "active" : ""}"
+    data-favorite-product="${product.id}"
+    aria-pressed="${Favorites.has(product.id)}"
+    aria-disabled="${!Favorites.isReady()}"
+    onclick="toggleFavorite('${product.id}', this, event)"
+>
    ${Icons.getHeart()}
 </div>
 
