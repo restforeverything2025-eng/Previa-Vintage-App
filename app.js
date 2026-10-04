@@ -92,61 +92,30 @@ window.addEventListener("scroll", function() {
 Application Initialization
 ========================================= */
 
-async function initializeApplication() {
-
-    /*
-=========================================
-Identity Restoration
-=========================================
-*/
-
-Theme.init();
-DailyInfo.init();
-
-try {
-
-    const identity =
-        await TelegramBridge.restore();
-
-    if (identity) {
-
-        console.log(
-            "Existing Identity restored:",
-            identity
-        );
-
-    } else {
-
-        console.log(
-            "No existing Customer found."
-        );
-
-    }
-
-    } catch (error) {
-
-    console.error(
-        "Identity restoration failed:",
-        error
-    );
-
-    Identity.clear();
-
-    }
-
-    /*
-    =========================================
-    Favorites
-    =========================================
-    */
+async function initializePersonalizationFavorites(reinitialize = false) {
 
     try {
 
-        await Favorites.init();
+        if (
+            reinitialize &&
+            typeof Favorites.reinitialize === "function"
+        ) {
+
+            await Favorites.reinitialize();
+
+        } else {
+
+            await Favorites.init();
+
+        }
+
+        refreshFavoriteUI();
 
         console.log(
             "Favorites initialized."
         );
+
+        return true;
 
     } catch (error) {
 
@@ -155,14 +124,50 @@ try {
             error
         );
 
+        return false;
+
     }
 
+}
 
-    /*
-    =========================================
-    Application UI
-    =========================================
-    */
+async function initializePersonalization() {
+
+    try {
+
+        const identity =
+            await TelegramBridge.restore();
+
+        if (identity) {
+
+            console.log(
+                "Existing Identity restored:",
+                identity
+            );
+
+        } else {
+
+            console.log(
+                "No existing Customer found."
+            );
+
+        }
+
+    } catch (error) {
+
+        console.error(
+            "Identity restoration failed:",
+            error
+        );
+
+        Identity.clear();
+
+    }
+
+    return initializePersonalizationFavorites();
+
+}
+
+function initializeStaticUI() {
 
     document.getElementById("backBtn").innerHTML =
         Icons.getBack();
@@ -179,8 +184,9 @@ try {
     document.getElementById("lightboxClose").innerHTML =
         Icons.getClose();
 
+}
 
-    initializeHome();
+function initializeInitialRoute() {
 
     const params =
         new URLSearchParams(
@@ -195,6 +201,27 @@ try {
         showProduct(productId);
 
     }
+
+}
+
+function initializeApplication() {
+
+    Theme.init();
+    DailyInfo.init();
+
+    initializeStaticUI();
+
+    initializeHome();
+
+    TelegramBridge.ready();
+
+    initializeInitialRoute();
+
+    console.log(
+        "PREVIA UI_READY."
+    );
+
+    void initializePersonalization();
 
 }
 
