@@ -39,6 +39,27 @@ const TelegramBridge = (() => {
 
     }
 
+
+    function ready() {
+
+        const webApp = getMiniApp();
+
+        if (
+            !webApp ||
+            typeof webApp.ready !== "function"
+        ) {
+
+            return false;
+
+        }
+
+        webApp.ready();
+
+        return true;
+
+    }
+
+
     function setIdentityFromCustomer(customer) {
 
         const identity =
@@ -512,6 +533,7 @@ const TelegramBridge = (() => {
         restore,
         getAuthentication,
         isTelegramMiniApp,
+        ready,
         clear
     };
 
@@ -563,7 +585,26 @@ window.handleTelegramLogin = async function(result) {
             result.id_token
         );
 
-        await Favorites.init();
+        if (typeof initializePersonalizationFavorites === "function") {
+
+            const personalizationReady =
+                await initializePersonalizationFavorites(true);
+
+            if (!personalizationReady) {
+
+                throw new Error(
+                    "Customer Platform personalization initialization failed."
+                );
+
+            }
+
+        } else {
+
+            await Favorites.reinitialize();
+
+            refreshFavoriteUI();
+
+        }
 
         if (typeof showImmerse === "function") {
             showImmerse();

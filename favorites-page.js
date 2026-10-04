@@ -1,10 +1,14 @@
-function showFavorites() {
+function showFavorites(preserveScroll = false) {
 
     currentView = "favorites";
 
     currentCategory = showFavorites;
 
-    scrollToCatalog();
+    if (!preserveScroll) {
+
+        scrollToCatalog();
+
+    }
 
     document.getElementById(
         "home-new-products"
@@ -20,6 +24,26 @@ function showFavorites() {
 
     const content =
         document.getElementById("content");
+
+    if (!Favorites.isReady()) {
+
+        content.innerHTML = `
+
+            <div class="card">
+
+                <h2>Favorites</h2>
+
+                <p>
+                    Завантажуємо ваші обрані товари…
+                </p>
+
+            </div>
+
+        `;
+
+        return;
+
+    }
 
     const favoriteIds =
         Favorites.getAll();
@@ -68,5 +92,20 @@ html += `
 `;
 
 content.innerHTML = html;
+
+}
+
+function refreshFavoritesViewAfterReady() {
+
+    if (
+        typeof currentView === "undefined" ||
+        currentView !== "favorites"
+    ) {
+
+        return;
+
+    }
+
+    showFavorites(true);
 
 }

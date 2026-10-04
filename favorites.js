@@ -26,7 +26,20 @@ const Favorites = (() => {
 
     let favorites = [];
 
+    let state = "idle";
+    let initializationPromise = null;
+
     async function init() {
+
+    if (initializationPromise) {
+
+        return initializationPromise;
+
+    }
+
+    state = "loading";
+
+    initializationPromise = (async () => {
 
     const provider =
         FavoritesStorageManager.getProvider();
@@ -55,27 +68,98 @@ const Favorites = (() => {
             record => record.productId
         );
 
-    return;
+    } else {
+
+        /*
+        =========================================
+        Local Storage
+        =========================================
+        */
+
+        favorites =
+            await provider.getAll();
 
     }
 
+    state = "ready";
 
-    /*
-    =========================================
-    Local Storage
-    =========================================
-    */
+    })();
 
-    favorites =
-        await provider.getAll();
+    try {
+
+        await initializationPromise;
+
+    } catch (error) {
+
+        state = "error";
+
+        throw error;
+
+    } finally {
+
+        initializationPromise = null;
+
+    }
 
 }
+
+
+    async function reinitialize() {
+
+        if (initializationPromise) {
+
+            await initializationPromise;
+
+        }
+
+        state = "idle";
+        favorites = [];
+
+        return init();
+
+    }
 
     function has(id) {
         return favorites.includes(id);
     }
 
+    function getState() {
+        return state;
+    }
+
+    function isReady() {
+        return state === "ready";
+    }
+
+    function waitUntilReady() {
+
+        if (state === "ready") {
+
+            return Promise.resolve();
+
+        }
+
+        if (initializationPromise) {
+
+            return initializationPromise;
+
+        }
+
+        return Promise.reject(
+            new Error("Favorites has not been initialized.")
+        );
+
+    }
+
     async function toggle(id) {
+
+    if (!isReady()) {
+
+        throw new Error(
+            "Favorites is not ready."
+        );
+
+    }
 
     const provider =
         FavoritesStorageManager.getProvider();
@@ -170,10 +254,14 @@ Public API
 */
     return {
         init,
+        reinitialize,
         toggle,
         has,
         getAll,
-        count
+        count,
+        getState,
+        isReady,
+        waitUntilReady
     };
 
 })();
@@ -195,6 +283,16 @@ async function toggleFavorite(productId, button, event) {
 
     }
 
+    if (!Favorites.isReady()) {
+
+        console.warn(
+            "Favorite action ignored: Favorites is not ready yet."
+        );
+
+        return;
+
+    }
+
     await Favorites.toggle(productId);
 
     const isFavorite =
@@ -204,5 +302,52 @@ async function toggleFavorite(productId, button, event) {
         "active",
         isFavorite
     );
+
+    button.setAttribute(
+        "aria-pressed",
+        String(isFavorite)
+    );
+
+}
+
+function refreshFavoriteUI() {
+
+    if (!Favorites.isReady()) {
+
+        return;
+
+    }
+
+    document
+        .querySelectorAll("[data-favorite-product]")
+        .forEach(button => {
+
+            const productId =
+                button.dataset.favoriteProduct;
+
+            const isFavorite =
+                Favorites.has(productId);
+
+            button.classList.toggle(
+                "active",
+                isFavorite
+            );
+
+            button.setAttribute(
+                "aria-pressed",
+                String(isFavorite)
+            );
+
+        });
+
+    if (
+        typeof currentView !== "undefined" &&
+        currentView === "favorites" &&
+        typeof refreshFavoritesViewAfterReady === "function"
+    ) {
+
+        refreshFavoritesViewAfterReady();
+
+    }
 
 }
