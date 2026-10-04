@@ -587,7 +587,16 @@ window.handleTelegramLogin = async function(result) {
 
         if (typeof initializePersonalizationFavorites === "function") {
 
-            await initializePersonalizationFavorites(true);
+            const personalizationReady =
+                await initializePersonalizationFavorites(true);
+
+            if (!personalizationReady) {
+
+                throw new Error(
+                    "Customer Platform personalization initialization failed."
+                );
+
+            }
 
         } else {
 
