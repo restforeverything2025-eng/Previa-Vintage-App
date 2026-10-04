@@ -226,3 +226,72 @@ function initializeApplication() {
 }
 
 initializeApplication();
+
+/*
+==================================================
+PREVIA Startup Diagnostics
+
+Read-only console helpers for local verification.
+They do not mutate Identity, Favorites, or storage.
+==================================================
+*/
+
+window.testPreviaStartup = function() {
+
+    const result = {
+
+        uiReady: true,
+
+        favoritesState:
+            Favorites.getState(),
+
+        favoritesReady:
+            Favorites.isReady(),
+
+        identityAuthenticated:
+            Identity.isAuthenticated(),
+
+        telegramMiniApp:
+            TelegramBridge.isTelegramMiniApp(),
+
+        scrollHeight:
+            document.documentElement.scrollHeight,
+
+        viewportHeight:
+            window.innerHeight,
+
+        scrollable:
+            document.documentElement.scrollHeight >
+            window.innerHeight
+
+    };
+
+    console.table(result);
+
+    return result;
+
+};
+
+window.testFavoritesReadiness = function() {
+
+    const result = {
+
+        state:
+            Favorites.getState(),
+
+        ready:
+            Favorites.isReady(),
+
+        count:
+            Favorites.count(),
+
+        authenticated:
+            Identity.isAuthenticated()
+
+    };
+
+    console.table(result);
+
+    return result;
+
+};
