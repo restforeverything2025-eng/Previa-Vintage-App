@@ -303,6 +303,11 @@ async function toggleFavorite(productId, button, event) {
         isFavorite
     );
 
+    button.setAttribute(
+        "aria-pressed",
+        String(isFavorite)
+    );
+
 }
 
 function refreshFavoriteUI() {
