@@ -585,7 +585,17 @@ window.handleTelegramLogin = async function(result) {
             result.id_token
         );
 
-        await Favorites.init();
+        if (typeof initializePersonalizationFavorites === "function") {
+
+            await initializePersonalizationFavorites(true);
+
+        } else {
+
+            await Favorites.reinitialize();
+
+            refreshFavoriteUI();
+
+        }
 
         if (typeof showImmerse === "function") {
             showImmerse();
