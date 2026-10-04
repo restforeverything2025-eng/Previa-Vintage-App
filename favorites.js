@@ -68,19 +68,18 @@ const Favorites = (() => {
             record => record.productId
         );
 
-    return;
+    } else {
+
+        /*
+        =========================================
+        Local Storage
+        =========================================
+        */
+
+        favorites =
+            await provider.getAll();
 
     }
-
-
-    /*
-    =========================================
-    Local Storage
-    =========================================
-    */
-
-    favorites =
-        await provider.getAll();
 
     state = "ready";
 
