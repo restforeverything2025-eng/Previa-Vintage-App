@@ -103,6 +103,22 @@ const Favorites = (() => {
 
 }
 
+
+    async function reinitialize() {
+
+        if (initializationPromise) {
+
+            await initializationPromise;
+
+        }
+
+        state = "idle";
+        favorites = [];
+
+        return init();
+
+    }
+
     function has(id) {
         return favorites.includes(id);
     }
@@ -238,6 +254,7 @@ Public API
 */
     return {
         init,
+        reinitialize,
         toggle,
         has,
         getAll,
