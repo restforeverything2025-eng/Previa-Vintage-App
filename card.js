@@ -31,6 +31,9 @@ function renderProductCard(
 
         <div
             class="favorite-button ${Favorites.has(product.id) ? "active" : ""}"
+            data-favorite-product="${product.id}"
+            aria-pressed="${Favorites.has(product.id)}"
+            aria-disabled="${!Favorites.isReady()}"
             onclick="toggleFavorite('${product.id}', this, event)"
         >
             ${Icons.getHeart()}
