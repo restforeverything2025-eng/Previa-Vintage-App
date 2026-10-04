@@ -263,7 +263,16 @@ async function enterCustomerPlatform() {
                 identity
             );
 
-            await initializePersonalizationFavorites(true);
+            const personalizationReady =
+                await initializePersonalizationFavorites(true);
+
+            if (!personalizationReady) {
+
+                throw new Error(
+                    "Customer Platform personalization initialization failed."
+                );
+
+            }
 
             console.log(
                 "Customer Platform personalization initialized."
