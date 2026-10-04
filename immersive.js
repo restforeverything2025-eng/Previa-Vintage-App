@@ -263,10 +263,10 @@ async function enterCustomerPlatform() {
                 identity
             );
 
-            await Favorites.init();
+            await initializePersonalizationFavorites(true);
 
             console.log(
-                "Cloud Favorites initialized."
+                "Customer Platform personalization initialized."
             );
 
             closeImmerse();
