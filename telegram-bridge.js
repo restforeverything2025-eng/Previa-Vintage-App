@@ -39,6 +39,27 @@ const TelegramBridge = (() => {
 
     }
 
+
+    function ready() {
+
+        const webApp = getMiniApp();
+
+        if (
+            !webApp ||
+            typeof webApp.ready !== "function"
+        ) {
+
+            return false;
+
+        }
+
+        webApp.ready();
+
+        return true;
+
+    }
+
+
     function setIdentityFromCustomer(customer) {
 
         const identity =
@@ -512,6 +533,7 @@ const TelegramBridge = (() => {
         restore,
         getAuthentication,
         isTelegramMiniApp,
+        ready,
         clear
     };
 
