@@ -34,7 +34,6 @@ Its purpose is to provide every customer with a persistent personal experience a
 
 The platform is designed around independent modules with clear responsibilities and minimal coupling.
 
-
 ---
 
 ## 2. Design Principles
@@ -48,7 +47,7 @@ The Customer Platform follows the core architectural principles of PREVIA.
 - Identity as the authentication layer.
 - Telegram as an external provider through Telegram Bridge.
 - Small, independently testable modules.
-
+- Public storefront startup must not depend on optional personalization services.
 
 ---
 
@@ -60,6 +59,9 @@ The application interface never communicates directly with external providers.
 
 Every request passes through the appropriate module responsible for that part of the system.
 
+The Customer Platform is a personalization layer.
+
+It is not a prerequisite for public catalog browsing.
 
 ---
 
@@ -74,6 +76,9 @@ Responsibilities:
 - provide authentication state;
 - never communicate with Telegram directly.
 
+Identity does not own Favorites.
+
+Identity only provides the current Customer authentication state to modules that require it.
 
 ---
 
@@ -84,10 +89,19 @@ Telegram Bridge is responsible only for communication with Telegram.
 Responsibilities:
 
 - initiate Telegram authorization;
+- restore Telegram Mini App Customer identity;
 - receive Telegram customer data;
 - convert Telegram response into Customer;
+- notify Telegram that the Mini App is ready;
 - never contain PREVIA business logic.
 
+The application uses:
+
+```
+TelegramBridge.ready()
+```
+
+as the centralized Telegram Mini App readiness entry point.
 
 ---
 
@@ -103,6 +117,7 @@ Initially Customer contains:
 
 The model evolves only when new business requirements appear.
 
+Customer is persisted through the Customer infrastructure.
 
 ---
 
@@ -114,19 +129,148 @@ Identity determines whose favourites are loaded.
 
 Customer never stores favourite products directly.
 
+The flow is:
+
+```
+Favorites
+    ↓
+FavoritesStorageManager
+    ↓
+CloudFavoritesStorage
+    ↓
+FavoritesClient
+    ↓
+PREVIA Core
+    ↓
+PREVIA CMS
+    ↓
+Google Sheets
+```
+
+Anonymous users use LocalFavoritesStorage.
 
 ---
 
-## 8. Personal Vintage Search
+# 8. Startup and Readiness Architecture
+
+Customer Platform initialization is separated from public storefront initialization.
+
+The application has two conceptual readiness boundaries.
+
+## UI_READY
+
+The public storefront is ready.
+
+```
+Theme
+    ↓
+DailyInfo
+    ↓
+Static UI
+    ↓
+Home
+    ↓
+Telegram.WebApp.ready()
+    ↓
+Initial Route
+    ↓
+UI_READY
+```
+
+At this point the user can browse the public boutique.
+
+## PERSONALIZATION_READY
+
+Customer personalization is ready.
+
+```
+TelegramBridge.restore()
+    ↓
+Identity
+    ↓
+Favorites.init()
+    ↓
+refreshFavoriteUI()
+    ↓
+PERSONALIZATION_READY
+```
+
+The two paths are intentionally independent.
+
+The Customer Platform must not block:
+
+- Home;
+- Catalog;
+- Product pages;
+- Search;
+- Gallery;
+- Cart;
+- public scrolling.
+
+---
+
+# 9. Favorites Readiness
+
+Favorites uses explicit initialization states:
+
+```
+idle
+loading
+ready
+error
+```
+
+An empty Favorites array must not be interpreted as an initialized empty collection while loading is still in progress.
+
+Favorite actions are guarded until Favorites reaches:
+
+```
+ready
+```
+
+This prevents a storage-provider race during Customer restoration.
+
+---
+
+# 10. Favorites Reinitialization
+
+When the active Identity changes, Favorites must be reinitialized.
+
+The public API is:
+
+```
+Favorites.reinitialize()
+```
+
+The sequence is:
+
+```
+Customer authentication
+        ↓
+Identity changes
+        ↓
+Favorites.reinitialize()
+        ↓
+Current storage provider selected
+        ↓
+Favorites loaded
+        ↓
+refreshFavoriteUI()
+```
+
+This is required for manual Telegram login.
+
+---
+
+# 11. Personal Vintage Search
 
 Allows customers to request items currently unavailable in the boutique.
 
 The search system is independent from Favorites and Identity while using Customer identification.
 
-
 ---
 
-## 9. Collector Privileges
+# 12. Collector Privileges
 
 Stores customer privileges.
 
@@ -140,10 +284,9 @@ Possible future examples:
 
 The module remains isolated from Favorites.
 
-
 ---
 
-## 10. Settings
+# 13. Settings
 
 Stores customer preferences.
 
@@ -156,10 +299,9 @@ Examples:
 
 Settings never contain authentication logic.
 
-
 ---
 
-## 11. Module Responsibilities
+# 14. Module Responsibilities
 
 Immerse
     ↓
@@ -175,10 +317,9 @@ Each module communicates only through public interfaces.
 
 Direct access between implementation details is prohibited.
 
-
 ---
 
-## 12. Future Extensions
+# 15. Future Extensions
 
 The architecture intentionally leaves space for future modules.
 
@@ -194,7 +335,9 @@ Examples:
 
 Future modules should follow the same architectural principles without changing the existing foundation.
 
-## Customer + Cloud Favorites Integration — PASSED
+---
+
+# Customer + Cloud Favorites Integration — PASSED
 
 Статус: проверено на реальном пользовательском сценарии.
 
@@ -242,6 +385,30 @@ Telegram
 → CloudFavoritesStorage  
 → Favorites  
 → Google Sheets
+
+Результат: **PASSED**.
+
+### Startup Integration Test
+
+Проверена новая последовательность:
+
+```
+Public UI
+    ↓
+UI_READY
+
+TelegramBridge.restore()
+    ↓
+Identity
+    ↓
+Favorites
+    ↓
+refreshFavoriteUI()
+    ↓
+PERSONALIZATION_READY
+```
+
+Проверено, что Customer restoration больше не является обязательной зависимостью для публичного Home/Catalog.
 
 Результат: **PASSED**.
 
