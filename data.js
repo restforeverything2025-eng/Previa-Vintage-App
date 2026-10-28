@@ -1,7 +1,7 @@
 const exchangeRate = {
-  "eurToUah": 50.9996,
+  "eurToUah": 51.2689,
   "source": "Monobank",
-  "updated": "2026-10-16"
+  "updated": "2026-10-28"
 };
 
 const products = [
@@ -2015,11 +2015,11 @@ const products = [
     "brand": "Gucci",
     "name": "Швейцарський годинник-браслет Gucci 1900L",
     "currency": "EUR",
-    "price": 650,
+    "price": 700,
     "sale": false,
     "salePercent": "",
     "oldPrice": "",
-    "status": "available",
+    "status": "reserved",
     "dateAdded": "2026-10-16",
     "eraFrom": 1992,
     "eraTo": 1998,
