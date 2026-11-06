@@ -365,6 +365,32 @@
       "githubSha": "f9666db94b1cac20ddfbbd17f7b9caf848e01f3e"
     }
   ],
+  "A0012": [
+    {
+      "id": "1l3S6mhCcu2pjIzzvicvgZKcj_6NaB1G0",
+      "name": "1.webp",
+      "size": 57370,
+      "mimeType": "image/webp",
+      "updated": "2026-11-06T16:17:25.843Z",
+      "githubSha": "9db2d8f9f13f7142a6bfa20e9d317392b134bf81"
+    },
+    {
+      "id": "19GCLyxj2mzcJiVKTXLA6DscHo0N5oytw",
+      "name": "2.webp",
+      "size": 58058,
+      "mimeType": "image/webp",
+      "updated": "2026-11-06T16:17:27.624Z",
+      "githubSha": "0e1de8589e06d79f3fa5e96ff2cdfb16e69ce24f"
+    },
+    {
+      "id": "1sEtptyi0QIdwKaB0B341BVFF9LGkEiI9",
+      "name": "3.webp",
+      "size": 38338,
+      "mimeType": "image/webp",
+      "updated": "2026-11-06T16:17:29.290Z",
+      "githubSha": "0579122ef48e5816208a34c3f1a752c2cc85afe4"
+    }
+  ],
   "B0001": [
     {
       "id": "1fF8fv-yRqtuvWcVCgk6tlYHG-R6gkaSX",
