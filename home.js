@@ -104,11 +104,23 @@ function showHomeNewProducts() {
 
 </div>
 
-            <div class="gold-divider"></div>
+                       <div class="gold-divider"></div>
 
-            <div class="creator-signature">
-                Created with care by UriiUS
-            </div>
+           <div class="website-link">
+               <a
+                   href="https://previa-vintage.shop/"
+                   target="_blank"
+                   rel="noopener noreferrer"
+               >
+                   previa-vintage.shop ↗
+               </a>
+           </div>
+
+           <div class="gold-divider"></div>
+
+           <div class="creator-signature">
+               Created with care by UriiUS
+           </div>
 
         </section>
     `;

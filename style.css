@@ -173,7 +173,7 @@ h2{
 
     position:relative;
 
-    background:rgb(255, 255, 255);
+    background:rgb(218, 213, 202);
 
     border-radius:8px;
 
@@ -3554,4 +3554,24 @@ body.order-modal-open {
     height: 24px;
     stroke: currentColor;
     flex-shrink: 0;
+}
+
+/* Footer website link */
+
+.website-link {
+    margin: 18px 0;
+    text-align: center;
+}
+
+.website-link a,
+.website-link a:visited {
+    color: #C49A4A;
+    text-decoration: none;
+    font-size: 15px;
+    letter-spacing: 0.5px;
+    transition: color 0.2s ease;
+}
+
+.website-link a:hover {
+    color: #E4C27A;
 }
