@@ -7,35 +7,28 @@ Status: Development
 */
 
 function updateCounters() {
-
-    document.getElementById("watches-count").innerHTML =
-    `
+  document.getElementById("watches-count").innerHTML = `
     <div class="category-title">WATCHES</div>
     `;
 
-    document.getElementById("jewelry-count").innerHTML =
-    `
+  document.getElementById("jewelry-count").innerHTML = `
     <div class="category-title">JEWELRY</div>
     `;
 
-    document.getElementById("new-count").innerHTML =
-`
+  document.getElementById("new-count").innerHTML = `
 
     <div class="category-title">NEW</div>
 `;
 }
 
 function showHomeNewProducts() {
+  currentCategory = goHome;
 
-    currentCategory = goHome;
+  const container = document.getElementById("home-new-products");
 
-    const container =
-        document.getElementById("home-new-products");
+  const latestProducts = [...products].slice(-6).reverse();
 
-    const latestProducts =
-        [...products].slice(-6).reverse();
-
-    let html = `
+  let html = `
         <h2 class="home-section-title">
             Recent Discoveries
         </h2>
@@ -43,17 +36,11 @@ function showHomeNewProducts() {
         <div class="products-grid">
     `;
 
-    latestProducts.forEach(product => {
+  latestProducts.forEach((product) => {
+    html += renderProductCard(product, "home", true);
+  });
 
-    html += renderProductCard(
-        product,
-        "home",
-        true
-    );
-
-});
-
-        html += `
+  html += `
         </div>
 
         <section class="links-hub">
@@ -99,8 +86,20 @@ function showHomeNewProducts() {
 
     <span>•</span>
 
-    <a href="#">
+    <a
+        href="#"
+        onclick="showDelivery(); return false;"
+    >
         Delivery & Payment
+    </a>
+
+    <span>•</span>
+
+    <a
+        href="#"
+        onclick="showSearchService(); return false;"
+    >
+        Search Service
     </a>
 
 </div>
@@ -114,60 +113,86 @@ function showHomeNewProducts() {
         </section>
     `;
 
-    container.innerHTML = html;
-
+  container.innerHTML = html;
 }
 
 function goHome() {
+  resetSubcategoryScroll();
 
-    resetSubcategoryScroll();
+  clearProductUrl();
 
-    clearProductUrl();
+  currentView = "home";
 
-    currentView = "home";
+  currentCategory = null;
 
-    currentCategory = null;
+  scrollToCatalog();
 
-    scrollToCatalog();
+  document.getElementById("categories").style.display = "";
 
-    document.getElementById("categories").style.display = "";
+  document.getElementById("search-container").style.display = "block";
 
-    document.getElementById("search-container").style.display = "block";
+  document.getElementById("searchInput").value = "";
 
-    document.getElementById("searchInput").value = "";
+  document.getElementById("content").innerHTML = "";
 
-    document.getElementById("content").innerHTML = "";
-
-    document.getElementById("categories").scrollTo({
+  document.getElementById("categories").scrollTo({
     left: 0,
-    behavior: "smooth"
-});
+    behavior: "smooth",
+  });
 
-showHomeNewProducts();
+  showHomeNewProducts();
 }
 
 function initializeHome() {
+  updateCounters();
 
-    updateCounters();
-
-    showHomeNewProducts();
-
+  showHomeNewProducts();
 }
 
 function showAbout() {
+  const modal = document.getElementById("about-modal");
 
-    const modal = document.getElementById("about-modal");
-
-    if (modal) {
-        modal.classList.remove("hidden");
-    }
+  if (modal) {
+    modal.classList.remove("hidden");
+  }
 }
 
 function closeAbout() {
+  const modal = document.getElementById("about-modal");
 
-    const modal = document.getElementById("about-modal");
+  if (modal) {
+    modal.classList.add("hidden");
+  }
+}
 
-    if (modal) {
-        modal.classList.add("hidden");
-    }
+function showDelivery() {
+  const modal = document.getElementById("delivery-modal");
+
+  if (modal) {
+    modal.classList.remove("hidden");
+  }
+}
+
+function closeDelivery() {
+  const modal = document.getElementById("delivery-modal");
+
+  if (modal) {
+    modal.classList.add("hidden");
+  }
+}
+
+function showSearchService() {
+  const modal = document.getElementById("search-service-modal");
+
+  if (modal) {
+    modal.classList.remove("hidden");
+  }
+}
+
+function closeSearchService() {
+  const modal = document.getElementById("search-service-modal");
+
+  if (modal) {
+    modal.classList.add("hidden");
+  }
 }
