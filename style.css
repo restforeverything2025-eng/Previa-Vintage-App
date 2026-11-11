@@ -1072,7 +1072,9 @@ img{
 
 .gold-divider{
 
-    width:400px;
+    width:min(400px, 100%);
+
+    box-sizing:border-box;
 
     height:2px;
 
@@ -3574,4 +3576,89 @@ body.order-modal-open {
 
 .website-link a:hover {
     color: #E4C27A;
+}
+
+
+/* =========================================
+   PREVIA — Product Grid Card Alignment
+   Scope: main product cards only
+========================================= */
+
+.products-grid {
+    align-items: stretch;
+}
+
+.products-grid > .card {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    height: 100%;
+    box-sizing: border-box;
+}
+
+/* Product image */
+
+.products-grid > .card > .catalog-image-wrapper {
+    flex: 0 0 auto;
+    width: 100%;
+}
+
+.products-grid > .card .catalog-image {
+    display: block;
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+}
+
+/* Product name */
+
+.products-grid > .card > h3 {
+    flex: 0 0 auto;
+}
+
+/* Prices: align at the bottom of the free space */
+
+.products-grid > .card > .product-price,
+.products-grid > .card > .sale-price-main {
+    margin-top: auto;
+    flex-shrink: 0;
+}
+
+/* Product status: consistent vertical slot */
+
+.products-grid > .card > [data-product-status] {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 40px;
+    flex: 0 0 auto;
+    margin: 10px 0 0;
+}
+
+
+/* Cart button — responsive sizing */
+
+.products-grid > .card > .cart-add-button {
+    flex: 0 0 auto;
+    width: 100%;
+    max-width: 190px;
+    min-height: 42px;
+    height: auto;
+    margin: 8px auto 0;
+    padding: 5px 6px;
+
+    font-size: clamp(11px, 3.4vw, 14px);
+    line-height: 1.05;
+    white-space: normal;
+    overflow-wrap: normal;
+    box-sizing: border-box;
+}
+
+/* Keep the same bottom space without a cart button */
+
+.products-grid > .card:not(:has(.cart-add-button))::after {
+    content: "";
+    display: block;
+    flex: 0 0 50px;
+    margin-top: 8px;
 }
