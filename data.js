@@ -268,7 +268,7 @@ const products = [
     "sku": "W0012",
     "category": "Годинники",
     "brand": "Anne Klein",
-    "name": "Anna Klein",
+    "name": "Anne Klein",
     "currency": "EUR",
     "price": 140,
     "sale": false,
@@ -966,8 +966,7 @@ const products = [
       "images/W0038/1.webp",
       "images/W0038/2.webp",
       "images/W0038/3.webp",
-      "images/W0038/4.webp",
-      "images/W0038/5.webp"
+      "images/W0038/4.webp"
     ]
   },
   {
@@ -1188,7 +1187,7 @@ const products = [
     "brand": "Longines",
     "name": "Longines Tonneau (Circa 1970s)",
     "currency": "EUR",
-    "price": 400,
+    "price": 690,
     "sale": false,
     "salePercent": "",
     "oldPrice": "",
