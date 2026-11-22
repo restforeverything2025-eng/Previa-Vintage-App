@@ -614,23 +614,18 @@ button:hover{
     color:#b42318;
 
 }
-.banner-image{
+.banner-picture {
+    display: block;
+    width: calc(100% - 64px);
+    margin: 24px 32px 12px;
+}
 
-    width:calc(100% - 64px);
-
-    max-height:590px;
-
-    margin:24px 32px 12px;
-
-    border-radius:24px;
-
-    display:block;
-
-    object-fit:cover;
-
-    box-shadow:
-        0 6px 18px rgba(0,0,0,.18);
-
+.banner-image {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 24px;
+    box-shadow: 0 6px 18px rgba(0,0,0,.18);
 }
 .category-icon{
 
